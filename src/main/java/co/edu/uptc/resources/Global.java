@@ -1,10 +1,11 @@
-package co.edu.uptc.views;
+package co.edu.uptc.resources;
 
 import java.awt.Color;
 
 public class Global {
     public static Color HEADER_BACKGROUND = new Color(0xB0D1D9);
-    
+    public static Color HEADER_TEXT_BACKGROUND = Color.black;
+
     public static Color ASIDE_BACKGROUND = new Color(0x8C8C88);
     public static Color ASIDE_TEXT_BACKGROUND = Color.white;
 

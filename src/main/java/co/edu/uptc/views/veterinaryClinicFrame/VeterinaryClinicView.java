@@ -1,11 +1,17 @@
-package co.edu.uptc.views.mainFrame;
+package co.edu.uptc.views.veterinaryClinicFrame;
 
 import javax.swing.JFrame;
+
+import co.edu.uptc.interfaces.VeterinaryInterface;
+import co.edu.uptc.interfaces.VeterinaryInterface.Presenter;
+
 import java.awt.BorderLayout;
 
-public class MainView extends JFrame{
 
-    public MainView(){
+public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.View{
+    private VeterinaryInterface.Presenter presenter;
+
+    public VeterinaryClinicView(){
         initFrame();
         createMainHeader();
         createMainAside();
@@ -25,17 +31,25 @@ public class MainView extends JFrame{
     }
 
     private void createMainHeader(){
-        MainHeader mainHeader = new MainHeader();
+        VeterinaryClinicHeader mainHeader = new VeterinaryClinicHeader();
         this.add(mainHeader, BorderLayout.NORTH);
     }
 
     private void createMainAside(){
-        MainAside mainAside = new MainAside();
+        VeterinaryClinicAside mainAside = new VeterinaryClinicAside();
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        MainBody mainBody = new MainBody();
+        VeterinaryClinicBody mainBody = new VeterinaryClinicBody();
         this.add(mainBody);
+    }
+    @Override
+    public void setPresenter(Presenter presenter) {
+       this.presenter = presenter;
+    }
+
+    public VeterinaryInterface.Presenter getPresenter(){
+        return presenter;
     }
 }
