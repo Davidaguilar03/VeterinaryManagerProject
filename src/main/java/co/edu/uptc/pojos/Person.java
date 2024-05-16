@@ -9,10 +9,22 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Person {
+
+public class Person implements Cloneable{
     private int id;
     private String name;
     private int age;
     private String typeOfDocument;
     private int documentNumber;
+
+    @Override
+    public Person clone(){
+        try {
+            return (Person) super.clone(); 
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
 }
+

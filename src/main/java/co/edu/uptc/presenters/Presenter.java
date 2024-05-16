@@ -98,4 +98,9 @@ public class Presenter implements VeterinaryInterface.Presenter{
         return model.getVaccines();
     }
 
+    public VeterinaryInterface.View getView() {
+        return view;
+    }
+
+    
 }

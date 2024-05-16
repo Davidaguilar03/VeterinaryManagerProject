@@ -9,8 +9,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vaccine {
-private int id;
-private String name;
-private int shelfLife;
+public class Vaccine implements Cloneable{
+    private int id;
+    private String name;
+    private int shelfLife;
+
+    @Override
+    public  Vaccine clone(){
+        try {
+            return (Vaccine) super.clone(); 
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
 }

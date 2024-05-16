@@ -23,50 +23,62 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void addPerson(Person person) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPerson'");
+        if (person != null) {
+            Person personToAdd = person.clone();
+            persons.add(personToAdd);    
+        }    
     }
 
     @Override
     public void deletePerson(Person person) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePerson'");
+        if (person != null) {
+            persons.remove(person);  
+        }  
     }
 
     @Override
     public void addPet(Pet pet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPet'");
+        if (pet != null) {
+            Pet petToAdd = pet.clone();
+            pets.add(petToAdd);    
+        }    
     }
 
     @Override
     public void deletePet(Pet pet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePet'");
+        if (pet != null) {
+            pets.remove(pet);  
+        }  
     }
 
     @Override
     public void addAppointment(Appointment appointment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addAppointment'");
+        if (appointment != null) {
+            Appointment appointmentToAdd = appointment.clone();
+            appointments.add(appointmentToAdd);    
+        }    
     }
 
     @Override
     public void deleteAppointment(Appointment appointment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAppointment'");
+        if (appointment != null) {
+           appointments.remove(appointment);
+        }  
     }
 
     @Override
     public void addVaccine(Vaccine vaccine) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addVaccine'");
+        if (vaccine != null) {
+            Vaccine vaccineToAdd = vaccine.clone();
+            vaccines.add(vaccineToAdd);    
+        }  
     }
 
     @Override
     public void deleteVaccine(Vaccine vaccine) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteVaccine'");
+        if (vaccine != null) {
+            vaccines.remove(vaccine);
+         }  
     }
 
     @Override
@@ -89,26 +101,43 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public ArrayList<Person> getPersons() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPersons'");
+       ArrayList<Person> auxPersons = new ArrayList<>();
+        for (Person person : persons) {
+            auxPersons.add(person.clone());
+        }
+        return auxPersons;
     }
 
     @Override
     public ArrayList<Pet> getPets() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPets'");
+        ArrayList<Pet> auxPets = new ArrayList<>();
+        for (Pet pet : pets) {
+            auxPets.add(pet.clone());
+        }
+        return auxPets;
     }
 
     @Override
     public ArrayList<Appointment> getAppointments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAppointments'");
+        ArrayList<Appointment> auxAppointments = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            auxAppointments.add(appointment.clone());
+        }
+        return auxAppointments;
     }
 
     @Override
     public ArrayList<Vaccine> getVaccines() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getVaccines'");
+        ArrayList<Vaccine> auxVaccines = new ArrayList<>();
+        for (Vaccine vaccine : vaccines) {
+            auxVaccines.add(vaccine.clone());
+        }
+        return auxVaccines;
     }
 
+    public VeterinaryInterface.Presenter getPresenter() {
+        return presenter;
+    }
+
+    
 }

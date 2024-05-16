@@ -9,11 +9,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pet {
+public class Pet implements Cloneable {
     private int id;
     private String name;
     private String species;
     private int age;
     private String breed;
     private Keeper[] keeper;
+
+    @Override
+    public Pet clone(){
+        try {
+            return (Pet) super.clone(); 
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
 }

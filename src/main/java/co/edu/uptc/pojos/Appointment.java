@@ -11,9 +11,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Appointment {
-private Pet pet;
-private Vaccine[] vaccines;
-private LocalDate date;
-private Keeper keeper;
+public class Appointment implements Cloneable {
+    private Pet pet;
+    private Vaccine[] vaccines;
+    private LocalDate date;
+    private Keeper keeper;
+    
+    @Override
+    public Appointment clone(){
+        try {
+            return (Appointment) super.clone(); 
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
 }
