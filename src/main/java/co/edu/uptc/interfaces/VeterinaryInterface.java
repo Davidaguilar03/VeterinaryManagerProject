@@ -24,6 +24,9 @@ public interface VeterinaryInterface {
         public ArrayList<Pet> getPets();
         public ArrayList<Appointment> getAppointments();
         public ArrayList<Vaccine> getVaccines();
+        public void loadData();
+        public void writeData();
+        public Person searchPersonById(int personId);
     }
     
     public interface View{
@@ -49,5 +52,8 @@ public interface VeterinaryInterface {
         public ArrayList<Pet> getPets();
         public ArrayList<Appointment> getAppointments();
         public ArrayList<Vaccine> getVaccines();
+        public void loadData();
+        public void writeData();
+        public Person searchPersonById(int personId);
     }
 } 

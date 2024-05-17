@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import co.edu.uptc.resources.Global;
+import co.edu.uptc.views.GlobalView;
 
 public class vaccineInventoryAside extends JPanel{
 
@@ -15,8 +15,8 @@ public class vaccineInventoryAside extends JPanel{
     }
 
     private void initPanel(){
-        this.setBackground(Global.ASIDE_BACKGROUND);
-        this.setForeground(Global.ASIDE_TEXT_BACKGROUND);
+        this.setBackground(GlobalView.ASIDE_BACKGROUND);
+        this.setForeground(GlobalView.ASIDE_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(298,0));
         this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,Color.black));
     }

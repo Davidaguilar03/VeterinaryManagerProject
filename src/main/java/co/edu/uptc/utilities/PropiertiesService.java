@@ -1,4 +1,4 @@
-package co.edu.uptc.resources;
+package co.edu.uptc.utilities;
 import java.io.FileInputStream;
 import java.io.IOException;
 

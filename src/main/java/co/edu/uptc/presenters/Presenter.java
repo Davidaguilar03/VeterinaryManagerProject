@@ -102,5 +102,20 @@ public class Presenter implements VeterinaryInterface.Presenter{
         return view;
     }
 
+    @Override
+    public void loadData() {
+        model.loadData();
+    }
+
+    @Override
+    public void writeData() {
+      model.writeData();
+    }
+
+    @Override
+    public Person searchPersonById(int personId) {
+        return model.searchPersonById(personId);
+    }
+
     
 }

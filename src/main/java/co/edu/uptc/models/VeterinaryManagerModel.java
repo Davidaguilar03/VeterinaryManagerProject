@@ -1,13 +1,18 @@
 package co.edu.uptc.models;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
+import co.edu.uptc.utilities.JsonConvertorService;
+import co.edu.uptc.utilities.PropiertiesService;
+
 
 public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     private ArrayList<Person> persons;
@@ -83,20 +88,33 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public ArrayList<Appointment> sortByDate(LocalDate date) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortByDate'");
+        ArrayList<Appointment> sortByDateAppointments = new ArrayList<>();
+        for (Appointment appointment : this.appointments) {
+            if (appointment.getDate().isEqual(date)) {
+                sortByDateAppointments.add(appointment);
+            }
+        }
+        return sortByDateAppointments;
     }
 
     @Override
     public ArrayList<Appointment> sortByPerson(Person person) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortByPerson'");
+       ArrayList<Appointment> sortByPersonAppointments = new ArrayList<>();
+       for (Appointment appointment : this.appointments) {
+            if (this.searchPersonById(appointment.getKeeper().getPersonId()).equals(person)) {
+                sortByPersonAppointments.add(appointment);
+            }
+       }
+       return sortByPersonAppointments;
     }
 
     @Override
     public ArrayList<Appointment> sortByVaccineExpireDate() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sortByVaccineExpireDate'");
+        ArrayList<Appointment> sortByVaccineExpireDate = new ArrayList<>();
+        for (Appointment appointment : this.appointments) {
+           
+        }
+        return sortByVaccineExpireDate;
     }
 
     @Override
@@ -139,5 +157,44 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         return presenter;
     }
 
-    
+    @Override
+    public void loadData() {
+        JsonConvertorService jcs = new JsonConvertorService();
+        PropiertiesService ps = new PropiertiesService();
+        try {
+            this.persons = jcs.jsonToPerson(ps.getKeyValue("PersonsPath"));
+            this.appointments = jcs.jsonToAppointment(ps.getKeyValue("AppointmentsPath"));
+            this.pets = jcs.jsonToPet(ps.getKeyValue("PetsPath"));
+            this.vaccines = jcs.jsonToVaccine(ps.getKeyValue("VaccinesPath"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void writeData() {
+        JsonConvertorService jcs = new JsonConvertorService();
+        PropiertiesService ps = new PropiertiesService();
+        try {
+            jcs.personToJson(this.persons, ps.getKeyValue("PersonsPath"));
+            jcs.appointmentToJson(this.appointments,ps.getKeyValue("AppointmentsPath"));
+            jcs.petToJson(this.pets, ps.getKeyValue("PetsPath"));
+            jcs.vaccineToJson(this.vaccines, ps.getKeyValue("VaccinesPath"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Person searchPersonById(int personId) {
+        Person auxPerson = new Person();
+        for (Person person : this.persons) {
+            if (person.getId() == personId) {
+                auxPerson=person;
+            }
+        }
+        return auxPerson;
+    }
+
+
 }

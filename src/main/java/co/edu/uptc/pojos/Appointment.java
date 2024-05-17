@@ -17,6 +17,15 @@ public class Appointment implements Cloneable {
     private LocalDate date;
     private Keeper keeper;
     
+    public void sortVaccines(){
+        Vaccine[] sortVaccines = new Vaccine[vaccines.length];
+        for (Vaccine vaccine : vaccines) {
+            if (vaccine.getExpireDate().isBefore(date)) {
+                
+            }
+        }
+    }
+
     @Override
     public Appointment clone(){
         try {

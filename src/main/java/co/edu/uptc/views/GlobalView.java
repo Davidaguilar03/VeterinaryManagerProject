@@ -1,8 +1,8 @@
-package co.edu.uptc.resources;
+package co.edu.uptc.views;
 
 import java.awt.Color;
 
-public class Global {
+public class GlobalView {
     public static Color HEADER_BACKGROUND = new Color(0xB0D1D9);
     public static Color HEADER_TEXT_BACKGROUND = Color.black;
 

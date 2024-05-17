@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import co.edu.uptc.resources.Global;
-import co.edu.uptc.resources.PropiertiesService;
+import co.edu.uptc.utilities.PropiertiesService;
+import co.edu.uptc.views.GlobalView;
 
 public class peopleDataBaseHeader extends JPanel{
   private ImageIcon imageIcon;
@@ -25,8 +25,8 @@ public class peopleDataBaseHeader extends JPanel{
     }
 
     private void initPanel(){
-        this.setBackground(Global.HEADER_BACKGROUND);
-        this.setForeground(Global.HEADER_TEXT_BACKGROUND);
+        this.setBackground(GlobalView.HEADER_BACKGROUND);
+        this.setForeground(GlobalView.HEADER_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(0,236));
         this.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.black));
         this.setLayout(null);
