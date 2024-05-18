@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.views.GlobalView;
 
-public class vaccineInventoryAside extends JPanel{
+public class VaccineInventoryAside extends JPanel{
 
-    public vaccineInventoryAside(){
+    public VaccineInventoryAside(){
         initPanel();
     }
 

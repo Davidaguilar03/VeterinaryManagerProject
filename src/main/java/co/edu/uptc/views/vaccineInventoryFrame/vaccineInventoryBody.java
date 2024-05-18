@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class vaccineInventoryBody extends JPanel {
+public class VaccineInventoryBody extends JPanel {
 
-    public vaccineInventoryBody(){
+    public VaccineInventoryBody(){
         initPanel();
     }
 

@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.views.GlobalView;
 
-public class petDataBaseAside extends JPanel{
+public class PetDataBaseAside extends JPanel{
 
-    public petDataBaseAside(){
+    public PetDataBaseAside(){
         initPanel();
     }
 

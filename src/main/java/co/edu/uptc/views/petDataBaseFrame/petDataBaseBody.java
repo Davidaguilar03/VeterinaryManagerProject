@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class petDataBaseBody extends JPanel {
+public class PetDataBaseBody extends JPanel {
 
-    public petDataBaseBody(){
+    public PetDataBaseBody(){
         initPanel();
     }
 

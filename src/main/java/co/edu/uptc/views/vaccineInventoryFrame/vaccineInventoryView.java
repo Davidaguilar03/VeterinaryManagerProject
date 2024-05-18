@@ -1,12 +1,15 @@
 package co.edu.uptc.views.vaccineInventoryFrame;
 
 import javax.swing.JDialog;
+import co.edu.uptc.views.veterinaryClinicFrame.VeterinaryClinicView;
 import java.awt.BorderLayout;
 
+public class VaccineInventoryView extends JDialog{
+    private VeterinaryClinicView veterinaryClinicView;
 
-public class vaccineInventoryView extends JDialog{
-
-    public vaccineInventoryView(){
+    public VaccineInventoryView(VeterinaryClinicView veterinaryClinicView){
+        super(veterinaryClinicView,true);
+        this.veterinaryClinicView=veterinaryClinicView;
         initFrame();
         createMainHeader();
         createMainAside();
@@ -25,17 +28,17 @@ public class vaccineInventoryView extends JDialog{
     }
 
     private void createMainHeader(){
-        vaccineInventoryHeader mainHeader = new vaccineInventoryHeader();
+        VaccineInventoryHeader mainHeader = new VaccineInventoryHeader();
         this.add(mainHeader, BorderLayout.NORTH);
     }
 
     private void createMainAside(){
-        vaccineInventoryAside mainAside = new vaccineInventoryAside();
+        VaccineInventoryAside mainAside = new VaccineInventoryAside();
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        vaccineInventoryBody mainBody = new vaccineInventoryBody();
+        VaccineInventoryBody mainBody = new VaccineInventoryBody();
         this.add(mainBody);
     }
 }

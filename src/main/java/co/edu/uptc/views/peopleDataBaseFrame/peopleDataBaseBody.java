@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class peopleDataBaseBody extends JPanel {
+public class PeopleDataBaseBody extends JPanel {
 
-    public peopleDataBaseBody(){
+    public PeopleDataBaseBody(){
         initPanel();
     }
 

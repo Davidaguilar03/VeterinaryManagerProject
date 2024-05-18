@@ -31,7 +31,7 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
     }
 
     private void createMainHeader(){
-        VeterinaryClinicHeader mainHeader = new VeterinaryClinicHeader();
+        VeterinaryClinicHeader mainHeader = new VeterinaryClinicHeader(this);
         this.add(mainHeader, BorderLayout.NORTH);
     }
 

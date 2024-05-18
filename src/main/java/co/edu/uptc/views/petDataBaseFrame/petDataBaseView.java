@@ -2,13 +2,17 @@ package co.edu.uptc.views.petDataBaseFrame;
 
 import javax.swing.JDialog;
 
+import co.edu.uptc.views.veterinaryClinicFrame.VeterinaryClinicView;
 
 import java.awt.BorderLayout;
 
 
-public class petDataBaseView extends JDialog{
+public class PetDataBaseView extends JDialog{
+    private VeterinaryClinicView veterinaryClinicView;
 
-    public petDataBaseView(){
+    public PetDataBaseView(VeterinaryClinicView veterinaryClinicView){
+        super(veterinaryClinicView,true);
+        this.veterinaryClinicView=veterinaryClinicView;
         initFrame();
         createMainHeader();
         createMainAside();
@@ -27,17 +31,17 @@ public class petDataBaseView extends JDialog{
     }
 
     private void createMainHeader(){
-        petDataBaseHeader mainHeader = new petDataBaseHeader();
+        PetDataBaseHeader mainHeader = new PetDataBaseHeader();
         this.add(mainHeader, BorderLayout.NORTH);
     }
 
     private void createMainAside(){
-        petDataBaseAside mainAside = new petDataBaseAside();
+        PetDataBaseAside mainAside = new PetDataBaseAside();
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        petDataBaseBody mainBody = new petDataBaseBody();
+        PetDataBaseBody mainBody = new PetDataBaseBody();
         this.add(mainBody);
     }
 }

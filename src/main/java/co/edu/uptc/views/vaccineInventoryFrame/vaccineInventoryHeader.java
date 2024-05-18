@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.PropiertiesService;
 import co.edu.uptc.views.GlobalView;
 
-public class vaccineInventoryHeader extends JPanel{
+public class VaccineInventoryHeader extends JPanel{
   private ImageIcon imageIcon;
   private PropiertiesService propiertiesService = new PropiertiesService();
 
-    public vaccineInventoryHeader(){
+    public VaccineInventoryHeader(){
         initPanel();
         this.addImageIcon();
         this.addTitleLabel();

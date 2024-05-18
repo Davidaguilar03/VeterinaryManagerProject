@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.PropiertiesService;
 import co.edu.uptc.views.GlobalView;
 
-public class peopleDataBaseHeader extends JPanel{
+public class PeopleDataBaseHeader extends JPanel{
   private ImageIcon imageIcon;
   private PropiertiesService propiertiesService = new PropiertiesService();
 
-    public peopleDataBaseHeader(){
+    public PeopleDataBaseHeader(){
         initPanel();
         this.addImageIcon();
         this.addTitleLabel();
