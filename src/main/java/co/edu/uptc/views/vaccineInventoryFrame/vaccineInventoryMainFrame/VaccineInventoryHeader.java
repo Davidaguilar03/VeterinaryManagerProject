@@ -12,16 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.PropertiesService;
+import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 
 public class VaccineInventoryHeader extends JPanel{
   private ImageIcon imageIcon;
-  private PropertiesService propertiesService = new PropertiesService();
+  private PropertiesService propertiesService;
 
     public VaccineInventoryHeader(){
+        propertiesService = new PropertiesService();
         initPanel();
         this.addImageIcon();
         this.addTitleLabel();
+        this.addVaccineInventaryTitle();
     }
 
     private void initPanel(){
@@ -40,8 +43,16 @@ public class VaccineInventoryHeader extends JPanel{
         this.add(titleLabel);
     }
 
-
-
+    private void addVaccineInventaryTitle(){
+        RoundedButton vaccineInventaryTitle = new RoundedButton("Inventario de Vacunas", 20);
+        vaccineInventaryTitle.setBounds(300, 78, 826, 80);
+        vaccineInventaryTitle.setFont( new Font("Semi_Bold", 1, 40));;
+        vaccineInventaryTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
+        ImageIcon vaccineIcon = new ImageIcon(propertiesService.getKeyValue("VaccineIconPath"));
+        vaccineInventaryTitle.setIcon(vaccineIcon);
+        vaccineInventaryTitle.setContentAreaFilled(false);
+        this.add(vaccineInventaryTitle);
+    }
 
     private void addImageIcon(){
         imageIcon = new ImageIcon(propertiesService.getKeyValue("LogoPath"));

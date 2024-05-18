@@ -25,7 +25,7 @@ public class VaccineInventoryView extends JDialog{
         this.setTitle("Clinica Veterinaria");
         this.setLayout(new BorderLayout());
         this.setSize(1366,768);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);
     }
 
@@ -35,12 +35,12 @@ public class VaccineInventoryView extends JDialog{
     }
 
     private void createMainAside(){
-        VaccineInventoryAside mainAside = new VaccineInventoryAside();
+        VaccineInventoryAside mainAside = new VaccineInventoryAside(veterinaryClinicView);
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        VaccineInventoryBody mainBody = new VaccineInventoryBody();
+        VaccineInventoryBody mainBody = new VaccineInventoryBody(veterinaryClinicView);
         this.add(mainBody);
     }
 

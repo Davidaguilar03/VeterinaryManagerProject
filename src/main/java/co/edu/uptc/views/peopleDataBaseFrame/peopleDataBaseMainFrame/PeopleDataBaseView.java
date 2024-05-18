@@ -26,7 +26,7 @@ public class PeopleDataBaseView extends JDialog{
         this.setTitle("Clinica Veterinaria");
         this.setLayout(new BorderLayout());
         this.setSize(1366,768);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);
     }
 
@@ -36,12 +36,12 @@ public class PeopleDataBaseView extends JDialog{
     }
 
     private void createMainAside(){
-        PeopleDataBaseAside mainAside = new PeopleDataBaseAside();
+        PeopleDataBaseAside mainAside = new PeopleDataBaseAside(veterinaryClinicView);
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        PeopleDataBaseBody mainBody = new PeopleDataBaseBody();
+        PeopleDataBaseBody mainBody = new PeopleDataBaseBody(veterinaryClinicView);
         this.add(mainBody);
     }
 

@@ -36,11 +36,11 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         Person auxPerson = new Person(1, "David", 18, "Cedula de Ciudadania", 1032938747);
         persons.add(auxPerson);
         ArrayList<Keeper> keepers = new ArrayList<>();
-        keepers.add(new Keeper(1, "Owner"));
+        keepers.add(new Keeper(1, 'O'));
         Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
         ArrayList<Vaccine> vaccines = new ArrayList<>();
         vaccines.add(new Vaccine(1, "pulgas", 15));
-        Appointment auxAppointment = new Appointment(1, auxPet, vaccines, LocalDate.now(), auxPet.getKeeper().getFirst());
+        Appointment auxAppointment = new Appointment(1, auxPet, vaccines, LocalDate.now(), auxPet.getKeepers().getFirst());
         appointments.add(auxAppointment);
     }
 

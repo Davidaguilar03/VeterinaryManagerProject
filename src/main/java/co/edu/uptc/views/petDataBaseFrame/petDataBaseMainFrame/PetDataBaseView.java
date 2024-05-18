@@ -13,10 +13,10 @@ public class PetDataBaseView extends JDialog{
     public PetDataBaseView(VeterinaryClinicView veterinaryClinicView){
         super(veterinaryClinicView,true);
         this.veterinaryClinicView=veterinaryClinicView;
-        initFrame();
-        createMainHeader();
-        createMainAside();
-        createMainBody();
+        this.initFrame();
+        this.createMainHeader();
+        this.createMainAside();
+        this.createMainBody();
     }
     public void begin(){
         this.setVisible(true);
@@ -26,7 +26,7 @@ public class PetDataBaseView extends JDialog{
         this.setTitle("Clinica Veterinaria");
         this.setLayout(new BorderLayout());
         this.setSize(1366,768);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);
     }
 
@@ -36,12 +36,12 @@ public class PetDataBaseView extends JDialog{
     }
 
     private void createMainAside(){
-        PetDataBaseAside mainAside = new PetDataBaseAside();
+        PetDataBaseAside mainAside = new PetDataBaseAside(veterinaryClinicView);
         this.add(mainAside, BorderLayout.WEST);
     }
 
     private void createMainBody(){
-        PetDataBaseBody mainBody = new PetDataBaseBody();
+        PetDataBaseBody mainBody = new PetDataBaseBody(veterinaryClinicView);
         this.add(mainBody);
     }
 

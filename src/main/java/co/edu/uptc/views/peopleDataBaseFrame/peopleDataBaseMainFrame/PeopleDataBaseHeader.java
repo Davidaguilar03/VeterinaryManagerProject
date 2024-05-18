@@ -12,16 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.PropertiesService;
+import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 
 public class PeopleDataBaseHeader extends JPanel{
   private ImageIcon imageIcon;
-  private PropertiesService propertiesService = new PropertiesService();
+  private PropertiesService propertiesService;
 
     public PeopleDataBaseHeader(){
-        initPanel();
+        propertiesService = new PropertiesService();
+        this.initPanel();
         this.addImageIcon();
         this.addTitleLabel();
+        this.addPeopleDataBaseTitle();
     }
 
     private void initPanel(){
@@ -40,8 +43,16 @@ public class PeopleDataBaseHeader extends JPanel{
         this.add(titleLabel);
     }
 
-
-
+    private void addPeopleDataBaseTitle(){
+        RoundedButton peopleDataBaseTitle = new RoundedButton("Registro de Personas", 20);
+        peopleDataBaseTitle.setBounds(300, 78, 826, 80);
+        peopleDataBaseTitle.setFont( new Font("Semi_Bold", 1, 40));;
+        peopleDataBaseTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
+        ImageIcon PetIcon = new ImageIcon(propertiesService.getKeyValue("UserIconPath"));
+        peopleDataBaseTitle.setIcon(PetIcon);
+        peopleDataBaseTitle.setContentAreaFilled(false);
+        this.add(peopleDataBaseTitle);
+    }
 
     private void addImageIcon(){
         imageIcon = new ImageIcon(propertiesService.getKeyValue("LogoPath"));

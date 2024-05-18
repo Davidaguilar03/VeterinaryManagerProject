@@ -17,7 +17,18 @@ public class Pet implements Cloneable {
     private String species;
     private int age;
     private String breed;
-    private ArrayList<Keeper> keeper;
+    private ArrayList<Keeper> keepers;
+
+    public Keeper getOwner(){
+        Keeper ownerkeeper = new Keeper();
+        for (Keeper keeper : keepers) {
+            if (keeper.getRelationship() == 'O') {
+                ownerkeeper = keeper;
+            }
+        }
+        return ownerkeeper;
+    }
+
 
     @Override
     public Pet clone(){
