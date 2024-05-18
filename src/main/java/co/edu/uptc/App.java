@@ -3,7 +3,7 @@ package co.edu.uptc;
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.models.VeterinaryManagerModel;
 import co.edu.uptc.presenters.Presenter;
-import co.edu.uptc.views.veterinaryClinicFrame.VeterinaryClinicView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class App {
     public static void main( String[] args ){
