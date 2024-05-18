@@ -44,4 +44,9 @@ public class PetDataBaseView extends JDialog{
         PetDataBaseBody mainBody = new PetDataBaseBody();
         this.add(mainBody);
     }
+
+    public VeterinaryClinicView getVeterinaryClinicView() {
+        return veterinaryClinicView;
+    }
+
 }

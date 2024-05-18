@@ -44,4 +44,9 @@ public class PeopleDataBaseView extends JDialog{
         PeopleDataBaseBody mainBody = new PeopleDataBaseBody();
         this.add(mainBody);
     }
+
+    public VeterinaryClinicView getVeterinaryClinicView() {
+        return veterinaryClinicView;
+    }
+
 }

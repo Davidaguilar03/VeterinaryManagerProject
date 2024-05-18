@@ -1,15 +1,19 @@
 package co.edu.uptc.views.veterinaryClinicFrame;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.interfaces.VeterinaryInterface.Presenter;
+import co.edu.uptc.utilities.PropertiesService;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
 
 
 public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.View{
     private VeterinaryInterface.Presenter presenter;
+    private PropertiesService propertiesService = new PropertiesService();
 
     public VeterinaryClinicView(){
         initFrame();
@@ -28,6 +32,9 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
         this.setSize(1366,768);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
+        Image image = windowIcon.getImage();
+        this.setIconImage(image);
     }
 
     private void createMainHeader(){

@@ -21,7 +21,7 @@ import co.edu.uptc.views.vaccineInventoryFrame.VaccineInventoryView;
 
 public class VeterinaryClinicHeader extends JPanel{
   private ImageIcon imageIcon;
-  private PropiertiesService propiertiesService = new PropiertiesService();
+  private PropertiesService propertiesService = new PropertiesService();
   private VeterinaryClinicView veterinaryClinicView;
 
     public VeterinaryClinicHeader(VeterinaryClinicView veterinaryClinicView){
@@ -54,7 +54,7 @@ public class VeterinaryClinicHeader extends JPanel{
         RoundedButton vaccineInventaryBtn = new RoundedButton("<html>Inventario de<br/>Vacunas</html>", 20);
         vaccineInventaryBtn.setBounds(315, 78, 200, 80);
         vaccineInventaryBtn.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
-        ImageIcon vaccineIcon = new ImageIcon(propiertiesService.getKeyValue("VaccineIconPath"));
+        ImageIcon vaccineIcon = new ImageIcon(propertiesService.getKeyValue("VaccineIconPath"));
         vaccineInventaryBtn.setIcon(vaccineIcon);
         vaccineInventaryBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -68,7 +68,7 @@ public class VeterinaryClinicHeader extends JPanel{
         RoundedButton PetDataBaseBtn = new RoundedButton("<html>Registro de<br/>Mascotas</html>", 20);
         PetDataBaseBtn.setBounds(596, 78, 200, 80);
         PetDataBaseBtn.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
-        ImageIcon petIcon = new ImageIcon(propiertiesService.getKeyValue("PetIconPath"));
+        ImageIcon petIcon = new ImageIcon(propertiesService.getKeyValue("PetIconPath"));
         PetDataBaseBtn.setIcon(petIcon);
         PetDataBaseBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -82,7 +82,7 @@ public class VeterinaryClinicHeader extends JPanel{
         RoundedButton PeopleDataBaseBtn = new RoundedButton("<html>Registro de<br/>Personas</html>", 20);
         PeopleDataBaseBtn.setBounds(876, 78, 200, 80);
         PeopleDataBaseBtn.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
-        ImageIcon userIcon = new ImageIcon(propiertiesService.getKeyValue("UserIconPath"));
+        ImageIcon userIcon = new ImageIcon(propertiesService.getKeyValue("UserIconPath"));
         PeopleDataBaseBtn.setIcon(userIcon);
         PeopleDataBaseBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -108,7 +108,7 @@ public class VeterinaryClinicHeader extends JPanel{
     }
 
     private void addImageIcon(){
-        imageIcon = new ImageIcon(propiertiesService.getKeyValue("LogoPath"));
+        imageIcon = new ImageIcon(propertiesService.getKeyValue("LogoPath"));
     }
     @Override
     protected void paintComponent(Graphics g) {

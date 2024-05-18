@@ -11,12 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import co.edu.uptc.utilities.PropiertiesService;
+import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.GlobalView;
 
 public class PetDataBaseHeader extends JPanel{
   private ImageIcon imageIcon;
-  private PropiertiesService propiertiesService = new PropiertiesService();
+  private PropertiesService propertiesService = new PropertiesService();
 
     public PetDataBaseHeader(){
         initPanel();
@@ -44,7 +44,7 @@ public class PetDataBaseHeader extends JPanel{
 
 
     private void addImageIcon(){
-        imageIcon = new ImageIcon(propiertiesService.getKeyValue("LogoPath"));
+        imageIcon = new ImageIcon(propertiesService.getKeyValue("LogoPath"));
     }
     @Override
     protected void paintComponent(Graphics g) {

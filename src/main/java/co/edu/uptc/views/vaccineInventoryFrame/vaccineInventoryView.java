@@ -41,4 +41,9 @@ public class VaccineInventoryView extends JDialog{
         VaccineInventoryBody mainBody = new VaccineInventoryBody();
         this.add(mainBody);
     }
+
+    public VeterinaryClinicView getVeterinaryClinicView() {
+        return veterinaryClinicView;
+    }
+    
 }
