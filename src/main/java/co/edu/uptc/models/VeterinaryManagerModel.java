@@ -2,8 +2,8 @@ package co.edu.uptc.models;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
@@ -109,10 +109,14 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     }
 
     @Override
-    public ArrayList<Appointment> sortByVaccineExpireDate() {
+    public ArrayList<Appointment> sortByVaccineExpireDate(int days) {
         ArrayList<Appointment> sortByVaccineExpireDate = new ArrayList<>();
         for (Appointment appointment : this.appointments) {
-           
+           for (Vaccine appointmentVaccine : appointment.getVaccines()) {
+            if ((int)ChronoUnit.DAYS.between(LocalDate.now(),appointmentVaccine.getExpireDate()) == days) {
+                sortByVaccineExpireDate.add(appointment);
+            }
+           }
         }
         return sortByVaccineExpireDate;
     }

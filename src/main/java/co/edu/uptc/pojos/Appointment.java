@@ -1,6 +1,7 @@
 package co.edu.uptc.pojos;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,19 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Appointment implements Cloneable {
     private Pet pet;
-    private Vaccine[] vaccines;
+    private ArrayList<Vaccine> vaccines;
     private LocalDate date;
     private Keeper keeper;
-    
-    public void sortVaccines(){
-        Vaccine[] sortVaccines = new Vaccine[vaccines.length];
-        for (Vaccine vaccine : vaccines) {
-            if (vaccine.getExpireDate().isBefore(date)) {
-                
-            }
-        }
-    }
-
+   
     @Override
     public Appointment clone(){
         try {

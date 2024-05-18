@@ -74,8 +74,8 @@ public class Presenter implements VeterinaryInterface.Presenter{
     }
 
     @Override
-    public ArrayList<Appointment> sortByVaccineExpireDate() {
-       return model.sortByVaccineExpireDate();
+    public ArrayList<Appointment> sortByVaccineExpireDate(int days) {
+       return model.sortByVaccineExpireDate(days);
     }
 
     @Override

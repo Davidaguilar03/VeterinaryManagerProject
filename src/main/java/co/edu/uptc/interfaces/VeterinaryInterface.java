@@ -19,7 +19,7 @@ public interface VeterinaryInterface {
         public void deleteVaccine(Vaccine vaccine);      
         public ArrayList<Appointment> sortByDate(LocalDate date); 
         public ArrayList<Appointment> sortByPerson(Person person);
-        public ArrayList<Appointment> sortByVaccineExpireDate(); 
+        public ArrayList<Appointment> sortByVaccineExpireDate(int days); 
         public ArrayList<Person> getPersons();
         public ArrayList<Pet> getPets();
         public ArrayList<Appointment> getAppointments();
@@ -47,7 +47,7 @@ public interface VeterinaryInterface {
         public void deleteVaccine(Vaccine vaccine);      
         public ArrayList<Appointment> sortByDate(LocalDate date); 
         public ArrayList<Appointment> sortByPerson(Person person);
-        public ArrayList<Appointment> sortByVaccineExpireDate(); 
+        public ArrayList<Appointment> sortByVaccineExpireDate(int days); 
         public ArrayList<Person> getPersons();
         public ArrayList<Pet> getPets();
         public ArrayList<Appointment> getAppointments();
