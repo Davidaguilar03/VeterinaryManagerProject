@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Keeper {
     private int personId;
-    private char relationship;
+    private String relationship;
 }

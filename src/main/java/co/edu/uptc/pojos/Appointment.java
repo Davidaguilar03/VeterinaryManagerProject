@@ -13,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Appointment implements Cloneable {
+    private int id;
     private Pet pet;
     private ArrayList<Vaccine> vaccines;
     private LocalDate date;

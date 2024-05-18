@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
+import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
@@ -19,6 +20,30 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     private ArrayList<Appointment> appointments;
     private ArrayList<Vaccine> vaccines;
     private VeterinaryInterface.Presenter presenter;
+
+
+    public VeterinaryManagerModel(){
+        persons = new ArrayList<>();
+        pets = new ArrayList<>();
+        appointments = new ArrayList<>();
+        vaccines = new ArrayList<>();
+        addAppointmentTest();
+    }
+
+
+
+    private void addAppointmentTest(){
+        Person auxPerson = new Person(1, "David", 18, "Cedula de Ciudadania", 1032938747);
+        persons.add(auxPerson);
+        ArrayList<Keeper> keepers = new ArrayList<>();
+        keepers.add(new Keeper(1, "Owner"));
+        Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
+        ArrayList<Vaccine> vaccines = new ArrayList<>();
+        vaccines.add(new Vaccine(1, "pulgas", 15));
+        Appointment auxAppointment = new Appointment(1, auxPet, vaccines, LocalDate.now(), auxPet.getKeeper().getFirst());
+        appointments.add(auxAppointment);
+    }
+
 
     @Override
     public void setPresenter(VeterinaryInterface.Presenter presenter) {

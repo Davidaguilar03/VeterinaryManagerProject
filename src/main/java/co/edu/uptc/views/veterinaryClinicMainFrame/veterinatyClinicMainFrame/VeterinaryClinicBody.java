@@ -11,6 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import co.edu.uptc.pojos.Appointment;
+import co.edu.uptc.pojos.Person;
+import co.edu.uptc.utilities.CenterTableCellRenderer;
+
 public class VeterinaryClinicBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel tableModel;
@@ -43,7 +47,7 @@ public class VeterinaryClinicBody extends JPanel {
         tablePanel.setBounds(15, 20, 1015, 455);
         tablePanel.setLayout(null);
         String[] columnNames = {
-            "ID.Cita","Fecha","Mascota","Especie","Responsable","Informacion de la Cita"
+            "ID.Cita","Fecha","Mascota","Especie","Responsable","Información de la Cita"
         };
         tableModel = new DefaultTableModel(columnNames,0) {
             @Override
@@ -53,10 +57,22 @@ public class VeterinaryClinicBody extends JPanel {
           };
         appointmentsTable = new JTable(tableModel);
         appointmentsTable.setFillsViewportHeight(true);
+        CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
+        for (int i = 0; i < appointmentsTable.getColumnCount(); i++) {
+            appointmentsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
         JScrollPane scrollPane = new JScrollPane(appointmentsTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
+    }
+    public Person searchPersonByid(int id){
+        return veterinaryClinicView.getPresenter().searchPersonById(id);
+    }
+
+    public void addAppointment(Appointment appointment){
+        Object[] appointmentData = {appointment.getId(),appointment.getDate().toString(),appointment.getPet().getName(),appointment.getPet().getBreed(),this.searchPersonByid(appointment.getKeeper().getPersonId()).getName(),"Mas Información"};
+        tableModel.addRow(appointmentData);
     }
 
     public VeterinaryClinicView getVeterinaryClinicView() {

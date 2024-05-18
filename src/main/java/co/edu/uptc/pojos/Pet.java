@@ -1,5 +1,7 @@
 package co.edu.uptc.pojos;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +17,7 @@ public class Pet implements Cloneable {
     private String species;
     private int age;
     private String breed;
-    private Keeper[] keeper;
+    private ArrayList<Keeper> keeper;
 
     @Override
     public Pet clone(){
