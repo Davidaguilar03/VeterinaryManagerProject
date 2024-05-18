@@ -12,4 +12,7 @@ public class GlobalView {
     public static Color BODY_BACKGROUND = new Color(0xB0D1D9);
 
     public static Color PRIMARY_BTN_BACKGROUND = new Color(0xEEEEEE);
+
+    public static Color SECUNDARY_BTN_BACKGROUND = new Color(0x202426);
+    public static Color SECUNDARY_BTN_TEXT_BACKGROUND = Color.white;
 }

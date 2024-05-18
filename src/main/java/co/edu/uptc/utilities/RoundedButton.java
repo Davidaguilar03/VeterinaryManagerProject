@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
-import javax.swing.border.EmptyBorder;
 
 public class RoundedButton extends JButton {
     private int radius;
@@ -16,7 +15,6 @@ public class RoundedButton extends JButton {
         setOpaque(false); 
         setFocusPainted(false);
         setBorderPainted(false);
-        setBorder(new EmptyBorder(0, 30, 0, 10));
         setHorizontalTextPosition(JButton.LEFT); 
         setIconTextGap(15); 
     }
