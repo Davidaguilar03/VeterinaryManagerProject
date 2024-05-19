@@ -2,24 +2,35 @@ package co.edu.uptc.views.peopleDataBaseFrame.peopleDataBaseMainFrame;
 
 import javax.swing.JDialog;
 
+import co.edu.uptc.pojos.Person;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 
 public class PeopleDataBaseView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
+    private PeopleDataBaseBody mainBody;
 
     public PeopleDataBaseView(VeterinaryClinicView veterinaryClinicView){
         super(veterinaryClinicView,true);
         this.veterinaryClinicView=veterinaryClinicView;
-        initFrame();
-        createMainHeader();
-        createMainAside();
-        createMainBody();
+        this.initFrame();
+        this.createMainHeader();
+        this.createMainAside();
+        this.createMainBody();
     }
     public void begin(){
+        this.loadPeopleData();
         this.setVisible(true);
+    }
+
+    private void loadPeopleData(){
+        ArrayList<Person> persons = veterinaryClinicView.getPresenter().getPersons();
+        for (Person person : persons) {
+            mainBody.addPerson(person);
+        }
     }
 
     private void initFrame(){
@@ -41,7 +52,7 @@ public class PeopleDataBaseView extends JDialog{
     }
 
     private void createMainBody(){
-        PeopleDataBaseBody mainBody = new PeopleDataBaseBody(veterinaryClinicView);
+        mainBody = new PeopleDataBaseBody(veterinaryClinicView);
         this.add(mainBody);
     }
 

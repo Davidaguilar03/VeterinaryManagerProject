@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.interfaces.VeterinaryInterface.Presenter;
-import co.edu.uptc.pojos.Appointment;
+import co.edu.uptc.pojos.*;
 import co.edu.uptc.utilities.PropertiesService;
 
 import java.awt.BorderLayout;
@@ -17,6 +17,7 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
     private VeterinaryInterface.Presenter presenter;
     private PropertiesService propertiesService = new PropertiesService();
     private VeterinaryClinicBody mainBody;
+    VeterinaryClinicHeader mainHeader;
 
     public VeterinaryClinicView(){
         initFrame();
@@ -41,6 +42,7 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
         this.setIconImage(image);
     }
 
+
     private void loadAppointmentsData(){
         ArrayList<Appointment> appointments = presenter.getAppointments();
         for (Appointment appointment : appointments) {
@@ -49,7 +51,7 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
     }
 
     private void createMainHeader(){
-        VeterinaryClinicHeader mainHeader = new VeterinaryClinicHeader(this);
+        mainHeader = new VeterinaryClinicHeader(this);
         this.add(mainHeader, BorderLayout.NORTH);
     }
 

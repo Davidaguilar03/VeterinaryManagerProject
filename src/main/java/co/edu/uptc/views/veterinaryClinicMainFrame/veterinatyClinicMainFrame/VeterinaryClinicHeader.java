@@ -18,13 +18,18 @@ import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.peopleDataBaseFrame.peopleDataBaseMainFrame.PeopleDataBaseView;
 import co.edu.uptc.views.petDataBaseFrame.petDataBaseMainFrame.PetDataBaseView;
 import co.edu.uptc.views.vaccineInventoryFrame.vaccineInventoryMainFrame.VaccineInventoryView;
-
+import lombok.Getter;
+@Getter
 public class VeterinaryClinicHeader extends JPanel{
   private ImageIcon imageIcon;
-  private PropertiesService propertiesService = new PropertiesService();
+  private PropertiesService propertiesService;
   private VeterinaryClinicView veterinaryClinicView;
+  private PetDataBaseView petDataBaseView;
+  private VaccineInventoryView vaccineInventoryView;
+  private PeopleDataBaseView peopleDataBaseView;
 
     public VeterinaryClinicHeader(VeterinaryClinicView veterinaryClinicView){
+        propertiesService = new PropertiesService();
         this.veterinaryClinicView=veterinaryClinicView;
         this.initPanel();
         this.addImageIcon();
@@ -93,17 +98,17 @@ public class VeterinaryClinicHeader extends JPanel{
     }
 
     private void createVaccineInventoryFrame(){
-        VaccineInventoryView vaccineInventoryView = new VaccineInventoryView(this.veterinaryClinicView);
+        vaccineInventoryView = new VaccineInventoryView(this.veterinaryClinicView);
         vaccineInventoryView.begin();
     }
 
     private void createPetDataBaseFrame(){
-        PetDataBaseView petDataBaseView = new PetDataBaseView(this.veterinaryClinicView);
+        petDataBaseView = new PetDataBaseView(this.veterinaryClinicView);
         petDataBaseView.begin();
     }
 
     private void createPeopleDataBaseFrame(){
-        PeopleDataBaseView peopleDataBaseView = new PeopleDataBaseView(this.veterinaryClinicView);
+        peopleDataBaseView = new PeopleDataBaseView(this.veterinaryClinicView);
         peopleDataBaseView.begin();
     }
 
