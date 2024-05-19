@@ -1,6 +1,5 @@
 package co.edu.uptc.views.peopleDataBaseFrame.peopleDataBaseMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,7 +30,7 @@ public class PeopleDataBaseHeader extends JPanel{
         this.setBackground(GlobalView.HEADER_BACKGROUND);
         this.setForeground(GlobalView.HEADER_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(0,236));
-        this.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(1,1,1,1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 

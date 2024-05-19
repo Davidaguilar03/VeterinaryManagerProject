@@ -1,6 +1,5 @@
 package co.edu.uptc.views.petDataBaseFrame.petDataBaseMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -15,11 +14,11 @@ import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 
-public class PetDataBaseHeader extends JPanel{
-  private ImageIcon imageIcon;
-  private PropertiesService propertiesService;
+public class PetDataBaseHeader extends JPanel {
+    private ImageIcon imageIcon;
+    private PropertiesService propertiesService;
 
-    public PetDataBaseHeader(){
+    public PetDataBaseHeader() {
         propertiesService = new PropertiesService();
         initPanel();
         this.addImageIcon();
@@ -27,26 +26,28 @@ public class PetDataBaseHeader extends JPanel{
         this.addPetDataBaseTitle();
     }
 
-    private void initPanel(){
+    private void initPanel() {
         this.setBackground(GlobalView.HEADER_BACKGROUND);
         this.setForeground(GlobalView.HEADER_TEXT_BACKGROUND);
-        this.setPreferredSize(new Dimension(0,236));
-        this.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.black));
+        this.setPreferredSize(new Dimension(0, 236));
+        this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 
-    private void addTitleLabel(){
+    private void addTitleLabel() {
         JLabel titleLabel = new JLabel("<html>Clinica<br/>Veterinaria</html>");
-        titleLabel.setFont( new Font("Semi_Bold", 1, 40));;
+        titleLabel.setFont(new Font("Semi_Bold", 1, 40));
+        ;
         Dimension titleDimension = titleLabel.getPreferredSize();
-        titleLabel.setBounds(62,55, (int)titleDimension.getWidth(), (int)titleDimension.getHeight());
+        titleLabel.setBounds(62, 55, (int) titleDimension.getWidth(), (int) titleDimension.getHeight());
         this.add(titleLabel);
     }
 
-    private void addPetDataBaseTitle(){
+    private void addPetDataBaseTitle() {
         RoundedButton petDataBaseTitle = new RoundedButton("Registro de Mascotas", 20);
         petDataBaseTitle.setBounds(300, 78, 826, 80);
-        petDataBaseTitle.setFont( new Font("Semi_Bold", 1, 40));;
+        petDataBaseTitle.setFont(new Font("Semi_Bold", 1, 40));
+        ;
         petDataBaseTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
         ImageIcon PetIcon = new ImageIcon(propertiesService.getKeyValue("PetIconPath"));
         petDataBaseTitle.setIcon(PetIcon);
@@ -54,9 +55,10 @@ public class PetDataBaseHeader extends JPanel{
         this.add(petDataBaseTitle);
     }
 
-    private void addImageIcon(){
+    private void addImageIcon() {
         imageIcon = new ImageIcon(propertiesService.getKeyValue("LogoPath"));
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

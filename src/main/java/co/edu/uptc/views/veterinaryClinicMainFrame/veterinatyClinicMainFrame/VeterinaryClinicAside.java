@@ -1,6 +1,5 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +10,7 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog.AddApointmentDialogView;
 
 public class VeterinaryClinicAside extends JPanel{
     private VeterinaryClinicView veterinaryClinicView;
@@ -29,7 +29,7 @@ public class VeterinaryClinicAside extends JPanel{
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
         this.setForeground(GlobalView.ASIDE_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(298,0));
-        this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
     private void addCreateAppointmentBtn(){
@@ -39,7 +39,7 @@ public class VeterinaryClinicAside extends JPanel{
         createAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createAppointmentBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+                createAppointmentDialog();
             }
         });
         this.add(createAppointmentBtn);
@@ -93,6 +93,12 @@ public class VeterinaryClinicAside extends JPanel{
         });
         this.add(sortAppointmentByVaccinesBtn);
     }
+
+    private void createAppointmentDialog(){
+        AddApointmentDialogView addApointmentDialogView = new AddApointmentDialogView(veterinaryClinicView);
+        addApointmentDialogView.begin();
+    }
+
 
     public VeterinaryClinicView getVeterinaryClinicView() {
         return veterinaryClinicView;

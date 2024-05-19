@@ -1,24 +1,30 @@
 package co.edu.uptc.views.petDataBaseFrame.petDataBaseMainFrame;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
 import co.edu.uptc.pojos.Pet;
+import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 import java.awt.BorderLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 
 
 public class PetDataBaseView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
-    private PetDataBaseBody mainBody;
+    private PetDataBaseBody petDataBaseBody;
+    private PropertiesService propertiesService;
+    
 
     public PetDataBaseView(VeterinaryClinicView veterinaryClinicView){
         super(veterinaryClinicView,true);
         this.veterinaryClinicView=veterinaryClinicView;
+        propertiesService = new PropertiesService();
         this.initFrame();
-        this.createMainHeader();
-        this.createMainAside();
-        this.createMainBody();
+        this.createPetDataBaseHeader();
+        this.createPetDataBaseAside();
+        this.createPetDataBaseBody();
     }
     public void begin(){
         this.loadPetsData();
@@ -26,40 +32,43 @@ public class PetDataBaseView extends JDialog{
     }
 
     private void initFrame(){
-        this.setTitle("Clinica Veterinaria");
+        this.setTitle("Registro de Mascotas");
         this.setLayout(new BorderLayout());
         this.setSize(1366,768);
         this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);
+        ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
+        Image image = windowIcon.getImage();
+        this.setIconImage(image);
     }
 
     private void loadPetsData(){
         ArrayList<Pet> pets = veterinaryClinicView.getPresenter().getPets();
         for (Pet pet : pets) {
-            mainBody.addPet(pet);
+            petDataBaseBody.addPet(pet);
         }
     }
 
-    private void createMainHeader(){
-        PetDataBaseHeader mainHeader = new PetDataBaseHeader();
-        this.add(mainHeader, BorderLayout.NORTH);
+    private void createPetDataBaseHeader(){
+        PetDataBaseHeader petDataBaseHeader = new PetDataBaseHeader();
+        this.add(petDataBaseHeader, BorderLayout.NORTH);
     }
 
-    private void createMainAside(){
-        PetDataBaseAside mainAside = new PetDataBaseAside(veterinaryClinicView);
-        this.add(mainAside, BorderLayout.WEST);
+    private void createPetDataBaseAside(){
+        PetDataBaseAside petDataBaseAside = new PetDataBaseAside(veterinaryClinicView);
+        this.add(petDataBaseAside, BorderLayout.WEST);
     }
 
-    private void createMainBody(){
-        mainBody = new PetDataBaseBody(veterinaryClinicView);
-        this.add(mainBody);
+    private void createPetDataBaseBody(){
+        petDataBaseBody = new PetDataBaseBody(veterinaryClinicView);
+        this.add(petDataBaseBody);
     }
 
     public VeterinaryClinicView getVeterinaryClinicView() {
         return veterinaryClinicView;
     }
     public PetDataBaseBody getMainBody() {
-        return mainBody;
+        return petDataBaseBody;
     }
 
     

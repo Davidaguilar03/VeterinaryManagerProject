@@ -1,6 +1,5 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -14,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
+import co.edu.uptc.views.GlobalView;
 
 public class VeterinaryClinicBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
@@ -22,13 +22,13 @@ public class VeterinaryClinicBody extends JPanel {
     
     public VeterinaryClinicBody(VeterinaryClinicView veterinaryClinicView){
         this.veterinaryClinicView=veterinaryClinicView;
-        initPanel();
-        addAppointmentsTable();
-        addTableHeader();
+        this.initPanel();
+        this.addAppointmentsTable();
+        this.addTableHeader();
     }
 
     private void initPanel(){
-        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 
@@ -43,7 +43,7 @@ public class VeterinaryClinicBody extends JPanel {
     private void addAppointmentsTable(){
         JPanel tablePanel = new JPanel();
         tablePanel.setOpaque(false);
-        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
+        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_TABLE_COLOR));
         tablePanel.setBounds(15, 20, 1015, 455);
         tablePanel.setLayout(null);
         String[] columnNames = {

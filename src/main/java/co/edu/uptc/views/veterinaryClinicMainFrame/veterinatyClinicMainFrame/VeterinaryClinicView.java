@@ -12,29 +12,30 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.ArrayList;
 
-
-public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.View{
+public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.View {
     private VeterinaryInterface.Presenter presenter;
-    private PropertiesService propertiesService = new PropertiesService();
-    private VeterinaryClinicBody mainBody;
-    VeterinaryClinicHeader mainHeader;
+    private PropertiesService propertiesService;
+    private VeterinaryClinicBody veterinaryClinicBody;
+    private VeterinaryClinicHeader veterinaryClinicHeader;
 
-    public VeterinaryClinicView(){
-        initFrame();
-        createMainHeader();
-        createMainAside();
-        createMainBody();
+    public VeterinaryClinicView() {
+        propertiesService = new PropertiesService();
+        this.initFrame();
+        this.createVeterinaryClinicHeader();
+        this.createVeterinaryClinicAside();
+        this.createVeterinaryClinicBody();
     }
-    public void begin(){
-        loadAppointmentsData();
+
+    public void begin() {
+        this.loadAppointmentsData();
         this.setVisible(true);
     }
 
-    private void initFrame(){
+    private void initFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Clinica Veterinaria");
         this.setLayout(new BorderLayout());
-        this.setSize(1366,768);
+        this.setSize(1366, 768);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
@@ -42,34 +43,34 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
         this.setIconImage(image);
     }
 
-
-    private void loadAppointmentsData(){
+    private void loadAppointmentsData() {
         ArrayList<Appointment> appointments = presenter.getAppointments();
         for (Appointment appointment : appointments) {
-            mainBody.addAppointment(appointment);
+            veterinaryClinicBody.addAppointment(appointment);
         }
     }
 
-    private void createMainHeader(){
-        mainHeader = new VeterinaryClinicHeader(this);
-        this.add(mainHeader, BorderLayout.NORTH);
+    private void createVeterinaryClinicHeader() {
+        veterinaryClinicHeader = new VeterinaryClinicHeader(this);
+        this.add(veterinaryClinicHeader, BorderLayout.NORTH);
     }
 
-    private void createMainAside(){
-        VeterinaryClinicAside mainAside = new VeterinaryClinicAside(this);
-        this.add(mainAside, BorderLayout.WEST);
+    private void createVeterinaryClinicAside() {
+        VeterinaryClinicAside veterinaryClinicAside = new VeterinaryClinicAside(this);
+        this.add(veterinaryClinicAside, BorderLayout.WEST);
     }
 
-    private void createMainBody(){
-        mainBody = new VeterinaryClinicBody(this);
-        this.add(mainBody);
+    private void createVeterinaryClinicBody() {
+        veterinaryClinicBody = new VeterinaryClinicBody(this);
+        this.add(veterinaryClinicBody);
     }
+
     @Override
     public void setPresenter(Presenter presenter) {
-       this.presenter = presenter;
+        this.presenter = presenter;
     }
 
-    public VeterinaryInterface.Presenter getPresenter(){
+    public VeterinaryInterface.Presenter getPresenter() {
         return presenter;
     }
 }

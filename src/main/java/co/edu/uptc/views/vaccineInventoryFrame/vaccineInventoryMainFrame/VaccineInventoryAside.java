@@ -1,6 +1,5 @@
 package co.edu.uptc.views.vaccineInventoryFrame.vaccineInventoryMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +26,7 @@ public class VaccineInventoryAside extends JPanel{
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
         this.setForeground(GlobalView.ASIDE_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(298,0));
-        this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
     private void addCreateVaccineBtn(){

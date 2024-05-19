@@ -1,6 +1,5 @@
 package co.edu.uptc.views.peopleDataBaseFrame.peopleDataBaseMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -13,10 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
+import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class PeopleDataBaseBody extends JPanel {
-     private VeterinaryClinicView veterinaryClinicView;
+    private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel tableModel;
     private JTable peopleDataBaseTable;
 
@@ -29,7 +29,7 @@ public class PeopleDataBaseBody extends JPanel {
     }
 
     private void initPanel(){
-        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 
@@ -44,7 +44,7 @@ public class PeopleDataBaseBody extends JPanel {
     private void addPeopleDataBaseTable() {
         JPanel tablePanel = new JPanel();
         tablePanel.setOpaque(false);
-        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
+        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_TABLE_COLOR));
         tablePanel.setBounds(15, 20, 1015, 455);
         tablePanel.setLayout(null);
         String[] columnNames = {

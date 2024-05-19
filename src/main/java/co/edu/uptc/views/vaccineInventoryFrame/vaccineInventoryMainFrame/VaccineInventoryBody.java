@@ -1,6 +1,5 @@
 package co.edu.uptc.views.vaccineInventoryFrame.vaccineInventoryMainFrame;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -12,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
+import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class VaccineInventoryBody extends JPanel {
@@ -27,7 +27,7 @@ public class VaccineInventoryBody extends JPanel {
     }
 
     private void initPanel() {
-        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.black));
+        this.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 
@@ -42,7 +42,7 @@ public class VaccineInventoryBody extends JPanel {
     private void addVaccinesTable() {
         JPanel tablePanel = new JPanel();
         tablePanel.setOpaque(false);
-        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
+        tablePanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_TABLE_COLOR));
         tablePanel.setBounds(15, 20, 1015, 455);
         tablePanel.setLayout(null);
         String[] columnNames = {
@@ -70,7 +70,7 @@ public class VaccineInventoryBody extends JPanel {
     }
 
     public void addVaccine(Vaccine vaccine) {
-        Object[] vaccineData = {vaccine.getId(),vaccine.getName(),vaccine.getShelfLife()};
+        Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
         tableModel.addRow(vaccineData);
     }
 
