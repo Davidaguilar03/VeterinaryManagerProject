@@ -57,6 +57,9 @@ public class VeterinaryClinicBody extends JPanel {
           };
         appointmentsTable = new JTable(tableModel);
         appointmentsTable.setFillsViewportHeight(true);
+        appointmentsTable.getTableHeader().setReorderingAllowed(false);
+        appointmentsTable.getTableHeader().setResizingAllowed(false);
+        appointmentsTable.setDragEnabled(false);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < appointmentsTable.getColumnCount(); i++) {
             appointmentsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);

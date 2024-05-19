@@ -16,7 +16,7 @@ import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.Vet
 
 public class VaccineInventoryBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
-    private DefaultTableModel tableModel;
+    private DefaultTableModel vaccineTableModel;
     private JTable vaccinesTable;
 
     public VaccineInventoryBody(VeterinaryClinicView veterinaryClinicView) {
@@ -48,15 +48,17 @@ public class VaccineInventoryBody extends JPanel {
         String[] columnNames = {
                 "ID.Vacuna", "Nombre", "Duracion(Dias)"
         };
-        tableModel = new DefaultTableModel(columnNames, 0) {
+        vaccineTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        vaccinesTable = new JTable(tableModel);
-        vaccinesTable
-                .setFillsViewportHeight(true);
+        vaccinesTable = new JTable(vaccineTableModel);
+        vaccinesTable.setFillsViewportHeight(true);
+        vaccinesTable.getTableHeader().setReorderingAllowed(false);
+        vaccinesTable.getTableHeader().setResizingAllowed(false);
+        vaccinesTable.setDragEnabled(false);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < vaccinesTable
                 .getColumnCount(); i++) {
@@ -71,7 +73,7 @@ public class VaccineInventoryBody extends JPanel {
 
     public void addVaccine(Vaccine vaccine) {
         Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
-        tableModel.addRow(vaccineData);
+        vaccineTableModel.addRow(vaccineData);
     }
 
     public VeterinaryClinicView getVeterinaryClinicView() {

@@ -18,7 +18,7 @@ import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.Vet
 
 public class PetDataBaseBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
-    private DefaultTableModel tableModel;
+    private DefaultTableModel petDataBaseTableModel;
     private JTable petDataBaseTable;
 
     public PetDataBaseBody(VeterinaryClinicView veterinaryClinicView) {
@@ -50,15 +50,17 @@ public class PetDataBaseBody extends JPanel {
         String[] columnNames = {
                 "ID.Mascota", "Nombre", "Especie", "Edad", "Raza", "Dueño"
         };
-        tableModel = new DefaultTableModel(columnNames, 0) {
+        petDataBaseTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        petDataBaseTable = new JTable(tableModel);
-        petDataBaseTable
-                .setFillsViewportHeight(true);
+        petDataBaseTable = new JTable(petDataBaseTableModel);
+        petDataBaseTable.setFillsViewportHeight(true);
+        petDataBaseTable.getTableHeader().setReorderingAllowed(false);
+        petDataBaseTable.getTableHeader().setResizingAllowed(false);
+        petDataBaseTable.setDragEnabled(false);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < petDataBaseTable
                 .getColumnCount(); i++) {
@@ -78,7 +80,7 @@ public class PetDataBaseBody extends JPanel {
     public void addPet(Pet pet) {
         Object[] petData = { pet.getId(), pet.getName(), pet.getSpecies(), pet.getAge(), pet.getBreed(),
                 this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
-        tableModel.addRow(petData);
+        petDataBaseTableModel.addRow(petData);
     }
 
     public VeterinaryClinicView getVeterinaryClinicView() {

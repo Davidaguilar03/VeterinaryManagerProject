@@ -55,7 +55,8 @@ public class AddApointmentDialogFooter extends JPanel{
         this.add(createCancelAppointmentBtn);
     }
 
-    
-
+    public VeterinaryClinicView getVeterinaryClinicView() {
+        return veterinaryClinicView;
+    }
     
 }

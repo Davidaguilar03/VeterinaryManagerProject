@@ -17,7 +17,7 @@ import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.Vet
 
 public class PeopleDataBaseBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
-    private DefaultTableModel tableModel;
+    private DefaultTableModel peopleDataBaseTableModel;
     private JTable peopleDataBaseTable;
 
 
@@ -50,15 +50,17 @@ public class PeopleDataBaseBody extends JPanel {
         String[] columnNames = {
                 "ID.Persona", "Nombre","Edad","Tipo de Documento","Numero de Documento"
         };
-        tableModel = new DefaultTableModel(columnNames, 0) {
+        peopleDataBaseTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        peopleDataBaseTable = new JTable(tableModel);
-        peopleDataBaseTable
-                .setFillsViewportHeight(true);
+        peopleDataBaseTable = new JTable(peopleDataBaseTableModel);
+        peopleDataBaseTable.setFillsViewportHeight(true);
+        peopleDataBaseTable.getTableHeader().setReorderingAllowed(false);
+        peopleDataBaseTable.getTableHeader().setResizingAllowed(false);
+        peopleDataBaseTable.setDragEnabled(false);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < peopleDataBaseTable
                 .getColumnCount(); i++) {
@@ -73,7 +75,7 @@ public class PeopleDataBaseBody extends JPanel {
 
     public void addPerson(Person person) {
         Object[] personData = {person.getId(),person.getName(),person.getAge(),person.getTypeOfDocument(),person.getDocumentNumber()};
-        tableModel.addRow(personData);
+        peopleDataBaseTableModel.addRow(personData);
     }
 
     public VeterinaryClinicView getVeterinaryClinicView() {
