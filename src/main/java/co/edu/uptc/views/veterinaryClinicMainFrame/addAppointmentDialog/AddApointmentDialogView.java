@@ -2,10 +2,14 @@ package co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
+import co.edu.uptc.pojos.Person;
+import co.edu.uptc.pojos.Pet;
+import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
@@ -25,6 +29,7 @@ public class AddApointmentDialogView extends JDialog{
         this.createMainFooter();
     }
     public void begin(){
+        this.loadData();
         this.setVisible(true);
     }
 
@@ -37,6 +42,33 @@ public class AddApointmentDialogView extends JDialog{
         ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
         Image image = windowIcon.getImage();
         this.setIconImage(image);
+    }
+
+    private void loadData(){
+        this.loadPeopleData();
+        this.loadPetsData();
+        this.loadVaccineData();
+    }
+
+    private void loadPeopleData(){
+        ArrayList<Person> persons = veterinaryClinicView.getPresenter().getPersons();
+        for (Person person : persons) {
+            addApointmentDialogBody.addPerson(person);
+        }
+    }
+
+    private void loadPetsData(){
+        ArrayList<Pet> pets = veterinaryClinicView.getPresenter().getPets();
+        for (Pet pet : pets) {
+            addApointmentDialogBody.addPet(pet);
+        }
+    }
+
+    private void loadVaccineData(){
+        ArrayList<Vaccine> vaccines = veterinaryClinicView.getPresenter().getVaccines();
+        for (Vaccine vaccine : vaccines) {
+            addApointmentDialogBody.addVaccine(vaccine);
+        }
     }
 
     private void createMainHeader(){

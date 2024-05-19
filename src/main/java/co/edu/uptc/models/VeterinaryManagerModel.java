@@ -31,10 +31,10 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     }
 
     private void addAppointmentTest(){
-        Person auxPerson = new Person(1, "David", 18, "Cedula de Ciudadania", 1032938747);
+        Person auxPerson = new Person(1, "David Aguilar Castillo", 18, "Cedula de Ciudadania", 1032938747);
         persons.add(auxPerson);
         ArrayList<Keeper> keepers = new ArrayList<>();
-        keepers.add(new Keeper(1, 'O'));
+        keepers.add(new Keeper(1, "Dueño"));
         Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
         pets.add(auxPet);
         ArrayList<Vaccine> auxVaccines = new ArrayList<>();

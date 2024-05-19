@@ -22,7 +22,7 @@ public class Pet implements Cloneable {
     public Keeper getOwner(){
         Keeper ownerkeeper = new Keeper();
         for (Keeper keeper : keepers) {
-            if (keeper.getRelationship() == 'O') {
+            if (keeper.getRelationship().equals("Dueño")) {
                 ownerkeeper = keeper;
             }
         }

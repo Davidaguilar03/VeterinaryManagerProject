@@ -11,13 +11,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.uptc.pojos.Person;
+import co.edu.uptc.pojos.Pet;
+import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class AddApointmentDialogBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
-    private DefaultTableModel peopleTableModel;
+    private DefaultTableModel peopleDataBaseTableModel;
     private JTable peopleDataBaseTable;
     private DefaultTableModel petDataBaseTableModel;
     private JTable petDataBaseTable;
@@ -57,13 +59,13 @@ public class AddApointmentDialogBody extends JPanel {
         String[] columnNames = {
                 "ID.Persona", "Nombre", "Edad", "Tipo de Documento", "Numero de Documento"
         };
-        peopleTableModel = new DefaultTableModel(columnNames, 0) {
+        peopleDataBaseTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        peopleDataBaseTable = new JTable(peopleTableModel);
+        peopleDataBaseTable = new JTable(peopleDataBaseTableModel);
         peopleDataBaseTable.setFillsViewportHeight(true);
         peopleDataBaseTable.getTableHeader().setReorderingAllowed(false);
         peopleDataBaseTable.getTableHeader().setResizingAllowed(false);
@@ -78,6 +80,11 @@ public class AddApointmentDialogBody extends JPanel {
         scrollPane.setBounds(20, 40, 725, 100);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
+    }
+
+    public void addPerson(Person person) {
+        Object[] personData = {person.getId(),person.getName(),person.getAge(),person.getTypeOfDocument(),person.getDocumentNumber()};
+        peopleDataBaseTableModel.addRow(personData);
     }
 
     private void addPetTableHeader() {
@@ -120,6 +127,12 @@ public class AddApointmentDialogBody extends JPanel {
         this.add(tablePanel);
     }
 
+    public void addPet(Pet pet) {
+        Object[] petData = { pet.getId(), pet.getName(), pet.getSpecies(), pet.getAge(), pet.getBreed(),
+                this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
+        petDataBaseTableModel.addRow(petData);
+    }
+
     private void addVaccineTableHeader() {
         JLabel headerLabel = new JLabel("Inventario de Vacunas");
         headerLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -158,6 +171,11 @@ public class AddApointmentDialogBody extends JPanel {
         scrollPane.setBounds(20, 40, 725, 120);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
+    }
+
+    public void addVaccine(Vaccine vaccine) {
+        Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
+        vaccineTableModel.addRow(vaccineData);
     }
 
     public Person searchPersonByid(int id) {

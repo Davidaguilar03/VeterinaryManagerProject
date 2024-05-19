@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.pojos.Person;
@@ -60,6 +61,8 @@ public class VeterinaryClinicBody extends JPanel {
         appointmentsTable.getTableHeader().setReorderingAllowed(false);
         appointmentsTable.getTableHeader().setResizingAllowed(false);
         appointmentsTable.setDragEnabled(false);
+        TableColumn responsableColumn = appointmentsTable.getColumnModel().getColumn(4);
+        responsableColumn.setPreferredWidth(200);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < appointmentsTable.getColumnCount(); i++) {
             appointmentsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
@@ -74,7 +77,7 @@ public class VeterinaryClinicBody extends JPanel {
     }
 
     public void addAppointment(Appointment appointment){
-        Object[] appointmentData = {appointment.getId(),appointment.getDate().toString(),appointment.getPet().getName(),appointment.getPet().getBreed(),this.searchPersonByid(appointment.getKeeper().getPersonId()).getName(),"Mas Información"};
+        Object[] appointmentData = {appointment.getId(),appointment.getDate().toString(),appointment.getPet().getName(),appointment.getPet().getBreed(),this.searchPersonByid(appointment.getKeeper().getPersonId()).getName()+" ("+appointment.getKeeper().getRelationship()+")","Mas Información"};
         tableModel.addRow(appointmentData);
     }
 
