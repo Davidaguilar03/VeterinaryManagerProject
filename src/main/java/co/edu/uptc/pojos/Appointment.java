@@ -26,5 +26,5 @@ public class Appointment implements Cloneable {
         } catch (CloneNotSupportedException e) {
             return null;
         }
-    }
+    } 
 }

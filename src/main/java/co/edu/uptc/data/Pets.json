@@ -1,0 +1,15 @@
+[ {
+  "id" : 1,
+  "name" : "Lupita",
+  "species" : "Gato",
+  "age" : 5,
+  "breed" : "Raza x",
+  "keepers" : [ {
+    "personId" : 1,
+    "relationship" : "Dueño"
+  } ],
+  "owner" : {
+    "personId" : 1,
+    "relationship" : "Dueño"
+  }
+} ]

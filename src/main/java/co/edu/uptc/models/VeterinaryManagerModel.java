@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
-import co.edu.uptc.pojos.Keeper;
+//import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
@@ -28,23 +28,24 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         pets = new ArrayList<>();
         appointments = new ArrayList<>();
         vaccines = new ArrayList<>();
-        addAppointmentTest();
+        loadData();
+        //addAppointmentTest();
     }
 
-    private void addAppointmentTest() {
-        Person auxPerson = new Person(1, "David Aguilar Castillo", 18, "Cedula de Ciudadania", 1032938747);
-        this.persons.add(auxPerson);
-        ArrayList<Keeper> keepers = new ArrayList<>();
-        keepers.add(new Keeper(1, "Dueño"));
-        Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
-        this.pets.add(auxPet);
-        ArrayList<Vaccine> auxVaccines = new ArrayList<>();
-        auxVaccines.add(new Vaccine(1, "pulgas", 15));
-        this.vaccines.add(auxVaccines.get(0));
-        Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(),
-                auxPet.getKeepers().get(0));
-        appointments.add(auxAppointment);
-    }
+    // private void addAppointmentTest() {
+    //     Person auxPerson = new Person(1, "David Aguilar Castillo", 18, "Cedula de Ciudadania", 1032938747);
+    //     this.persons.add(auxPerson);
+    //     ArrayList<Keeper> keepers = new ArrayList<>();
+    //     keepers.add(new Keeper(1, "Dueño"));
+    //     Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
+    //     this.pets.add(auxPet);
+    //     ArrayList<Vaccine> auxVaccines = new ArrayList<>();
+    //     auxVaccines.add(new Vaccine(1, "pulgas", 15));
+    //     this.vaccines.add(auxVaccines.get(0));
+    //     Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(),
+    //             auxPet.getKeepers().get(0));
+    //     appointments.add(auxAppointment);
+    // }
 
     @Override
     public void setPresenter(VeterinaryInterface.Presenter presenter) {

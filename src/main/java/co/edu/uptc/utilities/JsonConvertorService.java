@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class JsonConvertorService {
 
@@ -16,6 +17,9 @@ public class JsonConvertorService {
     public JsonConvertorService() {
         this.objectMapper = new ObjectMapper();
         this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+       SimpleModule module = new SimpleModule();
+        this.objectMapper.registerModule(module);
+        this.objectMapper.registerModule(new JavaTimeModule());        
     }
 
     public <T> void objectToJson(ArrayList<T> objects, String outputFile) throws IOException {
