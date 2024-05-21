@@ -12,15 +12,12 @@ import javax.swing.table.DefaultTableModel;
 import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class VaccineInventoryBody extends JPanel {
-    private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel vaccineTableModel;
     private JTable vaccinesTable;
 
-    public VaccineInventoryBody(VeterinaryClinicView veterinaryClinicView) {
-        this.veterinaryClinicView = veterinaryClinicView;
+    public VaccineInventoryBody() {
         this.initPanel();
         this.addTableHeader();
         this.addVaccinesTable();
@@ -76,7 +73,4 @@ public class VaccineInventoryBody extends JPanel {
         vaccineTableModel.addRow(vaccineData);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
-    }
 }

@@ -13,16 +13,14 @@ import javax.swing.table.DefaultTableModel;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+
 
 public class PeopleDataBaseBody extends JPanel {
-    private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel peopleDataBaseTableModel;
     private JTable peopleDataBaseTable;
 
 
-    public PeopleDataBaseBody(VeterinaryClinicView veterinaryClinicView){
-        this.veterinaryClinicView = veterinaryClinicView;
+    public PeopleDataBaseBody(){
         this.initPanel();
         this.addTableHeader();
         this.addPeopleDataBaseTable();
@@ -78,7 +76,4 @@ public class PeopleDataBaseBody extends JPanel {
         peopleDataBaseTableModel.addRow(personData);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
-    }
 }

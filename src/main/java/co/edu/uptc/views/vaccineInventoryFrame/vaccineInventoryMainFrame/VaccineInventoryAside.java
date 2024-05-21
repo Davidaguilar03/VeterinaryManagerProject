@@ -9,13 +9,13 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+import co.edu.uptc.views.vaccineInventoryFrame.addVaccineDialog.AddVaccineDialogView;
 
 public class VaccineInventoryAside extends JPanel{
-    private VeterinaryClinicView veterinaryClinicView;
+    private VaccineInventoryView vaccineInventoryView;
 
-    public VaccineInventoryAside(VeterinaryClinicView veterinaryClinicView){
-        this.veterinaryClinicView=veterinaryClinicView;
+    public VaccineInventoryAside(VaccineInventoryView vaccineInventoryView){
+        this.vaccineInventoryView=vaccineInventoryView;
         this.initPanel();
         this.addCreateVaccineBtn();
         this.addDeleteVaccineBtn();
@@ -36,7 +36,7 @@ public class VaccineInventoryAside extends JPanel{
         createVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createAddVaccineDialog();
             }
         });
         this.add(createVaccineBtn);
@@ -67,9 +67,8 @@ public class VaccineInventoryAside extends JPanel{
         });
         this.add(editVaccineBtn);
     }
-
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
+    private void createAddVaccineDialog(){
+        AddVaccineDialogView addVaccineDialogView = new AddVaccineDialogView(vaccineInventoryView);
+        addVaccineDialogView.begin();
     }
-
 }

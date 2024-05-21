@@ -55,12 +55,12 @@ public class PeopleDataBaseView extends JDialog{
     }
 
     private void createPeopleDataBaseAside(){
-        PeopleDataBaseAside peopleDataBaseAside = new PeopleDataBaseAside(veterinaryClinicView);
+        PeopleDataBaseAside peopleDataBaseAside = new PeopleDataBaseAside(this);
         this.add(peopleDataBaseAside, BorderLayout.WEST);
     }
 
     private void createPeopleDataBaseBody(){
-        peopleDataBaseBody = new PeopleDataBaseBody(veterinaryClinicView);
+        peopleDataBaseBody = new PeopleDataBaseBody();
         this.add(peopleDataBaseBody);
     }
 

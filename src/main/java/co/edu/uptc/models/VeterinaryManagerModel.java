@@ -39,8 +39,8 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         pets.add(auxPet);
         ArrayList<Vaccine> auxVaccines = new ArrayList<>();
         auxVaccines.add(new Vaccine(1, "pulgas", 15));
-        vaccines.add(auxVaccines.getFirst());
-        Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(), auxPet.getKeepers().getFirst());
+        vaccines.add(auxVaccines.get(0));
+        Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(), auxPet.getKeepers().get(0));
         appointments.add(auxAppointment);
     }
 

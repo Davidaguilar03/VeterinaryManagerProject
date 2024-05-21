@@ -14,15 +14,15 @@ import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+
 
 public class PetDataBaseBody extends JPanel {
-    private VeterinaryClinicView veterinaryClinicView;
+    private PetDataBaseView petDataBaseView;
     private DefaultTableModel petDataBaseTableModel;
     private JTable petDataBaseTable;
 
-    public PetDataBaseBody(VeterinaryClinicView veterinaryClinicView) {
-        this.veterinaryClinicView = veterinaryClinicView;
+    public PetDataBaseBody(PetDataBaseView petDataBaseView) {
+        this.petDataBaseView = petDataBaseView;
         this.initPanel();
         this.addTableHeader();
         this.addPetDataBaseTable();
@@ -74,7 +74,7 @@ public class PetDataBaseBody extends JPanel {
     }
 
     public Person searchPersonByid(int id) {
-        return veterinaryClinicView.getPresenter().searchPersonById(id);
+        return petDataBaseView.getVeterinaryClinicView().getPresenter().searchPersonById(id);
     }
 
     public void addPet(Pet pet) {
@@ -83,7 +83,4 @@ public class PetDataBaseBody extends JPanel {
         petDataBaseTableModel.addRow(petData);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
-    }
 }

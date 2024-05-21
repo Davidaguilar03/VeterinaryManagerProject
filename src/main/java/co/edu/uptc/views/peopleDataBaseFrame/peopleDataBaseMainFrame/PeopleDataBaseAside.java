@@ -9,13 +9,12 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 
 public class PeopleDataBaseAside extends JPanel{
-    private VeterinaryClinicView veterinaryClinicView;
+    private PeopleDataBaseView peopleDataBaseView;
 
-    public PeopleDataBaseAside(VeterinaryClinicView veterinaryClinicView){
-        this.veterinaryClinicView=veterinaryClinicView;
+    public PeopleDataBaseAside(PeopleDataBaseView peopleDataBaseView){
+        this.peopleDataBaseView=peopleDataBaseView;
         this.initPanel();
         this.addCreatePersonBtn();
         this.addDeletePersonBtn();
@@ -69,7 +68,9 @@ public class PeopleDataBaseAside extends JPanel{
         this.add(editPersonBtn);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
+    public PeopleDataBaseView getPeopleDataBaseView() {
+        return peopleDataBaseView;
     }
+
+    
 }

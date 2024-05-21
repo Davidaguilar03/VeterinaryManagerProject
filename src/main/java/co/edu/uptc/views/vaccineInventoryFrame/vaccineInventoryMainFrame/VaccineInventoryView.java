@@ -55,17 +55,13 @@ public class VaccineInventoryView extends JDialog{
     }
 
     private void createVaccineInventoryAside(){
-        VaccineInventoryAside vaccineInventoryAside = new VaccineInventoryAside(veterinaryClinicView);
+        VaccineInventoryAside vaccineInventoryAside = new VaccineInventoryAside(this);
         this.add(vaccineInventoryAside, BorderLayout.WEST);
     }
 
     private void createVaccineInventoryBody(){
-     vaccineInventoryBody = new VaccineInventoryBody(veterinaryClinicView);
+     vaccineInventoryBody = new VaccineInventoryBody();
         this.add(vaccineInventoryBody);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
-    }
-    
 }

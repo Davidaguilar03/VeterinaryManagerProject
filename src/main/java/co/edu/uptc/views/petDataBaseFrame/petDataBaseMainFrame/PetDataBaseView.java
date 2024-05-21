@@ -55,12 +55,12 @@ public class PetDataBaseView extends JDialog{
     }
 
     private void createPetDataBaseAside(){
-        PetDataBaseAside petDataBaseAside = new PetDataBaseAside(veterinaryClinicView);
+        PetDataBaseAside petDataBaseAside = new PetDataBaseAside(this);
         this.add(petDataBaseAside, BorderLayout.WEST);
     }
 
     private void createPetDataBaseBody(){
-        petDataBaseBody = new PetDataBaseBody(veterinaryClinicView);
+        petDataBaseBody = new PetDataBaseBody(this);
         this.add(petDataBaseBody);
     }
 
