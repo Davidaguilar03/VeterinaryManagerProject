@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.pojos.Keeper;
@@ -21,8 +23,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     private ArrayList<Vaccine> vaccines;
     private VeterinaryInterface.Presenter presenter;
 
-
-    public VeterinaryManagerModel(){
+    public VeterinaryManagerModel() {
         persons = new ArrayList<>();
         pets = new ArrayList<>();
         appointments = new ArrayList<>();
@@ -30,20 +31,20 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         addAppointmentTest();
     }
 
-    private void addAppointmentTest(){
+    private void addAppointmentTest() {
         Person auxPerson = new Person(1, "David Aguilar Castillo", 18, "Cedula de Ciudadania", 1032938747);
-        persons.add(auxPerson);
+        this.persons.add(auxPerson);
         ArrayList<Keeper> keepers = new ArrayList<>();
         keepers.add(new Keeper(1, "Dueño"));
         Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
-        pets.add(auxPet);
+        this.pets.add(auxPet);
         ArrayList<Vaccine> auxVaccines = new ArrayList<>();
         auxVaccines.add(new Vaccine(1, "pulgas", 15));
-        vaccines.add(auxVaccines.get(0));
-        Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(), auxPet.getKeepers().get(0));
+        this.vaccines.add(auxVaccines.get(0));
+        Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(),
+                auxPet.getKeepers().get(0));
         appointments.add(auxAppointment);
     }
-
 
     @Override
     public void setPresenter(VeterinaryInterface.Presenter presenter) {
@@ -187,17 +188,21 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void loadData() {
-        JsonConvertorService jcs = new JsonConvertorService();
+        JsonConvertorService jsonConvertorService = new JsonConvertorService();
         PropertiesService propertiesService = new PropertiesService();
         try {
-            this.persons = jcs.jsonToPerson(propertiesService
-                    .getKeyValue("PersonsPath"));
-            this.appointments = jcs.jsonToAppointment(propertiesService
-                    .getKeyValue("AppointmentsPath"));
-            this.pets = jcs.jsonToPet(propertiesService
-                    .getKeyValue("PetsPath"));
-            this.vaccines = jcs.jsonToVaccine(propertiesService
-                    .getKeyValue("VaccinesPath"));
+            this.persons = jsonConvertorService.jsonToObject(propertiesService
+                    .getKeyValue("PersonsPath"), new TypeReference<ArrayList<Person>>() {
+                    });
+            this.appointments = jsonConvertorService.jsonToObject(propertiesService
+                    .getKeyValue("AppointmentsPath"), new TypeReference<ArrayList<Appointment>>() {
+                    });
+            this.pets = jsonConvertorService.jsonToObject(propertiesService
+                    .getKeyValue("PetsPath"), new TypeReference<ArrayList<Pet>>() {
+                    });
+            this.vaccines = jsonConvertorService.jsonToObject(propertiesService
+                    .getKeyValue("VaccinesPath"), new TypeReference<ArrayList<Vaccine>>() {
+                    });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -205,16 +210,16 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void writeData() {
-        JsonConvertorService jcs = new JsonConvertorService();
+        JsonConvertorService jsonConvertorService = new JsonConvertorService();
         PropertiesService propertiesService = new PropertiesService();
         try {
-            jcs.personToJson(this.persons, propertiesService
+            jsonConvertorService.objectToJson(this.persons, propertiesService
                     .getKeyValue("PersonsPath"));
-            jcs.appointmentToJson(this.appointments, propertiesService
+            jsonConvertorService.objectToJson(this.appointments, propertiesService
                     .getKeyValue("AppointmentsPath"));
-            jcs.petToJson(this.pets, propertiesService
+            jsonConvertorService.objectToJson(this.pets, propertiesService
                     .getKeyValue("PetsPath"));
-            jcs.vaccineToJson(this.vaccines, propertiesService
+            jsonConvertorService.objectToJson(this.vaccines, propertiesService
                     .getKeyValue("VaccinesPath"));
         } catch (IOException e) {
             e.printStackTrace();
