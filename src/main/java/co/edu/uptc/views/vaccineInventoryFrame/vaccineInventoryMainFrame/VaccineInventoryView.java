@@ -52,10 +52,12 @@ public class VaccineInventoryView extends JDialog{
     }
     public void setVaccineStatus(Vaccine vaccine) {
         if (vaccine != null) {
-            vaccineInventoryAside.enableDeleteVaccineBtn(true);;
+            vaccineInventoryAside.enableDeleteVaccineBtn(true);
+            vaccineInventoryAside.enableEditVaccineBtn(true);
         }
          else {
-            vaccineInventoryAside.enableDeleteVaccineBtn(false);;
+            vaccineInventoryAside.enableDeleteVaccineBtn(false);
+            vaccineInventoryAside.enableEditVaccineBtn(false);
          }
         }
 

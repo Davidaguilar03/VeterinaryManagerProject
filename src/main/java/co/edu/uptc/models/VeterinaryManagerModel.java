@@ -116,6 +116,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
             }
         }
     }
+    
 
     @Override
     public ArrayList<Appointment> sortByDate(LocalDate date) {
@@ -241,6 +242,28 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
             }
         }
         return auxPerson;
+    }
+
+    @Override
+    public void editPerson(Person person) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editPerson'");
+    }
+
+    @Override
+    public void editPet(Person person) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editPet'");
+    }
+
+    @Override
+    public void editVaccine(Vaccine auxVaccine) {
+        for (Vaccine vaccine : vaccines) {
+            if (vaccine.getId()==auxVaccine.getId()) {
+                vaccines.remove(vaccine);
+                vaccines.add(auxVaccine.getId(), auxVaccine);
+            }
+        }
     }
 
 }

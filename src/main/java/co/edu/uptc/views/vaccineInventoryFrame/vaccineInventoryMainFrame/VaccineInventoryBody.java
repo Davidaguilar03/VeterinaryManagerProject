@@ -70,7 +70,7 @@ public class VaccineInventoryBody extends JPanel {
             @Override
             public void valueChanged(ListSelectionEvent e){
                 if (!e.getValueIsAdjusting() && vaccinesTable.getSelectedRow() != -1) {  
-                    vaccineInventoryView.setVaccineStatus(createVaccine());                                   
+                    vaccineInventoryView.setVaccineStatus(createSelectedRowVaccine());                                   
                 }
             }
         });
@@ -80,7 +80,12 @@ public class VaccineInventoryBody extends JPanel {
         this.add(tablePanel);
     }
 
-    private Vaccine createVaccine(){
+    public void addVaccine(Vaccine vaccine) {
+        Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
+        vaccineTableModel.addRow(vaccineData);
+    }
+
+    public Vaccine createSelectedRowVaccine(){
         Vaccine vaccine = new Vaccine();
         vaccine.setId((int)vaccineTableModel.getValueAt(vaccinesTable.getSelectedRow(), 0));
         vaccine.setName((String)vaccineTableModel.getValueAt(vaccinesTable.getSelectedRow(), 1));
@@ -89,16 +94,10 @@ public class VaccineInventoryBody extends JPanel {
     }
 
     public void deleteVaccine(){
-        Vaccine vaccine = createVaccine();
+        Vaccine vaccine = createSelectedRowVaccine();
         vaccineInventoryView.getVeterinaryClinicView().getPresenter().deleteVaccine(vaccine);
         vaccineTableModel.removeRow(vaccinesTable.getSelectedRow());
         vaccineInventoryView.setVaccineStatus(null);
-    }
-
-
-    public void addVaccine(Vaccine vaccine) {
-        Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
-        vaccineTableModel.addRow(vaccineData);
     }
 
     public void cleanTable(){

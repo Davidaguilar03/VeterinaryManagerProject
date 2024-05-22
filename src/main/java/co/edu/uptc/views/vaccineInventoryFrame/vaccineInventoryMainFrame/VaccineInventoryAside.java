@@ -9,11 +9,13 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
+import co.edu.uptc.views.vaccineInventoryFrame.EditVaccineDialog.EditVaccineDialogView;
 import co.edu.uptc.views.vaccineInventoryFrame.addVaccineDialog.AddVaccineDialogView;
 
 public class VaccineInventoryAside extends JPanel{
     private VaccineInventoryView vaccineInventoryView;
     private RoundedButton deleteVaccineBtn;
+    private RoundedButton editVaccineBtn;
 
     public VaccineInventoryAside(VaccineInventoryView vaccineInventoryView){
         this.vaccineInventoryView=vaccineInventoryView;
@@ -26,6 +28,10 @@ public class VaccineInventoryAside extends JPanel{
     public void enableDeleteVaccineBtn(boolean value) {   
         deleteVaccineBtn.setEnabled(value);
      }
+
+    public void enableEditVaccineBtn(boolean value){
+        editVaccineBtn.setEnabled(value);
+    }
 
     private void initPanel(){
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
@@ -62,13 +68,14 @@ public class VaccineInventoryAside extends JPanel{
     }
 
     private void addEditVaccineBtn(){
-        RoundedButton editVaccineBtn = new RoundedButton("Editar Vacuna", 20);
+        editVaccineBtn = new RoundedButton("Editar Vacuna", 20);
         editVaccineBtn.setBounds(77, 195, 145, 52);
         editVaccineBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         editVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        editVaccineBtn.setEnabled(false);
         editVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createEditVaccineDialog();
             }
         });
         this.add(editVaccineBtn);
@@ -76,5 +83,10 @@ public class VaccineInventoryAside extends JPanel{
     private void createAddVaccineDialog(){
         AddVaccineDialogView addVaccineDialogView = new AddVaccineDialogView(vaccineInventoryView);
         addVaccineDialogView.begin();
+    }
+    
+    private void createEditVaccineDialog(){
+        EditVaccineDialogView editVaccineDialogView = new EditVaccineDialogView(vaccineInventoryView);
+        editVaccineDialogView.begin();
     }
 }

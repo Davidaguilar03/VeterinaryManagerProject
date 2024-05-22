@@ -117,5 +117,20 @@ public class Presenter implements VeterinaryInterface.Presenter{
         return model.searchPersonById(personId);
     }
 
+    @Override
+    public void editPerson(Person person) {
+        model.editPerson(person);
+    }
+
+    @Override
+    public void editPet(Person person) {
+       model.editPet(person);
+    }
+
+    @Override
+    public void editVaccine(Vaccine vaccine) {
+        model.editVaccine(vaccine);
+    }
+
     
 }
