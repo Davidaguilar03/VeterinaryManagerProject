@@ -123,8 +123,8 @@ public class Presenter implements VeterinaryInterface.Presenter{
     }
 
     @Override
-    public void editPet(Person person) {
-       model.editPet(person);
+    public void editPet(Pet pet) {
+       model.editPet(pet);
     }
 
     @Override

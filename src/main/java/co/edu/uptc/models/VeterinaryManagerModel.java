@@ -9,7 +9,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.pojos.Appointment;
-//import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
@@ -29,23 +28,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         appointments = new ArrayList<>();
         vaccines = new ArrayList<>();
         loadData();
-        //addAppointmentTest();
     }
-
-    // private void addAppointmentTest() {
-    //     Person auxPerson = new Person(1, "David Aguilar Castillo", 18, "Cedula de Ciudadania", 1032938747);
-    //     this.persons.add(auxPerson);
-    //     ArrayList<Keeper> keepers = new ArrayList<>();
-    //     keepers.add(new Keeper(1, "Dueño"));
-    //     Pet auxPet = new Pet(1, "Lupita", "Gato", 5, "Raza x", keepers);
-    //     this.pets.add(auxPet);
-    //     ArrayList<Vaccine> auxVaccines = new ArrayList<>();
-    //     auxVaccines.add(new Vaccine(1, "pulgas", 15));
-    //     this.vaccines.add(auxVaccines.get(0));
-    //     Appointment auxAppointment = new Appointment(1, auxPet, auxVaccines, LocalDate.now(),
-    //             auxPet.getKeepers().get(0));
-    //     appointments.add(auxAppointment);
-    // }
 
     @Override
     public void setPresenter(VeterinaryInterface.Presenter presenter) {
@@ -55,45 +38,60 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addPerson(Person person) {
         if (person != null) {
+            person.setId(this.persons.size());
             Person personToAdd = person.clone();
             persons.add(personToAdd);
         }
     }
 
     @Override
-    public void deletePerson(Person person) {
-        if (person != null) {
-            persons.remove(person);
+    public void deletePerson(Person auxPerson) {
+        if (auxPerson != null) {
+            for (int i = 0; i < persons.size(); i++) {
+                if (persons.get(i).getId() == auxPerson.getId()) {
+                    this.persons.remove(i);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void editPerson(Person auxPerson) {
+        for (Person person : persons) {
+            if (person.getId()==auxPerson.getId()) {
+                persons.remove(person);
+                persons.add(auxPerson.getId(), auxPerson);
+            }
         }
     }
 
     @Override
     public void addPet(Pet pet) {
         if (pet != null) {
+            pet.setId(this.pets.size());
             Pet petToAdd = pet.clone();
             pets.add(petToAdd);
         }
     }
 
     @Override
-    public void deletePet(Pet pet) {
-        if (pet != null) {
-            pets.remove(pet);
+    public void deletePet(Pet auxPet) {
+        if (auxPet != null) {
+            for (int i = 0; i < pets.size(); i++) {
+                if (pets.get(i).getId() == auxPet.getId()) {
+                    this.pets.remove(i);
+                }
+            }
         }
     }
 
     @Override
-    public void addAppointment(Appointment appointment) {
-        if (appointment != null) {
-            Appointment appointmentToAdd = appointment.clone();
-            appointments.add(appointmentToAdd);
-        }
-    }
-
-    @Override
-    public void deleteAppointment(Appointment appointment) {
-        if (appointment != null) {
-            appointments.remove(appointment);
+    public void editPet(Pet auxPet) {
+        for (Pet pet : pets) {
+            if (pet.getId()==auxPet.getId()) {
+                pets.remove(pet);
+                pets.add(auxPet.getId(), auxPet);
+            }
         }
     }
 
@@ -116,7 +114,31 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
             }
         }
     }
-    
+
+    @Override
+    public void editVaccine(Vaccine auxVaccine) {
+        for (Vaccine vaccine : vaccines) {
+            if (vaccine.getId()==auxVaccine.getId()) {
+                vaccines.remove(vaccine);
+                vaccines.add(auxVaccine.getId(), auxVaccine);
+            }
+        }
+    }
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        if (appointment != null) {
+            Appointment appointmentToAdd = appointment.clone();
+            appointments.add(appointmentToAdd);
+        }
+    }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        if (appointment != null) {
+            appointments.remove(appointment);
+        }
+    }
 
     @Override
     public ArrayList<Appointment> sortByDate(LocalDate date) {
@@ -242,28 +264,6 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
             }
         }
         return auxPerson;
-    }
-
-    @Override
-    public void editPerson(Person person) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editPerson'");
-    }
-
-    @Override
-    public void editPet(Person person) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editPet'");
-    }
-
-    @Override
-    public void editVaccine(Vaccine auxVaccine) {
-        for (Vaccine vaccine : vaccines) {
-            if (vaccine.getId()==auxVaccine.getId()) {
-                vaccines.remove(vaccine);
-                vaccines.add(auxVaccine.getId(), auxVaccine);
-            }
-        }
     }
 
 }

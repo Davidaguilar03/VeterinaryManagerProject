@@ -14,7 +14,7 @@ public interface VeterinaryInterface {
         public void editPerson(Person person);
         public void addPet(Pet pet);
         public void deletePet(Pet pet);
-        public void editPet(Person person);
+        public void editPet(Pet pet);
         public void addAppointment(Appointment appointment);
         public void deleteAppointment(Appointment appointment);
         public void addVaccine(Vaccine vaccine);
@@ -45,7 +45,7 @@ public interface VeterinaryInterface {
         public void editPerson(Person person);
         public void addPet(Pet pet);
         public void deletePet(Pet pet);
-        public void editPet(Person person);
+        public void editPet(Pet pet);
         public void addAppointment(Appointment appointment);
         public void deleteAppointment(Appointment appointment);
         public void addVaccine(Vaccine vaccine);
