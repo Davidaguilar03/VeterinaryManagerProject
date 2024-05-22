@@ -3,13 +3,14 @@ package co.edu.uptc.views.peopleDataBaseFrame.peopleDataBaseMainFrame;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
+import co.edu.uptc.views.peopleDataBaseFrame.addPersonDialog.AddPersonDialogView;
+import lombok.Getter;
 
+@Getter
 public class PeopleDataBaseAside extends JPanel{
     private PeopleDataBaseView peopleDataBaseView;
 
@@ -36,7 +37,7 @@ public class PeopleDataBaseAside extends JPanel{
         createPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createPersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createAddPersonDialog();
             }
         });
         this.add(createPersonBtn);
@@ -68,9 +69,9 @@ public class PeopleDataBaseAside extends JPanel{
         this.add(editPersonBtn);
     }
 
-    public PeopleDataBaseView getPeopleDataBaseView() {
-        return peopleDataBaseView;
+    private void createAddPersonDialog(){
+        AddPersonDialogView addPersonDialogView = new AddPersonDialogView(peopleDataBaseView);
+        addPersonDialogView.begin();
     }
-
     
 }

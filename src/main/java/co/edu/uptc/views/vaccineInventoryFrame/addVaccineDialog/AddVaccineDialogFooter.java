@@ -71,9 +71,4 @@ public class AddVaccineDialogFooter extends JPanel{
         this.add(createCancelVaccineBtn);
     }
 
-    public AddVaccineDialogView getAddVaccineDialogView() {
-        return addVaccineDialogView;
-    }
-
-    
 }

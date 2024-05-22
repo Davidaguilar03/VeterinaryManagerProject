@@ -8,7 +8,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.text.PlainDocument;
 
+import co.edu.uptc.utilities.NumericDocumentFilter;
 import co.edu.uptc.views.GlobalView;
 import lombok.Getter;
 @Getter
@@ -20,15 +22,15 @@ public class AddVaccineDialogBody extends JPanel{
     public AddVaccineDialogBody(AddVaccineDialogView addVaccineDialogView){
         this.addVaccineDialogView = addVaccineDialogView;
         this.initPanel();
+        this.createLblName();
+        this.createTextFileName();
+        this.createLblShelfLife();
+        this.createTextFileShelfLife();
     }
 
     private void initPanel(){
         this.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
-        this.createLblName();
-        this.createTextFileName();
-        this.createLblShelfLife();
-        this.createTextFileShelfLife();
     }
 
     private void createLblName(){
@@ -72,6 +74,7 @@ public class AddVaccineDialogBody extends JPanel{
         txtShelfLife = new JTextField("Ingrese la Duración en Dias");
         txtShelfLife.setBounds(70, 130, 300, 40);
         txtShelfLife.setForeground(GlobalView.PLACEHOLDER_TEXT_COLOR);
+        ((PlainDocument) txtShelfLife.getDocument()).setDocumentFilter(new NumericDocumentFilter());
         txtShelfLife.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
