@@ -1,11 +1,5 @@
 [ {
   "id" : 1,
-  "name" : "David Aguilar Castillo",
-  "age" : 18,
-  "typeOfDocument" : "Cedula de Ciudadania",
-  "documentNumber" : 1032938747
-}, {
-  "id" : 1,
   "name" : "Ayda Patricia Castillo",
   "age" : 45,
   "typeOfDocument" : "Cedula de Ciudadania",

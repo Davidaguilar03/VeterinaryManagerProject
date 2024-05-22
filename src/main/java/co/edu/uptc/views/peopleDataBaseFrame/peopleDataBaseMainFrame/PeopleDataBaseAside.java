@@ -13,7 +13,9 @@ import lombok.Getter;
 @Getter
 public class PeopleDataBaseAside extends JPanel{
     private PeopleDataBaseView peopleDataBaseView;
-
+    private RoundedButton deletePersonBtn;
+    private RoundedButton editPersonBtn;
+    
     public PeopleDataBaseAside(PeopleDataBaseView peopleDataBaseView){
         this.peopleDataBaseView=peopleDataBaseView;
         this.initPanel();
@@ -21,6 +23,15 @@ public class PeopleDataBaseAside extends JPanel{
         this.addDeletePersonBtn();
         this.addEditPersonBtn();
     }
+
+    public void enableDeletePersonBtn(Boolean value){
+        deletePersonBtn.setEnabled(value);
+    }
+
+    public void enableEditPersonBtn(Boolean value){
+        editPersonBtn.setEnabled(value);
+    }
+
 
     private void initPanel(){
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
@@ -44,20 +55,20 @@ public class PeopleDataBaseAside extends JPanel{
     }
 
     private void addDeletePersonBtn(){
-        RoundedButton deletePersonBtn = new RoundedButton("Eliminar Persona", 20);
+        deletePersonBtn = new RoundedButton("Eliminar Persona", 20);
         deletePersonBtn.setBounds(77, 115, 145, 52);
         deletePersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         deletePersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         deletePersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               peopleDataBaseView.getPeopleDataBaseBody().deletePerson();
             }
         });
         this.add(deletePersonBtn);
     }
 
     private void addEditPersonBtn(){
-        RoundedButton editPersonBtn = new RoundedButton("Editar Persona", 20);
+        editPersonBtn = new RoundedButton("Editar Persona", 20);
         editPersonBtn.setBounds(77, 195, 145, 52);
         editPersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         editPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);

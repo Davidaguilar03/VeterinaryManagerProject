@@ -6,16 +6,18 @@ import javax.swing.JDialog;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+import lombok.Getter;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.ArrayList;
 
-
+@Getter
 public class PeopleDataBaseView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
     private PeopleDataBaseBody peopleDataBaseBody;
     private PropertiesService propertiesService;
+    private PeopleDataBaseAside peopleDataBaseAside;
 
     public PeopleDataBaseView(VeterinaryClinicView veterinaryClinicView){
         super(veterinaryClinicView,true);
@@ -50,23 +52,30 @@ public class PeopleDataBaseView extends JDialog{
         }
     }
 
+    public void setPersonStatus(Person person) {
+        if (person != null) {
+            peopleDataBaseAside.enableDeletePersonBtn(true);
+            peopleDataBaseAside.enableEditPersonBtn(true);
+        }
+         else {
+            peopleDataBaseAside.enableDeletePersonBtn(false);
+            peopleDataBaseAside.enableEditPersonBtn(false);
+         }
+        }
+
     private void createPeopleDataBaseHeader(){
         PeopleDataBaseHeader peopleDataBaseHeader = new PeopleDataBaseHeader();
         this.add(peopleDataBaseHeader, BorderLayout.NORTH);
     }
 
     private void createPeopleDataBaseAside(){
-        PeopleDataBaseAside peopleDataBaseAside = new PeopleDataBaseAside(this);
+        peopleDataBaseAside = new PeopleDataBaseAside(this);
         this.add(peopleDataBaseAside, BorderLayout.WEST);
     }
 
     private void createPeopleDataBaseBody(){
-        peopleDataBaseBody = new PeopleDataBaseBody();
+        peopleDataBaseBody = new PeopleDataBaseBody(this);
         this.add(peopleDataBaseBody);
-    }
-
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
     }
 
 }

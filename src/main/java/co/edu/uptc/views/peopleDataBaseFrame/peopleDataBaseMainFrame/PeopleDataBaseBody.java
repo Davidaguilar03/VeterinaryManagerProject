@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.uptc.pojos.Person;
@@ -18,9 +20,11 @@ import co.edu.uptc.views.GlobalView;
 public class PeopleDataBaseBody extends JPanel {
     private DefaultTableModel peopleDataBaseTableModel;
     private JTable peopleDataBaseTable;
+    private PeopleDataBaseView peopleDataBaseView;
 
 
-    public PeopleDataBaseBody(){
+    public PeopleDataBaseBody(PeopleDataBaseView peopleDataBaseView){
+        this.peopleDataBaseView=peopleDataBaseView;
         this.initPanel();
         this.addTableHeader();
         this.addPeopleDataBaseTable();
@@ -65,6 +69,14 @@ public class PeopleDataBaseBody extends JPanel {
             peopleDataBaseTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        peopleDataBaseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (!e.getValueIsAdjusting() && peopleDataBaseTable.getSelectedRow() != -1) {  
+                    peopleDataBaseView.setPersonStatus(createSelectedRowPerson());                                   
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(peopleDataBaseTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
@@ -74,6 +86,23 @@ public class PeopleDataBaseBody extends JPanel {
     public void addPerson(Person person) {
         Object[] personData = {person.getId(),person.getName(),person.getAge(),person.getTypeOfDocument(),person.getDocumentNumber()};
         peopleDataBaseTableModel.addRow(personData);
+    }
+
+    public Person createSelectedRowPerson(){
+        Person person = new Person();
+        person.setId((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 0));
+        person.setName((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 1));
+        person.setAge((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 2));
+        person.setTypeOfDocument((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 3));
+        person.setDocumentNumber((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 4));
+        return person;
+    }
+
+    public void deletePerson(){
+        Person person = createSelectedRowPerson();
+        peopleDataBaseView.getVeterinaryClinicView().getPresenter().deletePerson(person);
+        peopleDataBaseTableModel.removeRow(peopleDataBaseTable.getSelectedRow());
+        peopleDataBaseView.setPersonStatus(null);
     }
 
     public void cleanTable(){
