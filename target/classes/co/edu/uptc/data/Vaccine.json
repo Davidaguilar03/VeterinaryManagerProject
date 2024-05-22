@@ -8,4 +8,9 @@
   "name" : "Rabia",
   "shelfLife" : 60,
   "expireDate" : [ 2024, 7, 21 ]
+}, {
+  "id" : 2,
+  "name" : "viruela",
+  "shelfLife" : 15,
+  "expireDate" : [ 2024, 6, 6 ]
 } ]

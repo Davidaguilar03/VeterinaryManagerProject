@@ -42,8 +42,9 @@ public class PeopleDataBaseView extends JDialog{
         this.setIconImage(image);
     }
 
-    private void loadPeopleData(){
+    public void loadPeopleData(){
         ArrayList<Person> persons = veterinaryClinicView.getPresenter().getPersons();
+        peopleDataBaseBody.cleanTable();
         for (Person person : persons) {
             peopleDataBaseBody.addPerson(person);
         }

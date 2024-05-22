@@ -40,10 +40,7 @@ public class AddVaccineDialogFooter extends JPanel{
         createSaveVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createSaveVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                AddVaccineDialogBody addVaccineDialogBody = addVaccineDialogView.getAddVaccineDialogBody();
-               Vaccine auxVaccine = new Vaccine(0,addVaccineDialogBody.getTxtName().getText(),Integer.parseInt(addVaccineDialogBody.getTxtShelfLife().getText()));
-               addVaccineDialogView.getVaccineInventoryView().getVeterinaryClinicView().getPresenter().addVaccine(auxVaccine);
-               addVaccineDialogView.getVaccineInventoryView().loadVaccineData();
+                saveVaccine();
                 Window window = SwingUtilities.getWindowAncestor(AddVaccineDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -71,4 +68,10 @@ public class AddVaccineDialogFooter extends JPanel{
         this.add(createCancelVaccineBtn);
     }
 
+    public void saveVaccine(){
+        AddVaccineDialogBody addVaccineDialogBody = addVaccineDialogView.getAddVaccineDialogBody();
+               Vaccine auxVaccine = new Vaccine(0,addVaccineDialogBody.getTxtName().getText(),Integer.parseInt(addVaccineDialogBody.getTxtShelfLife().getText()));
+               addVaccineDialogView.getVaccineInventoryView().getVeterinaryClinicView().getPresenter().addVaccine(auxVaccine);
+               addVaccineDialogView.getVaccineInventoryView().loadVaccineData();
+    }
 }

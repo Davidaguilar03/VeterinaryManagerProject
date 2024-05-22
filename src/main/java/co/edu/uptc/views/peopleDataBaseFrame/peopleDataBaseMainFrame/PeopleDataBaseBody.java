@@ -76,4 +76,8 @@ public class PeopleDataBaseBody extends JPanel {
         peopleDataBaseTableModel.addRow(personData);
     }
 
+    public void cleanTable(){
+        peopleDataBaseTableModel.setRowCount(0);
+    }
+
 }

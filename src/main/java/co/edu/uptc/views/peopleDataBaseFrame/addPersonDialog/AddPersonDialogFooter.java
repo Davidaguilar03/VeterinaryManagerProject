@@ -10,38 +10,38 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import co.edu.uptc.pojos.Vaccine;
+import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
+import lombok.Getter;
 
-
-
-public class AddPersonDialogFooter extends JPanel{
+@Getter
+public class AddPersonDialogFooter extends JPanel {
     private AddPersonDialogView addPersonDialogView;
 
-    public AddPersonDialogFooter(AddPersonDialogView addPersonDialogView){
-        this.addPersonDialogView=addPersonDialogView;
+    public AddPersonDialogFooter(AddPersonDialogView addPersonDialogView) {
+        this.addPersonDialogView = addPersonDialogView;
         this.initPanel();
         this.addSavePersonBtn();
         this.addCancelPersonBtn();
     }
 
-    private void initPanel(){
+    private void initPanel() {
         this.setBackground(GlobalView.FOOTER_DIALOG_BACKGROUND);
         this.setForeground(GlobalView.FOOTER_TEXT_DIALOG_BACKGROUND);
-        this.setPreferredSize(new Dimension(0,100));
-        this.setBorder(BorderFactory.createMatteBorder(1,1,1,1,GlobalView.BORDER_COLOR));
+        this.setPreferredSize(new Dimension(0, 100));
+        this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }
 
-    private void addSavePersonBtn(){
+    private void addSavePersonBtn() {
         RoundedButton createSavePersonBtn = new RoundedButton("Guardar Persona", 20);
         createSavePersonBtn.setBounds(100, 25, 180, 50);
         createSavePersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         createSavePersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createSavePersonBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                //to do
+            public void actionPerformed(ActionEvent e) {
+                savePerson();
                 Window window = SwingUtilities.getWindowAncestor(AddPersonDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -52,13 +52,13 @@ public class AddPersonDialogFooter extends JPanel{
         this.add(createSavePersonBtn);
     }
 
-    private void addCancelPersonBtn(){
+    private void addCancelPersonBtn() {
         RoundedButton createCancelPersonBtn = new RoundedButton("Cancelar", 20);
         createCancelPersonBtn.setBounds(325, 25, 180, 50);
         createCancelPersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         createCancelPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createCancelPersonBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 Window window = SwingUtilities.getWindowAncestor(AddPersonDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -67,5 +67,15 @@ public class AddPersonDialogFooter extends JPanel{
             }
         });
         this.add(createCancelPersonBtn);
+    }
+
+    public void savePerson() {
+        AddPersonDialogBody addPersonDialogBody = addPersonDialogView.getAddPersonDialogBody();
+        Person auxPerson = new Person(0, addPersonDialogBody.getTxtName().getText(),
+                Integer.parseInt(addPersonDialogBody.getTxtAge().getText()),
+                addPersonDialogBody.getDocumentTypesOptions().getSelectedItem().toString(),
+                Integer.parseInt(addPersonDialogBody.getTxtDocumentNumber().getText()));
+                addPersonDialogView.getPeopleDataBaseView().getVeterinaryClinicView().getPresenter().addPerson(auxPerson);
+                addPersonDialogView.getPeopleDataBaseView().loadPeopleData();
     }
 }
