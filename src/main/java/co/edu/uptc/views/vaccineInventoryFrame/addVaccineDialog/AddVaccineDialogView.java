@@ -7,7 +7,9 @@ import java.awt.Image;
 
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.vaccineInventoryFrame.vaccineInventoryMainFrame.VaccineInventoryView;
+import lombok.Getter;
 
+@Getter
 public class AddVaccineDialogView extends JDialog{
     private VaccineInventoryView vaccineInventoryView;
     private AddVaccineDialogBody addVaccineDialogBody;

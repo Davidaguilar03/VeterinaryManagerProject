@@ -13,6 +13,7 @@ import co.edu.uptc.views.vaccineInventoryFrame.addVaccineDialog.AddVaccineDialog
 
 public class VaccineInventoryAside extends JPanel{
     private VaccineInventoryView vaccineInventoryView;
+    private RoundedButton deleteVaccineBtn;
 
     public VaccineInventoryAside(VaccineInventoryView vaccineInventoryView){
         this.vaccineInventoryView=vaccineInventoryView;
@@ -21,6 +22,10 @@ public class VaccineInventoryAside extends JPanel{
         this.addDeleteVaccineBtn();
         this.addEditVaccineBtn();
     }
+
+    public void enableDeleteVaccineBtn(boolean value) {   
+        deleteVaccineBtn.setEnabled(value);
+     }
 
     private void initPanel(){
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
@@ -43,13 +48,14 @@ public class VaccineInventoryAside extends JPanel{
     }
 
     private void addDeleteVaccineBtn(){
-        RoundedButton deleteVaccineBtn = new RoundedButton("Eliminar Vacuna", 20);
+        deleteVaccineBtn = new RoundedButton("Eliminar Vacuna", 20);
         deleteVaccineBtn.setBounds(77, 115, 145, 52);
         deleteVaccineBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         deleteVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        deleteVaccineBtn.setEnabled(false);
         deleteVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               vaccineInventoryView.getVaccineInventoryBody().deleteVaccine();
             }
         });
         this.add(deleteVaccineBtn);

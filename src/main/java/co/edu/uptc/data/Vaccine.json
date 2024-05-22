@@ -1,6 +1,6 @@
 [ {
-  "id" : 1,
-  "name" : "pulgas",
+  "id" : 0,
+  "name" : "Pulgas",
   "shelfLife" : 15,
-  "expireDate" : [ 2024, 6, 5 ]
+  "expireDate" : [ 2024, 6, 6 ]
 } ]

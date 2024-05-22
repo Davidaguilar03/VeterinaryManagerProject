@@ -21,4 +21,7 @@ public class GlobalView {
 
     public static Color FOOTER_DIALOG_BACKGROUND = new Color(0x8C8C88);
     public static Color FOOTER_TEXT_DIALOG_BACKGROUND = Color.white;
+
+    public static Color PLACEHOLDER_TEXT_COLOR = Color.gray;
+    public static Color TEXT_COLOR = Color.black;
 }

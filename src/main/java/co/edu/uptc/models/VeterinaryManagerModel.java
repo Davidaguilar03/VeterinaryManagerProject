@@ -100,15 +100,20 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addVaccine(Vaccine vaccine) {
         if (vaccine != null) {
+            vaccine.setId(this.vaccines.size());
             Vaccine vaccineToAdd = vaccine.clone();
             vaccines.add(vaccineToAdd);
         }
     }
 
     @Override
-    public void deleteVaccine(Vaccine vaccine) {
-        if (vaccine != null) {
-            vaccines.remove(vaccine);
+    public void deleteVaccine(Vaccine auxVaccine) {
+        if (auxVaccine != null) {
+            for (int i = 0; i < vaccines.size(); i++) {
+                if (vaccines.get(i).getId() == auxVaccine.getId()) {
+                    this.vaccines.remove(i);
+                }
+            }
         }
     }
 

@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
@@ -16,8 +18,10 @@ import co.edu.uptc.views.GlobalView;
 public class VaccineInventoryBody extends JPanel {
     private DefaultTableModel vaccineTableModel;
     private JTable vaccinesTable;
+    private VaccineInventoryView vaccineInventoryView;
 
-    public VaccineInventoryBody() {
+    public VaccineInventoryBody(VaccineInventoryView vaccineInventoryView) {
+        this.vaccineInventoryView = vaccineInventoryView;
         this.initPanel();
         this.addTableHeader();
         this.addVaccinesTable();
@@ -62,15 +66,43 @@ public class VaccineInventoryBody extends JPanel {
             vaccinesTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        vaccinesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (!e.getValueIsAdjusting() && vaccinesTable.getSelectedRow() != -1) {  
+                    vaccineInventoryView.setVaccineStatus(createVaccine());                                   
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(vaccinesTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
     }
 
+    private Vaccine createVaccine(){
+        Vaccine vaccine = new Vaccine();
+        vaccine.setId((int)vaccineTableModel.getValueAt(vaccinesTable.getSelectedRow(), 0));
+        vaccine.setName((String)vaccineTableModel.getValueAt(vaccinesTable.getSelectedRow(), 1));
+        vaccine.setShelfLife((int)vaccineTableModel.getValueAt(vaccinesTable.getSelectedRow(),2 ));
+        return vaccine;
+    }
+
+    public void deleteVaccine(){
+        Vaccine vaccine = createVaccine();
+        vaccineInventoryView.getVeterinaryClinicView().getPresenter().deleteVaccine(vaccine);
+        vaccineTableModel.removeRow(vaccinesTable.getSelectedRow());
+        vaccineInventoryView.setVaccineStatus(null);
+    }
+
+
     public void addVaccine(Vaccine vaccine) {
         Object[] vaccineData = { vaccine.getId(), vaccine.getName(), vaccine.getShelfLife() };
         vaccineTableModel.addRow(vaccineData);
+    }
+
+    public void cleanTable(){
+        vaccineTableModel.setRowCount(0);
     }
 
 }
