@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
+import co.edu.uptc.views.petDataBaseFrame.addPetDialog.AddPetDialogView;
 
 
 public class PetDataBaseAside extends JPanel{
@@ -37,7 +38,7 @@ public class PetDataBaseAside extends JPanel{
         createPetBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createPetBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createAddPetDialog();
             }
         });
         this.add(createPetBtn);
@@ -71,6 +72,11 @@ public class PetDataBaseAside extends JPanel{
 
     public PetDataBaseView getPetDataBaseView() {
         return petDataBaseView;
+    }
+
+    private void createAddPetDialog(){
+        AddPetDialogView addPetDialogView = new AddPetDialogView(petDataBaseView);
+        addPetDialogView.begin();;
     }
 
     

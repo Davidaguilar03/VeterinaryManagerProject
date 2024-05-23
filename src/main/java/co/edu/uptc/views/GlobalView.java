@@ -24,4 +24,6 @@ public class GlobalView {
 
     public static Color PLACEHOLDER_TEXT_COLOR = Color.gray;
     public static Color TEXT_COLOR = Color.black;
+
+    public static Color RELATIONSHIP_SELECTION_COLOR = new Color(0xF3F0F0);
 }

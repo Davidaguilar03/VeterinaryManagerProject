@@ -1,11 +1,14 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog;
 
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
@@ -36,7 +39,12 @@ public class AddApointmentDialogFooter extends JPanel{
         createSaveAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createSaveAppointmentBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+                
+                Window window = SwingUtilities.getWindowAncestor(AddApointmentDialogFooter.this);
+                if (window instanceof JDialog) {
+                    JDialog dialog = (JDialog) window;
+                    dialog.dispose();
+                }
             }
         });
         this.add(createSaveAppointmentBtn);
@@ -49,7 +57,11 @@ public class AddApointmentDialogFooter extends JPanel{
         createCancelAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createCancelAppointmentBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               Window window = SwingUtilities.getWindowAncestor(AddApointmentDialogFooter.this);
+                if (window instanceof JDialog) {
+                    JDialog dialog = (JDialog) window;
+                    dialog.dispose();
+                }
             }
         });
         this.add(createCancelAppointmentBtn);

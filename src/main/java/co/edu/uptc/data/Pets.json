@@ -12,4 +12,32 @@
     "personId" : 1,
     "relationship" : "Dueño"
   }
+}, {
+  "id" : 1195119834,
+  "name" : "pepita",
+  "species" : "Gato",
+  "age" : 15,
+  "breed" : "siames",
+  "keepers" : [ {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
+  } ],
+  "owner" : {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
+  }
+}, {
+  "id" : 976255209,
+  "name" : "pol",
+  "species" : "Perro",
+  "age" : 15,
+  "breed" : "x",
+  "keepers" : [ {
+    "personId" : 458191077,
+    "relationship" : "Familiar"
+  } ],
+  "owner" : {
+    "personId" : 0,
+    "relationship" : null
+  }
 } ]

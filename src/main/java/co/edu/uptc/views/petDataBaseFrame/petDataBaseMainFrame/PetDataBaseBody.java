@@ -83,4 +83,7 @@ public class PetDataBaseBody extends JPanel {
         petDataBaseTableModel.addRow(petData);
     }
 
+    public void cleanTable(){
+        petDataBaseTableModel.setRowCount(0);
+    }
 }

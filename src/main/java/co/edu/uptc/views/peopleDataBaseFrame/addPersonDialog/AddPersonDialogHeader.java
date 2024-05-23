@@ -32,8 +32,8 @@ public class AddPersonDialogHeader extends JPanel{
         addPersonDialogTitle.setBounds(100, 10, 400, 80);
         addPersonDialogTitle.setFont(new Font("Semi_Bold", 1, 32));
         addPersonDialogTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
-        ImageIcon vaccineIcon = new ImageIcon(propertiesService.getKeyValue("UserIconPath"));
-        addPersonDialogTitle.setIcon(vaccineIcon);
+        ImageIcon userIcon = new ImageIcon(propertiesService.getKeyValue("UserIconPath"));
+        addPersonDialogTitle.setIcon(userIcon);
         addPersonDialogTitle.setContentAreaFilled(false);
         this.add(addPersonDialogTitle);
     }

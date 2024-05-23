@@ -42,8 +42,9 @@ public class PetDataBaseView extends JDialog{
         this.setIconImage(image);
     }
 
-    private void loadPetsData(){
+    public void loadPetsData(){
         ArrayList<Pet> pets = veterinaryClinicView.getPresenter().getPets();
+        petDataBaseBody.cleanTable();
         for (Pet pet : pets) {
             petDataBaseBody.addPet(pet);
         }

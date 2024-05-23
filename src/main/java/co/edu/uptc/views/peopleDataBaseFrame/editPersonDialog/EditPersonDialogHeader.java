@@ -28,7 +28,7 @@ public class EditPersonDialogHeader extends JPanel{
     }
 
     private void addPersonDialogTitle(){
-        RoundedButton addPersonDialogTitle = new RoundedButton("Agregar Persona", 20);
+        RoundedButton addPersonDialogTitle = new RoundedButton("Editar Persona", 20);
         addPersonDialogTitle.setBounds(100, 10, 400, 80);
         addPersonDialogTitle.setFont(new Font("Semi_Bold", 1, 32));
         addPersonDialogTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);

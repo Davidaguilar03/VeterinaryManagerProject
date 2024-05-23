@@ -32,7 +32,7 @@ public class EditPersonDialogView extends JDialog{
     private void initDialog(){
         this.setLayout(new BorderLayout());
         this.setSize(600,500);
-        this.setTitle("Agregar Persona");
+        this.setTitle("Editar Persona");
         this.setResizable(false);
         this.setLocationRelativeTo(peopleDataBaseView);
         ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
