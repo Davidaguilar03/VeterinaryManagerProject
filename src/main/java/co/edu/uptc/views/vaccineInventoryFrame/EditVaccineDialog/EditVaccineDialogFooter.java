@@ -40,12 +40,7 @@ public class EditVaccineDialogFooter extends JPanel{
         createEditVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createEditVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               EditVaccineDialogBody editVaccineDialogBody = editVaccineDialogView.getEditVaccineDialogBody();
-               Vaccine auxVaccine = editVaccineDialogView.getVaccineInventoryView().getVaccineInventoryBody().createSelectedRowVaccine();
-               auxVaccine.setName(editVaccineDialogBody.getTxtName().getText());
-               auxVaccine.setShelfLife(Integer.parseInt(editVaccineDialogBody.getTxtShelfLife().getText()));
-               editVaccineDialogView.getVaccineInventoryView().getVeterinaryClinicView().getPresenter().editVaccine(auxVaccine);
-               editVaccineDialogView.getVaccineInventoryView().loadVaccineData();
+               editVaccine();
                 Window window = SwingUtilities.getWindowAncestor(EditVaccineDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -77,5 +72,13 @@ public class EditVaccineDialogFooter extends JPanel{
         return editVaccineDialogView;
     }
 
+    public void editVaccine(){
+        EditVaccineDialogBody editVaccineDialogBody = editVaccineDialogView.getEditVaccineDialogBody();
+        Vaccine auxVaccine = editVaccineDialogView.getVaccineInventoryView().getVaccineInventoryBody().createSelectedRowVaccine();
+        auxVaccine.setName(editVaccineDialogBody.getTxtName().getText());
+        auxVaccine.setShelfLife(Integer.parseInt(editVaccineDialogBody.getTxtShelfLife().getText()));
+        editVaccineDialogView.getVaccineInventoryView().getVeterinaryClinicView().getPresenter().editVaccine(auxVaccine);
+        editVaccineDialogView.getVaccineInventoryView().loadVaccineData();
+    }
     
 }

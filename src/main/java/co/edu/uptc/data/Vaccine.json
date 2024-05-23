@@ -10,7 +10,7 @@
   "expireDate" : [ 2024, 7, 21 ]
 }, {
   "id" : 2,
-  "name" : "viruela",
-  "shelfLife" : 15,
-  "expireDate" : [ 2024, 6, 6 ]
+  "name" : "Viruela",
+  "shelfLife" : 75,
+  "expireDate" : [ 2024, 8, 5 ]
 } ]

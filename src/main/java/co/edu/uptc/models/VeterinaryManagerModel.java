@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import co.edu.uptc.interfaces.VeterinaryInterface;
@@ -14,6 +15,7 @@ import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.JsonConvertorService;
 import co.edu.uptc.utilities.PropertiesService;
+import co.edu.uptc.utilities.UniqueIDGenerator;
 
 public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     private ArrayList<Person> persons;
@@ -38,7 +40,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addPerson(Person person) {
         if (person != null) {
-            person.setId(this.persons.size());
+            person.setId(UniqueIDGenerator.getUniqueID());
             Person personToAdd = person.clone();
             persons.add(personToAdd);
         }
@@ -57,10 +59,10 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void editPerson(Person auxPerson) {
-        for (Person person : persons) {
-            if (person.getId()==auxPerson.getId()) {
-                persons.remove(person);
-                persons.add(auxPerson.getId(), auxPerson);
+        for (int i = 0; i < persons.size(); i++) {
+            if (persons.get(i).getId() == auxPerson.getId()) {
+                persons.remove(i);
+                persons.add(i, auxPerson);
             }
         }
     }
@@ -68,7 +70,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addPet(Pet pet) {
         if (pet != null) {
-            pet.setId(this.pets.size());
+            pet.setId(UniqueIDGenerator.getUniqueID());
             Pet petToAdd = pet.clone();
             pets.add(petToAdd);
         }
@@ -87,10 +89,10 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void editPet(Pet auxPet) {
-        for (Pet pet : pets) {
-            if (pet.getId()==auxPet.getId()) {
-                pets.remove(pet);
-                pets.add(auxPet.getId(), auxPet);
+        for (int i = 0; i < pets.size(); i++) {
+            if (pets.get(i).getId() == auxPet.getId()) {
+                pets.remove(i);
+                pets.add(i, auxPet);
             }
         }
     }
@@ -98,7 +100,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addVaccine(Vaccine vaccine) {
         if (vaccine != null) {
-            vaccine.setId(this.vaccines.size());
+            vaccine.setId(UniqueIDGenerator.getUniqueID());
             Vaccine vaccineToAdd = vaccine.clone();
             vaccines.add(vaccineToAdd);
         }
@@ -117,10 +119,10 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
 
     @Override
     public void editVaccine(Vaccine auxVaccine) {
-        for (Vaccine vaccine : vaccines) {
-            if (vaccine.getId()==auxVaccine.getId()) {
-                vaccines.remove(vaccine);
-                vaccines.add(auxVaccine.getId(), auxVaccine);
+        for (int i = 0; i < vaccines.size(); i++) {
+            if (vaccines.get(i).getId() == auxVaccine.getId()) {
+                vaccines.remove(i);
+                vaccines.add(i, auxVaccine);
             }
         }
     }
@@ -128,6 +130,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     @Override
     public void addAppointment(Appointment appointment) {
         if (appointment != null) {
+            appointment.setId(UniqueIDGenerator.getUniqueID());
             Appointment appointmentToAdd = appointment.clone();
             appointments.add(appointmentToAdd);
         }
@@ -265,5 +268,4 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         }
         return auxPerson;
     }
-
 }

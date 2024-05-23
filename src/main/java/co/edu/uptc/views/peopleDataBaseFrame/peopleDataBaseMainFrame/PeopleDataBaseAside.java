@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.peopleDataBaseFrame.addPersonDialog.AddPersonDialogView;
+import co.edu.uptc.views.peopleDataBaseFrame.editPersonDialog.EditPersonDialogView;
 import lombok.Getter;
 
 @Getter
@@ -59,6 +60,7 @@ public class PeopleDataBaseAside extends JPanel{
         deletePersonBtn.setBounds(77, 115, 145, 52);
         deletePersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         deletePersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        deletePersonBtn.setEnabled(false);
         deletePersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                peopleDataBaseView.getPeopleDataBaseBody().deletePerson();
@@ -72,9 +74,10 @@ public class PeopleDataBaseAside extends JPanel{
         editPersonBtn.setBounds(77, 195, 145, 52);
         editPersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         editPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        editPersonBtn.setEnabled(false);
         editPersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createEditPersonDataBaseView();
             }
         });
         this.add(editPersonBtn);
@@ -83,6 +86,11 @@ public class PeopleDataBaseAside extends JPanel{
     private void createAddPersonDialog(){
         AddPersonDialogView addPersonDialogView = new AddPersonDialogView(peopleDataBaseView);
         addPersonDialogView.begin();
+    }
+
+    private void createEditPersonDataBaseView(){
+        EditPersonDialogView editPersonDialogView = new EditPersonDialogView(peopleDataBaseView);
+        editPersonDialogView.begin();
     }
     
 }
