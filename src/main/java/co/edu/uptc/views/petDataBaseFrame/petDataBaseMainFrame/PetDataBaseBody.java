@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.uptc.pojos.Person;
@@ -67,6 +69,14 @@ public class PetDataBaseBody extends JPanel {
             petDataBaseTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        petDataBaseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (!e.getValueIsAdjusting() && petDataBaseTable.getSelectedRow() != -1) {  
+                    //petDataBaseView.setPetStatus(createSelectedRowPet());                                   
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(petDataBaseTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
@@ -82,6 +92,11 @@ public class PetDataBaseBody extends JPanel {
                 this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
         petDataBaseTableModel.addRow(petData);
     }
+
+    // public Pet createSelectedRowPet(){
+    //     Pet pet = new Pet();
+    //     pet.setId((int)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 0));
+    // }
 
     public void cleanTable(){
         petDataBaseTableModel.setRowCount(0);

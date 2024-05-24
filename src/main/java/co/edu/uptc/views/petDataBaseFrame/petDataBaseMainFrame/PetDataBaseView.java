@@ -6,15 +6,18 @@ import javax.swing.JDialog;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+import lombok.Getter;
+
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.ArrayList;
 
-
+@Getter
 public class PetDataBaseView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
     private PetDataBaseBody petDataBaseBody;
     private PropertiesService propertiesService;
+    private PetDataBaseAside petDataBaseAside;
     
 
     public PetDataBaseView(VeterinaryClinicView veterinaryClinicView){
@@ -50,13 +53,23 @@ public class PetDataBaseView extends JDialog{
         }
     }
 
+    public void setPetStatus(Pet pet){
+        if(pet != null){
+            petDataBaseAside.enableDeletePetBtn(true);
+            petDataBaseAside.enableEditPetBtn(true);
+        }else{
+            petDataBaseAside.enableDeletePetBtn(false);
+            petDataBaseAside.enableEditPetBtn(false);
+        }
+    }
+
     private void createPetDataBaseHeader(){
         PetDataBaseHeader petDataBaseHeader = new PetDataBaseHeader();
         this.add(petDataBaseHeader, BorderLayout.NORTH);
     }
 
     private void createPetDataBaseAside(){
-        PetDataBaseAside petDataBaseAside = new PetDataBaseAside(this);
+        petDataBaseAside = new PetDataBaseAside(this);
         this.add(petDataBaseAside, BorderLayout.WEST);
     }
 

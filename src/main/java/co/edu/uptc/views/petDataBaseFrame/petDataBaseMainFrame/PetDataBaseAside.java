@@ -10,10 +10,13 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.petDataBaseFrame.addPetDialog.AddPetDialogView;
+import lombok.Getter;
 
-
+@Getter
 public class PetDataBaseAside extends JPanel{
     private PetDataBaseView petDataBaseView;
+    private RoundedButton deletePetBtn;
+    private RoundedButton editPetBtn;
 
     public PetDataBaseAside(PetDataBaseView petDataBaseView){
         this.petDataBaseView=petDataBaseView;
@@ -21,6 +24,14 @@ public class PetDataBaseAside extends JPanel{
         this.addCreatePetBtn();
         this.addDeletePetBtn();
         this.addEditPetBtn();
+    }
+
+    public void enableDeletePetBtn(Boolean value){
+        deletePetBtn.setEnabled(value);
+    }
+
+    public void enableEditPetBtn(Boolean value){
+        editPetBtn.setEnabled(value);
     }
 
     private void initPanel(){
@@ -45,10 +56,11 @@ public class PetDataBaseAside extends JPanel{
     }
 
     private void addDeletePetBtn(){
-        RoundedButton deletePetBtn = new RoundedButton("Eliminar Mascota", 20);
+        deletePetBtn = new RoundedButton("Eliminar Mascota", 20);
         deletePetBtn.setBounds(77, 115, 145, 52);
         deletePetBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         deletePetBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        deletePetBtn.setEnabled(false);
         deletePetBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                
@@ -58,10 +70,11 @@ public class PetDataBaseAside extends JPanel{
     }
 
     private void addEditPetBtn(){
-        RoundedButton editPetBtn = new RoundedButton("Editar Mascota", 20);
+        editPetBtn = new RoundedButton("Editar Mascota", 20);
         editPetBtn.setBounds(77, 195, 145, 52);
         editPetBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         editPetBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        editPetBtn.setEnabled(false);
         editPetBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                
