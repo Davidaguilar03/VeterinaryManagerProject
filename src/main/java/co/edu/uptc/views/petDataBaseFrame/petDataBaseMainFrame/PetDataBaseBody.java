@@ -12,6 +12,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
@@ -73,7 +74,7 @@ public class PetDataBaseBody extends JPanel {
             @Override
             public void valueChanged(ListSelectionEvent e){
                 if (!e.getValueIsAdjusting() && petDataBaseTable.getSelectedRow() != -1) {  
-                    //petDataBaseView.setPetStatus(createSelectedRowPet());                                   
+                    petDataBaseView.setPetStatus(createSelectedRowPet());                                   
                 }
             }
         });
@@ -93,10 +94,22 @@ public class PetDataBaseBody extends JPanel {
         petDataBaseTableModel.addRow(petData);
     }
 
-    // public Pet createSelectedRowPet(){
-    //     Pet pet = new Pet();
-    //     pet.setId((int)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 0));
-    // }
+    public Pet createSelectedRowPet(){
+        Pet pet = new Pet();
+        pet.setId((int)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 0));
+        pet.setName((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 1));
+        pet.setSpecies((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 2));
+        pet.setAge((int)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 3));
+        pet.setBreed((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 4));
+        return pet;
+    }
+
+    public void deletePet(){
+        Pet pet = createSelectedRowPet();
+        petDataBaseView.getVeterinaryClinicView().getPresenter().deletePet(pet);
+        petDataBaseTableModel.removeRow(petDataBaseTable.getSelectedRow());
+        petDataBaseView.setPetStatus(null);
+    }   
 
     public void cleanTable(){
         petDataBaseTableModel.setRowCount(0);

@@ -2,15 +2,15 @@
   "id" : 0,
   "name" : "Pulgas",
   "shelfLife" : 30,
-  "expireDate" : [ 2024, 6, 22 ]
+  "expireDate" : [ 2024, 6, 23 ]
 }, {
   "id" : 1,
   "name" : "Rabia",
   "shelfLife" : 60,
-  "expireDate" : [ 2024, 7, 22 ]
+  "expireDate" : [ 2024, 7, 23 ]
 }, {
   "id" : 2,
   "name" : "Viruela",
   "shelfLife" : 75,
-  "expireDate" : [ 2024, 8, 6 ]
+  "expireDate" : [ 2024, 8, 7 ]
 } ]

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.petDataBaseFrame.addPetDialog.AddPetDialogView;
+import co.edu.uptc.views.petDataBaseFrame.editPetDialog.EditPetDialogView;
 import lombok.Getter;
 
 @Getter
@@ -63,7 +64,7 @@ public class PetDataBaseAside extends JPanel{
         deletePetBtn.setEnabled(false);
         deletePetBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               petDataBaseView.getPetDataBaseBody().deletePet();
             }
         });
         this.add(deletePetBtn);
@@ -77,7 +78,7 @@ public class PetDataBaseAside extends JPanel{
         editPetBtn.setEnabled(false);
         editPetBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createEditPetDialog();
             }
         });
         this.add(editPetBtn);
@@ -92,5 +93,9 @@ public class PetDataBaseAside extends JPanel{
         addPetDialogView.begin();;
     }
 
+    private void createEditPetDialog(){
+        EditPetDialogView editPetDialogView = new EditPetDialogView(petDataBaseView);
+    editPetDialogView.begin(); 
+   }
     
 }

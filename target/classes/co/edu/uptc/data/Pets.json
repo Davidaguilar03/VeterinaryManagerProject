@@ -1,37 +1,23 @@
 [ {
-  "id" : 1,
-  "name" : "Lupita",
-  "species" : "Gato",
-  "age" : 5,
-  "breed" : "Raza x",
-  "keepers" : [ {
-    "personId" : 1,
-    "relationship" : "Dueño"
-  } ],
-  "owner" : {
-    "personId" : 1,
-    "relationship" : "Dueño"
-  }
-}, {
-  "id" : 1195119834,
-  "name" : "pepita",
-  "species" : "Gato",
-  "age" : 15,
-  "breed" : "siames",
-  "keepers" : [ {
-    "personId" : 458191077,
-    "relationship" : "Dueño"
-  } ],
-  "owner" : {
-    "personId" : 458191077,
-    "relationship" : "Dueño"
-  }
-}, {
-  "id" : 976255209,
-  "name" : "pol",
+  "id" : 1201187789,
+  "name" : "Max",
   "species" : "Perro",
-  "age" : 15,
-  "breed" : "x",
+  "age" : 5,
+  "breed" : "real g",
+  "keepers" : [ {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
+  } ],
+  "owner" : {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
+  }
+}, {
+  "id" : 284048293,
+  "name" : "das",
+  "species" : "Perro",
+  "age" : 123,
+  "breed" : "dadw",
   "keepers" : [ {
     "personId" : 458191077,
     "relationship" : "Familiar"
@@ -39,5 +25,33 @@
   "owner" : {
     "personId" : 0,
     "relationship" : null
+  }
+}, {
+  "id" : 1874188906,
+  "name" : "hfhyf",
+  "species" : "Perro",
+  "age" : 353,
+  "breed" : "fhhf",
+  "keepers" : [ {
+    "personId" : 458191077,
+    "relationship" : "Familiar"
+  } ],
+  "owner" : {
+    "personId" : 0,
+    "relationship" : null
+  }
+}, {
+  "id" : 1447024006,
+  "name" : "rdset",
+  "species" : "Perro",
+  "age" : 22,
+  "breed" : "gjgk",
+  "keepers" : [ {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
+  } ],
+  "owner" : {
+    "personId" : 458191077,
+    "relationship" : "Dueño"
   }
 } ]
