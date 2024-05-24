@@ -51,7 +51,7 @@ public class PetDataBaseBody extends JPanel {
         tablePanel.setBounds(15, 20, 1015, 455);
         tablePanel.setLayout(null);
         String[] columnNames = {
-                "ID.Mascota", "Nombre", "Especie", "Edad", "Raza", "Dueño"
+                "ID.Mascota", "Nombre", "Especie", "Edad", "Raza", "Responsable"
         };
         petDataBaseTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -93,6 +93,13 @@ public class PetDataBaseBody extends JPanel {
                 this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
         petDataBaseTableModel.addRow(petData);
     }
+
+    // private String petResponsable(Pet pet){
+    //     String petResponsableString = new String();
+    //     if (pet.getOwner().getRelationship() == "Dueño") {
+    //         petResponsableString = searchPersonByid(pet);
+    //     }
+    // }
 
     public Pet createSelectedRowPet(){
         Pet pet = new Pet();
