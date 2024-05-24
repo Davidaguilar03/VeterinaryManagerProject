@@ -41,7 +41,7 @@ public class VeterinaryClinicHeader extends JPanel{
     private void initPanel(){
         this.setBackground(GlobalView.HEADER_BACKGROUND);
         this.setForeground(GlobalView.HEADER_TEXT_BACKGROUND);
-        this.setPreferredSize(new Dimension(0,236));
+        this.setPreferredSize(new Dimension(100,236));
         this.setBorder(BorderFactory.createMatteBorder(1,1,1,1, GlobalView.BORDER_COLOR));
         this.setLayout(null);
     }

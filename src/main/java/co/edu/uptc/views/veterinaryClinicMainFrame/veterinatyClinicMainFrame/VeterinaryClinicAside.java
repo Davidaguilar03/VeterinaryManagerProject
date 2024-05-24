@@ -1,6 +1,7 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,13 +29,14 @@ public class VeterinaryClinicAside extends JPanel{
     private void initPanel(){
         this.setBackground(GlobalView.ASIDE_BACKGROUND);
         this.setForeground(GlobalView.ASIDE_TEXT_BACKGROUND);
-        this.setPreferredSize(new Dimension(298,0));
+        this.setPreferredSize(new Dimension(298,100));
         this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,GlobalView.BORDER_COLOR));
-        this.setLayout(null);
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER,30,30);
+        this.setLayout(flowLayout);
     }
     private void addCreateAppointmentBtn(){
         RoundedButton createAppointmentBtn = new RoundedButton("Agregar Cita", 20);
-        createAppointmentBtn.setBounds(77, 30, 145, 52);
+        createAppointmentBtn.setPreferredSize(new Dimension(180, 52));
         createAppointmentBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         createAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createAppointmentBtn.addActionListener(new ActionListener() {
@@ -47,7 +49,7 @@ public class VeterinaryClinicAside extends JPanel{
 
     private void addDeleteAppointmentBtn(){
         RoundedButton deleteAppointmentBtn = new RoundedButton("Eliminar Cita", 20);
-        deleteAppointmentBtn.setBounds(77, 115, 145, 52);
+        deleteAppointmentBtn.setPreferredSize(new Dimension(180, 52));
         deleteAppointmentBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         deleteAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         deleteAppointmentBtn.addActionListener(new ActionListener() {
@@ -59,7 +61,7 @@ public class VeterinaryClinicAside extends JPanel{
     }
     private void addSortAppointmentByDateBtn(){
         RoundedButton sortAppointmentByDateBtn = new RoundedButton("Consultar Por Fecha", 20);
-        sortAppointmentByDateBtn.setBounds(49, 200, 200, 52);
+        sortAppointmentByDateBtn.setPreferredSize(new Dimension(180, 52));
         sortAppointmentByDateBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         sortAppointmentByDateBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByDateBtn.addActionListener(new ActionListener() {
@@ -70,8 +72,8 @@ public class VeterinaryClinicAside extends JPanel{
         this.add(sortAppointmentByDateBtn);
     }
     private void addSortAppointmentByPersonBtn(){
-        RoundedButton sortAppointmentByPersonBtn = new RoundedButton("Consultar Por Responsable", 20);
-        sortAppointmentByPersonBtn.setBounds(22, 285, 250, 52);
+        RoundedButton sortAppointmentByPersonBtn = new RoundedButton("<html>Consultar Por<br/>Responsable</html>", 20);
+        sortAppointmentByPersonBtn.setPreferredSize(new Dimension(180, 52));
         sortAppointmentByPersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         sortAppointmentByPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByPersonBtn.addActionListener(new ActionListener() {
@@ -83,7 +85,7 @@ public class VeterinaryClinicAside extends JPanel{
     }
     private void addSortAppointmentByVaccinesExpireDateBtn(){
         RoundedButton sortAppointmentByVaccinesBtn = new RoundedButton("<html>Consultar Vacunas<br/>Proximas a Caducar</html>", 20);
-        sortAppointmentByVaccinesBtn.setBounds(46, 370, 200, 85);
+        sortAppointmentByVaccinesBtn.setPreferredSize(new Dimension(180, 52));
         sortAppointmentByVaccinesBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         sortAppointmentByVaccinesBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByVaccinesBtn.addActionListener(new ActionListener() {
