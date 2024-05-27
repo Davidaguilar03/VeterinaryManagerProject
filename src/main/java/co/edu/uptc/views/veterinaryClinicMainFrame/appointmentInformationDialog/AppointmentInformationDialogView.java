@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
+import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class AppointmentInformationDialogView extends JDialog{
         this.createMainHeader();
         this.createMainBody();
         this.createMainFoooter();
+        this.loadAppointmentInformationData();
     }
 
     public void begin(){
@@ -33,12 +35,17 @@ public class AppointmentInformationDialogView extends JDialog{
     private void initDialog(){
         this.setLayout(new BorderLayout());
         this.setSize(800,600);
-        this.setTitle("Informacion de La Cita");
+        this.setTitle("Información de La Cita");
         this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);
         ImageIcon windowIcon = new ImageIcon(propertiesService.getKeyValue("VeterinaryWindowIconPath"));
         Image image = windowIcon.getImage();
         this.setIconImage(image);
+    }
+
+    private void loadAppointmentInformationData(){
+        Appointment appointment = veterinaryClinicView.getVeterinaryClinicBody().searchAppointmentById(veterinaryClinicView.getVeterinaryClinicBody().selectedAppointmentId());
+        appointmentInformationDialogBody.loadAppointmentInformation(appointment);
     }
 
     private void createMainHeader(){

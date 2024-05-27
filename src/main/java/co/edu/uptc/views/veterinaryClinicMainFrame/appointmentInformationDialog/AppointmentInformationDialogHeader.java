@@ -29,7 +29,7 @@ public class AppointmentInformationDialogHeader extends JPanel{
     }
 
     private void addApointmentDialogTitle() {
-        RoundedButton addApointmentDialogTitle = new RoundedButton("Informacion de la Cita", 20);
+        RoundedButton addApointmentDialogTitle = new RoundedButton("Información de la Cita", 20);
         addApointmentDialogTitle.setBounds(150, 10, 500, 80);
         addApointmentDialogTitle.setFont(new Font("Semi_Bold", 1, 32));
         ;

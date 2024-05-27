@@ -21,6 +21,7 @@ import lombok.Getter;
 public class VeterinaryClinicAside extends JPanel{
     private VeterinaryClinicView veterinaryClinicView;
     private AddAppointmentDialogView addApointmentDialogView;
+    private RoundedButton appointmentInformationBtn;
 
     public VeterinaryClinicAside(VeterinaryClinicView veterinaryClinicView){
         this.veterinaryClinicView=veterinaryClinicView;
@@ -30,6 +31,10 @@ public class VeterinaryClinicAside extends JPanel{
         this.addSortAppointmentByDateBtn();
         this.addSortAppointmentByPersonBtn();
         this.addSortAppointmentByVaccinesExpireDateBtn();
+    }
+
+    public void enableAppointmentInformationBtn(Boolean value){
+        appointmentInformationBtn.setEnabled(value);
     }
 
     private void initPanel(){
@@ -54,10 +59,11 @@ public class VeterinaryClinicAside extends JPanel{
     }
 
     private void addAppointmentInfomationBtn(){
-        RoundedButton appointmentInformationBtn = new RoundedButton("Informacion de la Cita", 20);
+        appointmentInformationBtn = new RoundedButton("Informacion de la Cita", 20);
         appointmentInformationBtn.setPreferredSize(new Dimension(180, 52));
         appointmentInformationBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         appointmentInformationBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        appointmentInformationBtn.setEnabled(false);
         appointmentInformationBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 createAppointmentInfomationDialog();

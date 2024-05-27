@@ -268,4 +268,15 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
         }
         return auxPerson;
     }
+
+    @Override
+    public Appointment searchAppointmentById(int appointmentId) {
+       Appointment auxAppointment = new Appointment();
+       for (Appointment appointment : this.appointments) {
+        if (appointment.getId() == appointmentId) {
+            auxAppointment = appointment;
+        }
+       }
+       return auxAppointment;
+    }
 }

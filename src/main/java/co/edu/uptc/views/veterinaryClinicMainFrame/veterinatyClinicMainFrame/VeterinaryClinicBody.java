@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -67,14 +69,31 @@ public class VeterinaryClinicBody extends JPanel {
         for (int i = 0; i < appointmentsTable.getColumnCount(); i++) {
             appointmentsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        appointmentsTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && appointmentsTable.getSelectedRow() != -1) {
+                    veterinaryClinicView.setAppointmentStatus(searchAppointmentById(selectedAppointmentId()));
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(appointmentsTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
     }
 
+    public int selectedAppointmentId(){
+        int appointmentId =(int)tableModel.getValueAt(appointmentsTable.getSelectedRow(), 0);
+        return appointmentId;
+    }
+
     public Person searchPersonByid(int id) {
         return veterinaryClinicView.getPresenter().searchPersonById(id);
+    }
+
+    public Appointment searchAppointmentById(int id){
+        return veterinaryClinicView.getPresenter().searchAppointmentById(id); 
     }
 
     public void addAppointment(Appointment appointment) {

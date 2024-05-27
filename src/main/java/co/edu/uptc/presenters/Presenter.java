@@ -132,5 +132,10 @@ public class Presenter implements VeterinaryInterface.Presenter{
         model.editVaccine(vaccine);
     }
 
+    @Override
+    public Appointment searchAppointmentById(int appointmentId) {
+      return model.searchAppointmentById(appointmentId);
+    }
+
     
 }

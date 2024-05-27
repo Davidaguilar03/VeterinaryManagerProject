@@ -27,11 +27,6 @@ public class EditPersonDialogBody extends JPanel {
     public EditPersonDialogBody(EditPersonDialogView editPersonDialogView) {
         this.editPersonDialogView = editPersonDialogView;
         this.initPanel();
-    }
-
-    private void initPanel() {
-        this.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, GlobalView.BORDER_COLOR));
-        this.setLayout(null);
         this.createLblName();
         this.createTextFileName();
         this.createLblAge();
@@ -41,6 +36,11 @@ public class EditPersonDialogBody extends JPanel {
         this.createLblDocumentNumber();
         this.createTextFileDocumentNumber();
         this.loadPersonInformation();
+    }
+
+    private void initPanel() {
+        this.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, GlobalView.BORDER_COLOR));
+        this.setLayout(null);
     }
 
     private void createLblName() {

@@ -26,4 +26,6 @@ public class GlobalView {
     public static Color TEXT_COLOR = Color.black;
 
     public static Color RELATIONSHIP_SELECTION_COLOR = new Color(0xF3F0F0);
+
+    public static Color JTEXTFIELD_COLOR = Color.white;
 }

@@ -5,7 +5,6 @@ import javax.swing.JDialog;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.ArrayList;
-
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.petDataBaseFrame.petDataBaseMainFrame.PetDataBaseView;

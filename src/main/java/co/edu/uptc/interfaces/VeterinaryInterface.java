@@ -30,6 +30,7 @@ public interface VeterinaryInterface {
         public void loadData();
         public void writeData();
         public Person searchPersonById(int personId);
+        public Appointment searchAppointmentById(int appointmentId);
     }
     
     public interface View{
@@ -61,5 +62,6 @@ public interface VeterinaryInterface {
         public void loadData();
         public void writeData();
         public Person searchPersonById(int personId);
+        public Appointment searchAppointmentById(int appointmentId);
     }
 } 

@@ -1,6 +1,5 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import co.edu.uptc.interfaces.VeterinaryInterface;
@@ -32,11 +31,18 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
     public void begin() {
         this.loadAppointmentsData();
         this.setVisible(true);
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-            public void run(){
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
                 presenter.writeData();
             }
         });
+    }
+    public void setAppointmentStatus(Appointment appointment) {
+        if (appointment != null) {
+            veterinaryClinicAside.enableAppointmentInformationBtn(true);
+        } else {
+            veterinaryClinicAside.enableAppointmentInformationBtn(false);
+        }
     }
 
     private void initFrame() {
