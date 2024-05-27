@@ -7,7 +7,8 @@ import java.awt.Image;
 
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
-
+import lombok.Getter;
+@Getter
 public class SortByVaccineExpireDateDialogView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
     private SortByVaccineExpireDateDialogBody sortByVaccineExpireDateDialogBody;
@@ -30,7 +31,7 @@ public class SortByVaccineExpireDateDialogView extends JDialog{
 
     private void initDialog(){
         this.setLayout(new BorderLayout());
-        this.setSize(450,450);
+        this.setSize(450,350);
         this.setTitle("Filtrar por Vacunas Proximas a Vencer");
         this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);

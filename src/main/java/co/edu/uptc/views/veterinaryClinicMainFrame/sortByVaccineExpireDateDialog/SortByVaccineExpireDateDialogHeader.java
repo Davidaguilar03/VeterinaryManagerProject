@@ -27,7 +27,7 @@ public class SortByVaccineExpireDateDialogHeader extends JPanel {
     private void addSortByVaccineTitle(){
         RoundedButton addSortByDateTitle = new RoundedButton("Fitrar Por Vacunas", 20);
         addSortByDateTitle.setBounds(40, 10, 370, 80);
-        addSortByDateTitle.setFont(new Font("Semi_Bold", 1, 32));
+        addSortByDateTitle.setFont(new Font("Semi_Bold", 1, 30));
         addSortByDateTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
         this.add(addSortByDateTitle);
     }

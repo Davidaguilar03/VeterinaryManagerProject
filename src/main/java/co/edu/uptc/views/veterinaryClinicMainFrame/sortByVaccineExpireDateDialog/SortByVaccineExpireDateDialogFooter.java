@@ -4,12 +4,14 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import lombok.Getter;
@@ -39,7 +41,7 @@ public class SortByVaccineExpireDateDialogFooter extends JPanel{
         sortByVaccineBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortByVaccineBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                //to do
+                sortByVaccine();
                 Window window = SwingUtilities.getWindowAncestor(SortByVaccineExpireDateDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -65,5 +67,14 @@ public class SortByVaccineExpireDateDialogFooter extends JPanel{
             }
         });
         this.add(cancelBtn);
+    }
+
+    private void sortByVaccine(){
+        int sortDays = Integer.parseInt(sortByVaccineExpireDateDialogView.getSortByVaccineExpireDateDialogBody().getTxtSortDays().getText());
+        ArrayList<Appointment> sortAppointments = sortByVaccineExpireDateDialogView.getVeterinaryClinicView().getPresenter().sortByVaccineExpireDate(sortDays);
+        sortByVaccineExpireDateDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().cleanTable();
+        for (Appointment appointment : sortAppointments) {
+            sortByVaccineExpireDateDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().addAppointment(appointment);
+        }
     }
 }

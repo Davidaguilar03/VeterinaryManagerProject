@@ -182,4 +182,28 @@
     "personId" : 562227057,
     "relationship" : "(Dueño)"
   }
+}, {
+  "id" : 1801720463,
+  "pet" : {
+    "id" : 1917493565,
+    "name" : "Tobias",
+    "species" : "Gato",
+    "age" : 1,
+    "breed" : "xx",
+    "keepers" : [ {
+      "personId" : 1761864789,
+      "relationship" : "(Familiar)"
+    } ]
+  },
+  "vaccines" : [ {
+    "id" : 1420728760,
+    "name" : "aawdad",
+    "shelfLife" : 12,
+    "expireDate" : [ 2024, 6, 8 ]
+  } ],
+  "date" : [ 2024, 5, 27 ],
+  "keeper" : {
+    "personId" : 562227057,
+    "relationship" : "(Familiar)"
+  }
 } ]
