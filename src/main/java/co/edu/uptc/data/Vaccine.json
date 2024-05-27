@@ -1,16 +1,46 @@
 [ {
-  "id" : 693325728,
-  "name" : "Pulgas",
+  "id" : 718579120,
+  "name" : "Vacuna Parvovirus",
+  "shelfLife" : 10,
+  "expireDate" : [ 2024, 6, 6 ]
+}, {
+  "id" : 366853981,
+  "name" : "Vacuna Moquillo",
+  "shelfLife" : 20,
+  "expireDate" : [ 2024, 6, 16 ]
+}, {
+  "id" : 1238065738,
+  "name" : "Vacuna Rabia",
+  "shelfLife" : 30,
+  "expireDate" : [ 2024, 6, 26 ]
+}, {
+  "id" : 819267520,
+  "name" : "Vacuna Leptospirosis",
+  "shelfLife" : 40,
+  "expireDate" : [ 2024, 7, 6 ]
+}, {
+  "id" : 318166419,
+  "name" : "Vacuna Hepatitis Infecciosa",
+  "shelfLife" : 50,
+  "expireDate" : [ 2024, 7, 16 ]
+}, {
+  "id" : 1851260149,
+  "name" : "Vacuna Panleucopenia ",
   "shelfLife" : 15,
   "expireDate" : [ 2024, 6, 11 ]
 }, {
-  "id" : 1420728760,
-  "name" : "aawdad",
-  "shelfLife" : 12,
-  "expireDate" : [ 2024, 6, 8 ]
+  "id" : 572760491,
+  "name" : "Vacuna Rinotraqueitis ",
+  "shelfLife" : 45,
+  "expireDate" : [ 2024, 7, 11 ]
 }, {
-  "id" : 179615334,
-  "name" : "ff",
-  "shelfLife" : 123,
-  "expireDate" : [ 2024, 9, 27 ]
+  "id" : 1262228473,
+  "name" : "Vacuna Leucemia",
+  "shelfLife" : 60,
+  "expireDate" : [ 2024, 7, 26 ]
+}, {
+  "id" : 1786415686,
+  "name" : "Vacuna Calicivitus",
+  "shelfLife" : 77,
+  "expireDate" : [ 2024, 8, 12 ]
 } ]
