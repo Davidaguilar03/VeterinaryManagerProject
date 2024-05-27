@@ -1,1 +1,16 @@
-[ ]
+[ {
+  "id" : 693325728,
+  "name" : "Pulgas",
+  "shelfLife" : 15,
+  "expireDate" : [ 2024, 6, 10 ]
+}, {
+  "id" : 1420728760,
+  "name" : "aawdad",
+  "shelfLife" : 12,
+  "expireDate" : [ 2024, 6, 7 ]
+}, {
+  "id" : 179615334,
+  "name" : "ff",
+  "shelfLife" : 123,
+  "expireDate" : [ 2024, 9, 26 ]
+} ]

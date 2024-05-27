@@ -2,12 +2,16 @@ package co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -18,7 +22,8 @@ import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
-
+import lombok.Getter;
+@Getter
 public class AddApointmentDialogBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel peopleDataBaseTableModel;
@@ -78,10 +83,28 @@ public class AddApointmentDialogBody extends JPanel {
             peopleDataBaseTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        peopleDataBaseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (!e.getValueIsAdjusting() && peopleDataBaseTable.getSelectedRow() != -1) {  
+                    createSelectedRowPerson();                                   
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(peopleDataBaseTable);
         scrollPane.setBounds(20, 40, 725, 100);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
+    }
+
+    public Person createSelectedRowPerson(){
+        Person person = new Person();
+        person.setId((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 0));
+        person.setName((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 1));
+        person.setAge((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 2));
+        person.setTypeOfDocument((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 3));
+        person.setDocumentNumber((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 4));
+        return person;
     }
 
     public void addPerson(Person person) {
@@ -123,6 +146,14 @@ public class AddApointmentDialogBody extends JPanel {
             petDataBaseTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        petDataBaseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && petDataBaseTable.getSelectedRow() != -1) {
+                    createSelectedRowPet();
+                }
+            }
+        });
         TableColumn documentNumberColumn = petDataBaseTable.getColumnModel().getColumn(5);
         documentNumberColumn.setPreferredWidth(200);
         JScrollPane scrollPane = new JScrollPane(petDataBaseTable);
@@ -136,6 +167,44 @@ public class AddApointmentDialogBody extends JPanel {
                 this.getPetResponsable(pet) };
         petDataBaseTableModel.addRow(petData);
     }
+
+    private int getPetResponsablePerson(String personString) {
+        int petResponsabPersonId = 0;
+        String[] personStrings = personString.split("-");
+        ArrayList<Person> persons = veterinaryClinicView.getPresenter().getPersons();
+        for (Person person : persons) {
+            if (personStrings[0].equalsIgnoreCase(person.getName())) {
+                petResponsabPersonId = person.getId();
+            }
+        }
+        return petResponsabPersonId;
+    }
+
+    public String getPetResponsableRelationship(String personString) {
+        String petResponsabPersonRelationship = new String();
+        String[] personStrings = personString.split("-");
+        petResponsabPersonRelationship = personStrings[1];
+        return petResponsabPersonRelationship;
+    }
+
+    public Pet createSelectedRowPet() {
+        Pet pet = new Pet();
+        pet.setId((int) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 0));
+        pet.setName((String) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 1));
+        pet.setSpecies((String) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 2));
+        pet.setAge((int) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 3));
+        pet.setBreed((String) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 4));
+        ArrayList<Keeper> keepers = new ArrayList<>();
+        Keeper keeper = new Keeper();
+        keeper.setPersonId(this.getPetResponsablePerson(
+                (String) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 5)));
+        keeper.setRelationship(this.getPetResponsableRelationship(
+                (String) petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 5)));
+        keepers.add(keeper);
+        pet.setKeepers(keepers);
+        return pet;
+    }
+
     private String getPetResponsable(Pet pet){
         String petResponsable = new String();
         for (Keeper keeper : pet.getKeepers()) {
@@ -176,16 +245,39 @@ public class AddApointmentDialogBody extends JPanel {
         vaccinesTable.getTableHeader().setReorderingAllowed(false);
         vaccinesTable.getTableHeader().setResizingAllowed(false);
         vaccinesTable.setDragEnabled(false);
+        vaccinesTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         CenterTableCellRenderer centerRenderer = new CenterTableCellRenderer();
         for (int i = 0; i < vaccinesTable
                 .getColumnCount(); i++) {
             vaccinesTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        vaccinesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (!e.getValueIsAdjusting() && vaccinesTable.getSelectedRow() != -1) {  
+                    createSelectedRowVaccines();                                   
+                }
+            }
+        });
         JScrollPane scrollPane = new JScrollPane(vaccinesTable);
         scrollPane.setBounds(20, 40, 725, 120);
         tablePanel.add(scrollPane);
         this.add(tablePanel);
+    }
+    public ArrayList<Vaccine> createSelectedRowVaccines() {
+        ArrayList<Vaccine> selectedVaccines = new ArrayList<>();
+        int[] selectedRows = vaccinesTable.getSelectedRows();
+    
+        for (int row : selectedRows) {
+            Vaccine vaccine = new Vaccine();
+            vaccine.setId((int) vaccineTableModel.getValueAt(row, 0));
+            vaccine.setName((String) vaccineTableModel.getValueAt(row, 1));
+            vaccine.setShelfLife((int) vaccineTableModel.getValueAt(row, 2));
+            selectedVaccines.add(vaccine);
+        }
+    
+        return selectedVaccines;
     }
 
     public void addVaccine(Vaccine vaccine) {
@@ -195,10 +287,6 @@ public class AddApointmentDialogBody extends JPanel {
 
     public Person searchPersonByid(int id) {
         return veterinaryClinicView.getPresenter().searchPersonById(id);
-    }
-
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
     }
 
 }

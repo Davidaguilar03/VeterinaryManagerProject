@@ -4,16 +4,26 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import co.edu.uptc.pojos.Appointment;
+import co.edu.uptc.pojos.Keeper;
+import co.edu.uptc.pojos.Person;
+import co.edu.uptc.pojos.Pet;
+import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
+import lombok.Getter;
 
+@Getter
 public class AddApointmentDialogFooter extends JPanel{
     private VeterinaryClinicView veterinaryClinicView;
     
@@ -39,7 +49,7 @@ public class AddApointmentDialogFooter extends JPanel{
         createSaveAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         createSaveAppointmentBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                
+                saveAppointment();
                 Window window = SwingUtilities.getWindowAncestor(AddApointmentDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -67,8 +77,22 @@ public class AddApointmentDialogFooter extends JPanel{
         this.add(createCancelAppointmentBtn);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
+    public void saveAppointment(){
+        AddApointmentDialogBody addApointmentDialogBody = veterinaryClinicView.getVeterinaryClinicAside().getAddApointmentDialogView().getAddApointmentDialogBody();
+        Person auxPerson = addApointmentDialogBody.createSelectedRowPerson();
+        Pet auxPet = addApointmentDialogBody.createSelectedRowPet();
+        ArrayList<Vaccine> auxVaccines = addApointmentDialogBody.createSelectedRowVaccines();
+        Appointment appointment = new Appointment();
+        appointment.setPet(auxPet);
+        appointment.setVaccines(auxVaccines);
+        appointment.setDate(LocalDate.now());
+        Keeper keeper = new Keeper();
+        keeper.setPersonId(auxPerson.getId());
+        keeper.setRelationship(addApointmentDialogBody.getPetResponsableRelationship(
+            (String) addApointmentDialogBody.getPetDataBaseTableModel().getValueAt(addApointmentDialogBody.getPetDataBaseTable().getSelectedRow(), 5)));
+        appointment.setKeeper(keeper);
+        veterinaryClinicView.getPresenter().addAppointment(appointment);
+        veterinaryClinicView.loadAppointmentsData();
     }
     
 }

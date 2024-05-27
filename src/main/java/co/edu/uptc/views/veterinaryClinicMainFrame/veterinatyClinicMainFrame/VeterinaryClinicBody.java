@@ -77,13 +77,12 @@ public class VeterinaryClinicBody extends JPanel {
     }
 
     public void addAppointment(Appointment appointment){
-        Object[] appointmentData = {appointment.getId(),appointment.getDate().toString(),appointment.getPet().getName(),appointment.getPet().getBreed(),this.searchPersonByid(appointment.getKeeper().getPersonId()).getName()+" ("+appointment.getKeeper().getRelationship()+")","Mas Información"};
+        Object[] appointmentData = {appointment.getId(),appointment.getDate().toString(),appointment.getPet().getName(),appointment.getPet().getBreed(),this.searchPersonByid(appointment.getKeeper().getPersonId()).getName()+appointment.getKeeper().getRelationship(),"Mas Información"};
         tableModel.addRow(appointmentData);
     }
 
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
+    public void cleanTable(){
+        tableModel.setRowCount(0);
     }
-
     
 }

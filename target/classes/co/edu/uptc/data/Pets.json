@@ -8,4 +8,14 @@
     "personId" : 562227057,
     "relationship" : "Dueño"
   } ]
+}, {
+  "id" : 1917493565,
+  "name" : "Tobias",
+  "species" : "Gato",
+  "age" : 1,
+  "breed" : "xx",
+  "keepers" : [ {
+    "personId" : 1761864789,
+    "relationship" : "Familiar"
+  } ]
 } ]

@@ -1,22 +1,25 @@
 package co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import co.edu.uptc.interfaces.VeterinaryInterface;
 import co.edu.uptc.interfaces.VeterinaryInterface.Presenter;
 import co.edu.uptc.pojos.*;
 import co.edu.uptc.utilities.PropertiesService;
+import lombok.Getter;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.ArrayList;
 
+@Getter
 public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.View {
     private VeterinaryInterface.Presenter presenter;
     private PropertiesService propertiesService;
     private VeterinaryClinicBody veterinaryClinicBody;
     private VeterinaryClinicHeader veterinaryClinicHeader;
+    private VeterinaryClinicAside veterinaryClinicAside;
 
     public VeterinaryClinicView() {
         propertiesService = new PropertiesService();
@@ -48,7 +51,8 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
         this.setIconImage(image);
     }
 
-    private void loadAppointmentsData() {
+    public void loadAppointmentsData() {
+        veterinaryClinicBody.cleanTable();
         ArrayList<Appointment> appointments = presenter.getAppointments();
         for (Appointment appointment : appointments) {
             veterinaryClinicBody.addAppointment(appointment);
@@ -61,7 +65,7 @@ public class VeterinaryClinicView extends JFrame implements VeterinaryInterface.
     }
 
     private void createVeterinaryClinicAside() {
-        VeterinaryClinicAside veterinaryClinicAside = new VeterinaryClinicAside(this);
+        veterinaryClinicAside = new VeterinaryClinicAside(this);
         this.add(veterinaryClinicAside, BorderLayout.WEST);
     }
 

@@ -12,9 +12,11 @@ import javax.swing.JPanel;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog.AddApointmentDialogView;
-
+import lombok.Getter;
+@Getter
 public class VeterinaryClinicAside extends JPanel{
     private VeterinaryClinicView veterinaryClinicView;
+    private AddApointmentDialogView addApointmentDialogView;
 
     public VeterinaryClinicAside(VeterinaryClinicView veterinaryClinicView){
         this.veterinaryClinicView=veterinaryClinicView;
@@ -97,12 +99,7 @@ public class VeterinaryClinicAside extends JPanel{
     }
 
     private void createAppointmentDialog(){
-        AddApointmentDialogView addApointmentDialogView = new AddApointmentDialogView(veterinaryClinicView);
+        addApointmentDialogView = new AddApointmentDialogView(veterinaryClinicView);
         addApointmentDialogView.begin();
-    }
-
-
-    public VeterinaryClinicView getVeterinaryClinicView() {
-        return veterinaryClinicView;
     }
 }

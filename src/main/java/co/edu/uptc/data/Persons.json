@@ -4,4 +4,10 @@
   "age" : 18,
   "typeOfDocument" : "Cedula de Ciudadania",
   "documentNumber" : 1032938747
+}, {
+  "id" : 1761864789,
+  "name" : "dadaw",
+  "age" : 12,
+  "typeOfDocument" : "Cedula de Ciudadania",
+  "documentNumber" : 1212321
 } ]

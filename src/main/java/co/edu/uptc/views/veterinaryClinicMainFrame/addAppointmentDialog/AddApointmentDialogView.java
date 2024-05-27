@@ -12,7 +12,8 @@ import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
-
+import lombok.Getter;
+@Getter
 public class AddApointmentDialogView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
     private AddApointmentDialogBody addApointmentDialogBody;
