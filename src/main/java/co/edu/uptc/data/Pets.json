@@ -13,20 +13,6 @@
     "relationship" : "Dueño"
   }
 }, {
-  "id" : 284048293,
-  "name" : "das",
-  "species" : "Perro",
-  "age" : 123,
-  "breed" : "dadw",
-  "keepers" : [ {
-    "personId" : 458191077,
-    "relationship" : "Familiar"
-  } ],
-  "owner" : {
-    "personId" : 0,
-    "relationship" : null
-  }
-}, {
   "id" : 1874188906,
   "name" : "hfhyf",
   "species" : "Perro",

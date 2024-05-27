@@ -11,8 +11,6 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
-import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
