@@ -22,7 +22,6 @@ public class VeterinaryClinicAside extends JPanel{
         this.veterinaryClinicView=veterinaryClinicView;
         this.initPanel();
         this.addCreateAppointmentBtn();
-        this.addDeleteAppointmentBtn();
         this.addSortAppointmentByDateBtn();
         this.addSortAppointmentByPersonBtn();
         this.addSortAppointmentByVaccinesExpireDateBtn();
@@ -49,18 +48,7 @@ public class VeterinaryClinicAside extends JPanel{
         this.add(createAppointmentBtn);
     }
 
-    private void addDeleteAppointmentBtn(){
-        RoundedButton deleteAppointmentBtn = new RoundedButton("Eliminar Cita", 20);
-        deleteAppointmentBtn.setPreferredSize(new Dimension(180, 52));
-        deleteAppointmentBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
-        deleteAppointmentBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
-        deleteAppointmentBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-               
-            }
-        });
-        this.add(deleteAppointmentBtn);
-    }
+    
     private void addSortAppointmentByDateBtn(){
         RoundedButton sortAppointmentByDateBtn = new RoundedButton("Consultar Por Fecha", 20);
         sortAppointmentByDateBtn.setPreferredSize(new Dimension(180, 52));
