@@ -73,8 +73,7 @@ public class EditPetDialogFooter extends JPanel{
     
     private void editPet(){
         EditPetDialogBody editPetDialogBody = editPetDialogView.getEditPetDialogBody();
-        Pet auxPet = new Pet();
-        auxPet.setId(0);
+        Pet auxPet = editPetDialogView.getPetDataBaseView().getPetDataBaseBody().createSelectedRowPet();
         auxPet.setName(editPetDialogBody.getTxtName().getText());
         auxPet.setAge(Integer.parseInt(editPetDialogBody.getTxtAge().getText()));
         auxPet.setSpecies((String)editPetDialogBody.getTxtSpecies().getSelectedItem());

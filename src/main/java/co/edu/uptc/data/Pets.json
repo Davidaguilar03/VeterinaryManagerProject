@@ -1,1 +1,11 @@
-[ ]
+[ {
+  "id" : 335986214,
+  "name" : "Rocky",
+  "species" : "Perro",
+  "age" : 20,
+  "breed" : "Bulldog",
+  "keepers" : [ {
+    "personId" : 562227057,
+    "relationship" : "Dueño"
+  } ]
+} ]

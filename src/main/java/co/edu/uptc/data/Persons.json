@@ -1,1 +1,7 @@
-[ ]
+[ {
+  "id" : 562227057,
+  "name" : "David Aguilar",
+  "age" : 18,
+  "typeOfDocument" : "Cedula de Ciudadania",
+  "documentNumber" : 1032938747
+} ]

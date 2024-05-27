@@ -21,8 +21,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.PlainDocument;
-
-import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
@@ -278,15 +276,6 @@ public class EditPetDialogBody extends JPanel {
         txtAge.setText(String.valueOf(auxPet.getAge()));
         txtSpecies.setSelectedItem(auxPet.getSpecies());
         txtBreed.setText(auxPet.getBreed());
-        if (!auxPet.getKeepers().isEmpty()) {
-            Keeper lastKeeper = auxPet.getKeepers().get(auxPet.getKeepers().size() - 1);
-            String relationship = lastKeeper.getRelationship();
-            if (relationship.equalsIgnoreCase("Dueño")) {
-                ownerRadioButton.setSelected(true);
-            } else if (relationship.equalsIgnoreCase("Familiar")) {
-                familiarRadioButton.setSelected(true);
-            }
-        }
     }
     
 
