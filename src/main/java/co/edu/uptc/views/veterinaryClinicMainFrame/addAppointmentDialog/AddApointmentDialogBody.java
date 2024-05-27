@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
+import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.pojos.Vaccine;
@@ -102,7 +104,7 @@ public class AddApointmentDialogBody extends JPanel {
         tablePanel.setBounds(10, 180, 765, 150);
         tablePanel.setLayout(null);
         String[] columnNames = {
-                "ID.Mascota", "Nombre", "Especie", "Edad", "Raza", "Dueño"
+                "ID.Mascota", "Nombre", "Especie", "Edad", "Raza", "Responsable"
         };
         petDataBaseTableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -121,6 +123,8 @@ public class AddApointmentDialogBody extends JPanel {
             petDataBaseTable
                     .getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        TableColumn documentNumberColumn = petDataBaseTable.getColumnModel().getColumn(5);
+        documentNumberColumn.setPreferredWidth(200);
         JScrollPane scrollPane = new JScrollPane(petDataBaseTable);
         scrollPane.setBounds(20, 40, 725, 100);
         tablePanel.add(scrollPane);
@@ -129,8 +133,19 @@ public class AddApointmentDialogBody extends JPanel {
 
     public void addPet(Pet pet) {
         Object[] petData = { pet.getId(), pet.getName(), pet.getSpecies(), pet.getAge(), pet.getBreed(),
-                this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
+                this.getPetResponsable(pet) };
         petDataBaseTableModel.addRow(petData);
+    }
+    private String getPetResponsable(Pet pet){
+        String petResponsable = new String();
+        for (Keeper keeper : pet.getKeepers()) {
+            if (keeper.getRelationship().equalsIgnoreCase("Dueño")) {
+                petResponsable = this.searchPersonByid(keeper.getPersonId()).getName() +"-(Dueño)";
+            }else if (keeper.getRelationship().equalsIgnoreCase("Familiar")) {
+                petResponsable = this.searchPersonByid(keeper.getPersonId()).getName() +"-(Familiar)";
+            }
+        }
+        return petResponsable;
     }
 
     private void addVaccineTableHeader() {

@@ -2,6 +2,7 @@ package co.edu.uptc.views.petDataBaseFrame.petDataBaseMainFrame;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -11,6 +12,9 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
 import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
@@ -76,6 +80,8 @@ public class PetDataBaseBody extends JPanel {
                 }
             }
         });
+        TableColumn responsibleColumn = petDataBaseTable.getColumnModel().getColumn(5);
+        responsibleColumn.setPreferredWidth(110);
         JScrollPane scrollPane = new JScrollPane(petDataBaseTable);
         scrollPane.setBounds(24, 40, 970, 400);
         tablePanel.add(scrollPane);
@@ -88,16 +94,39 @@ public class PetDataBaseBody extends JPanel {
 
     public void addPet(Pet pet) {
         Object[] petData = { pet.getId(), pet.getName(), pet.getSpecies(), pet.getAge(), pet.getBreed(),
-                this.searchPersonByid(pet.getOwner().getPersonId()).getName() };
+                this.getPetResponsableString(pet)};
         petDataBaseTableModel.addRow(petData);
     }
 
-    // private String petResponsable(Pet pet){
-    //     String petResponsableString = new String();
-    //     if (pet.getOwner().getRelationship() == "Dueño") {
-    //         petResponsableString = searchPersonByid(pet);
-    //     }
-    // }
+    private String getPetResponsableString(Pet pet){
+        String petResponsable = new String();
+        for (Keeper keeper : pet.getKeepers()) {
+            if (keeper.getRelationship().equalsIgnoreCase("Dueño")) {
+                petResponsable = this.searchPersonByid(keeper.getPersonId()).getName() +"-Dueño";
+            }else if (keeper.getRelationship().equalsIgnoreCase("Familiar")) {
+                petResponsable = this.searchPersonByid(keeper.getPersonId()).getName() +"-Familiar";
+            }
+        }
+        return petResponsable;
+    }
+
+    private int getPetResponsablePerson(String personString){
+        int petResponsabPersonId=0;
+        String[] personStrings = personString.split("-");
+        ArrayList<Person> persons = petDataBaseView.getVeterinaryClinicView().getPresenter().getPersons();
+        for (Person person : persons) {
+            if (personStrings[0].equalsIgnoreCase(person.getName())) {
+                petResponsabPersonId= person.getId();
+            }
+        }
+        return petResponsabPersonId;
+    }
+    private String getPetResponsableRelationship(String personString){
+        String petResponsabPersonRelationship= new String();
+        String[] personStrings = personString.split("-");
+        petResponsabPersonRelationship= personStrings[1];
+        return petResponsabPersonRelationship;
+    }
 
     public Pet createSelectedRowPet(){
         Pet pet = new Pet();
@@ -106,6 +135,12 @@ public class PetDataBaseBody extends JPanel {
         pet.setSpecies((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 2));
         pet.setAge((int)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 3));
         pet.setBreed((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 4));
+        ArrayList<Keeper> keepers = new ArrayList<>();
+        Keeper keeper = new Keeper();
+        keeper.setPersonId(this.getPetResponsablePerson((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 5)));
+        keeper.setRelationship(this.getPetResponsableRelationship((String)petDataBaseTableModel.getValueAt(petDataBaseTable.getSelectedRow(), 5)));
+        keepers.add(keeper);
+        pet.setKeepers(keepers);
         return pet;
     }
 

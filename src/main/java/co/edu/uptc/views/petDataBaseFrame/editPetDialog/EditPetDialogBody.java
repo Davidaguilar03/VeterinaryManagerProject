@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
@@ -23,7 +22,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.text.PlainDocument;
 
+import co.edu.uptc.pojos.Keeper;
 import co.edu.uptc.pojos.Person;
+import co.edu.uptc.pojos.Pet;
 import co.edu.uptc.utilities.CenterTableCellRenderer;
 import co.edu.uptc.utilities.NumericDocumentFilter;
 import co.edu.uptc.views.GlobalView;
@@ -41,6 +42,7 @@ public class EditPetDialogBody extends JPanel {
     private String relationshipSelection;
     private JRadioButton ownerRadioButton;
     private JRadioButton familiarRadioButton;
+    private ButtonGroup relationshipGroup;
 
     public EditPetDialogBody(EditPetDialogView editPetDialogView) {
         this.editPetDialogView = editPetDialogView;
@@ -56,6 +58,7 @@ public class EditPetDialogBody extends JPanel {
         this.addPeopleTableHeader();
         this.addPeopleDataBaseTable();
         this.createRelationshipSelection();
+        this.loadPetData();
     }
 
     private void initPanel() {
@@ -175,7 +178,7 @@ public class EditPetDialogBody extends JPanel {
         JLabel headerLabel = new JLabel("Registro de Personas");
         headerLabel.setFont(new Font("Arial", Font.BOLD, 16));
         Dimension headerDimension = headerLabel.getPreferredSize();
-        headerLabel.setBounds(265,210, (int) headerDimension.getWidth(), (int) headerDimension.getHeight());
+        headerLabel.setBounds(265, 210, (int) headerDimension.getWidth(), (int) headerDimension.getHeight());
         this.add(headerLabel);
     }
 
@@ -207,9 +210,9 @@ public class EditPetDialogBody extends JPanel {
         }
         peopleDataBaseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent e){
-                if (!e.getValueIsAdjusting() && peopleDataBaseTable.getSelectedRow() != -1) {  
-                    createSelectedRowPerson();                                   
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && peopleDataBaseTable.getSelectedRow() != -1) {
+                    createSelectedRowPerson();
                 }
             }
         });
@@ -228,13 +231,14 @@ public class EditPetDialogBody extends JPanel {
                 person.getDocumentNumber() };
         peopleDataBaseTableModel.addRow(personData);
     }
-    public Person createSelectedRowPerson(){
+
+    public Person createSelectedRowPerson() {
         Person person = new Person();
-        person.setId((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 0));
-        person.setName((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 1));
-        person.setAge((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 2));
-        person.setTypeOfDocument((String)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 3));
-        person.setDocumentNumber((int)peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 4));
+        person.setId((int) peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 0));
+        person.setName((String) peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 1));
+        person.setAge((int) peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 2));
+        person.setTypeOfDocument((String) peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 3));
+        person.setDocumentNumber((int) peopleDataBaseTableModel.getValueAt(peopleDataBaseTable.getSelectedRow(), 4));
         return person;
     }
 
@@ -245,7 +249,7 @@ public class EditPetDialogBody extends JPanel {
         ownerRadioButton.setBackground(GlobalView.RELATIONSHIP_SELECTION_COLOR);
         familiarRadioButton = new JRadioButton("Familiar");
         familiarRadioButton.setBackground(GlobalView.RELATIONSHIP_SELECTION_COLOR);
-        ButtonGroup relationshipGroup = new ButtonGroup();
+        relationshipGroup = new ButtonGroup();
         relationshipGroup.add(ownerRadioButton);
         relationshipGroup.add(familiarRadioButton);
         relationshipSelectionPanel.add(ownerRadioButton);
@@ -253,7 +257,7 @@ public class EditPetDialogBody extends JPanel {
         relationshipSelectionPanel.setBounds(265, 470, 180, 30);
         relationshipSelectionPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, GlobalView.BORDER_COLOR));
         this.add(relationshipSelectionPanel);
-        
+
         ActionListener relationshipSelectionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -264,8 +268,26 @@ public class EditPetDialogBody extends JPanel {
                 }
             }
         };
-
         ownerRadioButton.addActionListener(relationshipSelectionListener);
         familiarRadioButton.addActionListener(relationshipSelectionListener);
     }
+
+    private void loadPetData() {
+        Pet auxPet = editPetDialogView.getPetDataBaseView().getPetDataBaseBody().createSelectedRowPet();
+        txtName.setText(auxPet.getName());
+        txtAge.setText(String.valueOf(auxPet.getAge()));
+        txtSpecies.setSelectedItem(auxPet.getSpecies());
+        txtBreed.setText(auxPet.getBreed());
+        if (!auxPet.getKeepers().isEmpty()) {
+            Keeper lastKeeper = auxPet.getKeepers().get(auxPet.getKeepers().size() - 1);
+            String relationship = lastKeeper.getRelationship();
+            if (relationship.equalsIgnoreCase("Dueño")) {
+                ownerRadioButton.setSelected(true);
+            } else if (relationship.equalsIgnoreCase("Familiar")) {
+                familiarRadioButton.setSelected(true);
+            }
+        }
+    }
+    
+
 }

@@ -18,6 +18,7 @@ public class PetDataBaseAside extends JPanel{
     private PetDataBaseView petDataBaseView;
     private RoundedButton deletePetBtn;
     private RoundedButton editPetBtn;
+    private AddPetDialogView addPetDialogView;
 
     public PetDataBaseAside(PetDataBaseView petDataBaseView){
         this.petDataBaseView=petDataBaseView;
@@ -89,7 +90,7 @@ public class PetDataBaseAside extends JPanel{
     }
 
     private void createAddPetDialog(){
-        AddPetDialogView addPetDialogView = new AddPetDialogView(petDataBaseView);
+        addPetDialogView = new AddPetDialogView(petDataBaseView);
         addPetDialogView.begin();;
     }
 

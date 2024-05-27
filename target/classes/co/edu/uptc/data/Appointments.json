@@ -9,17 +9,13 @@
     "keepers" : [ {
       "personId" : 1,
       "relationship" : "Dueño"
-    } ],
-    "owner" : {
-      "personId" : 1,
-      "relationship" : "Dueño"
-    }
+    } ]
   },
   "vaccines" : [ {
     "id" : 1,
     "name" : "pulgas",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 8 ]
+    "expireDate" : [ 2024, 6, 10 ]
   } ],
   "date" : [ 2024, 5, 21 ],
   "keeper" : {
