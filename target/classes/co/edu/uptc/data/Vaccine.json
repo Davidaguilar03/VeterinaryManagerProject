@@ -2,15 +2,15 @@
   "id" : 693325728,
   "name" : "Pulgas",
   "shelfLife" : 15,
-  "expireDate" : [ 2024, 6, 10 ]
+  "expireDate" : [ 2024, 6, 11 ]
 }, {
   "id" : 1420728760,
   "name" : "aawdad",
   "shelfLife" : 12,
-  "expireDate" : [ 2024, 6, 7 ]
+  "expireDate" : [ 2024, 6, 8 ]
 }, {
   "id" : 179615334,
   "name" : "ff",
   "shelfLife" : 123,
-  "expireDate" : [ 2024, 9, 26 ]
+  "expireDate" : [ 2024, 9, 27 ]
 } ]

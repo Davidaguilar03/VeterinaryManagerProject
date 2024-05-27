@@ -24,7 +24,7 @@ import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 import lombok.Getter;
 @Getter
-public class AddApointmentDialogBody extends JPanel {
+public class AddAppointmentDialogBody extends JPanel {
     private VeterinaryClinicView veterinaryClinicView;
     private DefaultTableModel peopleDataBaseTableModel;
     private JTable peopleDataBaseTable;
@@ -33,7 +33,7 @@ public class AddApointmentDialogBody extends JPanel {
     private DefaultTableModel vaccineTableModel;
     private JTable vaccinesTable;
 
-    public AddApointmentDialogBody(VeterinaryClinicView veterinaryClinicView) {
+    public AddAppointmentDialogBody(VeterinaryClinicView veterinaryClinicView) {
         this.veterinaryClinicView = veterinaryClinicView;
         this.initPanel();
         this.addPeopleTableHeader();

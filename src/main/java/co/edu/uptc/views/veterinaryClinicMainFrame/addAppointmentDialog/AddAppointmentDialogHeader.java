@@ -11,10 +11,10 @@ import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 
-public class AddApointmentDialogHeader extends JPanel {
+public class AddAppointmentDialogHeader extends JPanel {
     private PropertiesService propertiesService;
 
-    public AddApointmentDialogHeader(){
+    public AddAppointmentDialogHeader(){
         propertiesService = new PropertiesService();
         this.initPanel();
         this.addApointmentDialogTitle();

@@ -11,17 +11,22 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
-import co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog.AddApointmentDialogView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog.AddAppointmentDialogView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.appointmentInformationDialog.AppointmentInformationDialogView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.sortByDateDialog.SortByDateDialogView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.sortByPersonDialog.SortByPersonDialogView;
+import co.edu.uptc.views.veterinaryClinicMainFrame.sortByVaccineExpireDateDialog.SortByVaccineExpireDateDialogView;
 import lombok.Getter;
 @Getter
 public class VeterinaryClinicAside extends JPanel{
     private VeterinaryClinicView veterinaryClinicView;
-    private AddApointmentDialogView addApointmentDialogView;
+    private AddAppointmentDialogView addApointmentDialogView;
 
     public VeterinaryClinicAside(VeterinaryClinicView veterinaryClinicView){
         this.veterinaryClinicView=veterinaryClinicView;
         this.initPanel();
         this.addCreateAppointmentBtn();
+        this.addAppointmentInfomationBtn();
         this.addSortAppointmentByDateBtn();
         this.addSortAppointmentByPersonBtn();
         this.addSortAppointmentByVaccinesExpireDateBtn();
@@ -48,6 +53,18 @@ public class VeterinaryClinicAside extends JPanel{
         this.add(createAppointmentBtn);
     }
 
+    private void addAppointmentInfomationBtn(){
+        RoundedButton appointmentInformationBtn = new RoundedButton("Informacion de la Cita", 20);
+        appointmentInformationBtn.setPreferredSize(new Dimension(180, 52));
+        appointmentInformationBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
+        appointmentInformationBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        appointmentInformationBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                createAppointmentInfomationDialog();
+            }
+        });
+        this.add(appointmentInformationBtn);
+    }
     
     private void addSortAppointmentByDateBtn(){
         RoundedButton sortAppointmentByDateBtn = new RoundedButton("Consultar Por Fecha", 20);
@@ -56,7 +73,7 @@ public class VeterinaryClinicAside extends JPanel{
         sortAppointmentByDateBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByDateBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createSortByDateDialog();
             }
         });
         this.add(sortAppointmentByDateBtn);
@@ -68,7 +85,7 @@ public class VeterinaryClinicAside extends JPanel{
         sortAppointmentByPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByPersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createSortByPersonDialog();
             }
         });
         this.add(sortAppointmentByPersonBtn);
@@ -80,14 +97,35 @@ public class VeterinaryClinicAside extends JPanel{
         sortAppointmentByVaccinesBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortAppointmentByVaccinesBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-               
+               createSortByVaccineExpireDate();
             }
         });
         this.add(sortAppointmentByVaccinesBtn);
     }
 
     private void createAppointmentDialog(){
-        addApointmentDialogView = new AddApointmentDialogView(veterinaryClinicView);
+        addApointmentDialogView = new AddAppointmentDialogView(veterinaryClinicView);
         addApointmentDialogView.begin();
     }
+
+    private void createAppointmentInfomationDialog(){
+        AppointmentInformationDialogView appointmentInformationDialogView = new AppointmentInformationDialogView(veterinaryClinicView);
+        appointmentInformationDialogView.begin();
+    }
+
+    private void createSortByDateDialog(){
+        SortByDateDialogView sortByDateDialogView = new SortByDateDialogView(veterinaryClinicView);
+        sortByDateDialogView.begin();
+    }
+
+    private void createSortByPersonDialog(){
+        SortByPersonDialogView sortByPersonDialogView = new SortByPersonDialogView(veterinaryClinicView);
+        sortByPersonDialogView.begin();
+    }
+
+    private void createSortByVaccineExpireDate(){
+        SortByVaccineExpireDateDialogView sortByVaccineExpireDateDialogView = new SortByVaccineExpireDateDialogView(veterinaryClinicView);
+        sortByVaccineExpireDateDialogView.begin();
+    }
+
 }

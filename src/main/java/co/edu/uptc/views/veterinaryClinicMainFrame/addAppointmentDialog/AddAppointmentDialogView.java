@@ -14,13 +14,13 @@ import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
 import lombok.Getter;
 @Getter
-public class AddApointmentDialogView extends JDialog{
+public class AddAppointmentDialogView extends JDialog{
     private VeterinaryClinicView veterinaryClinicView;
-    private AddApointmentDialogBody addApointmentDialogBody;
-    private AddApointmentDialogFooter addApointmentDialogFooter;
+    private AddAppointmentDialogBody addApointmentDialogBody;
+    private AddAppointmentDialogFooter addApointmentDialogFooter;
     private PropertiesService propertiesService;
 
-    public AddApointmentDialogView(VeterinaryClinicView veterinaryClinicView){
+    public AddAppointmentDialogView(VeterinaryClinicView veterinaryClinicView){
         super(veterinaryClinicView,true);
         this.veterinaryClinicView = veterinaryClinicView;
         propertiesService = new PropertiesService();
@@ -73,17 +73,17 @@ public class AddApointmentDialogView extends JDialog{
     }
 
     private void createMainHeader(){
-        AddApointmentDialogHeader addApointmentDialogHeader = new AddApointmentDialogHeader();
+        AddAppointmentDialogHeader addApointmentDialogHeader = new AddAppointmentDialogHeader();
         this.add(addApointmentDialogHeader, BorderLayout.NORTH);
     }
 
     private void createMainBody(){
-        addApointmentDialogBody = new AddApointmentDialogBody(veterinaryClinicView);
+        addApointmentDialogBody = new AddAppointmentDialogBody(veterinaryClinicView);
         this.add(addApointmentDialogBody);
     }
 
     private void createMainFooter(){
-        addApointmentDialogFooter = new AddApointmentDialogFooter(veterinaryClinicView);
+        addApointmentDialogFooter = new AddAppointmentDialogFooter(veterinaryClinicView);
         this.add(addApointmentDialogFooter,BorderLayout.SOUTH); 
     }
     
