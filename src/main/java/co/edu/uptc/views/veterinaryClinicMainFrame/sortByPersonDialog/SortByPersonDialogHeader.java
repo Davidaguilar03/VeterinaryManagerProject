@@ -26,7 +26,7 @@ public class SortByPersonDialogHeader extends JPanel{
 
     private void addSortByPersonTitle(){
         RoundedButton addSortByPersonTitle = new RoundedButton("Fitrar Por Persona", 20);
-        addSortByPersonTitle.setBounds(110, 10, 370, 80);
+        addSortByPersonTitle.setBounds(200, 10, 400, 80);
         addSortByPersonTitle.setFont(new Font("Semi_Bold", 1, 32));
         addSortByPersonTitle.setBackground(GlobalView.PRIMARY_BTN_BACKGROUND);
         this.add(addSortByPersonTitle);

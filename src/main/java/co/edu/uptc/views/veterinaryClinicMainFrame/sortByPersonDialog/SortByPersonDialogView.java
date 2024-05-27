@@ -2,13 +2,16 @@ package co.edu.uptc.views.veterinaryClinicMainFrame.sortByPersonDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
+import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.PropertiesService;
 import co.edu.uptc.views.veterinaryClinicMainFrame.veterinatyClinicMainFrame.VeterinaryClinicView;
-
+import lombok.Getter;
+@Getter
 public class SortByPersonDialogView extends JDialog {
     private VeterinaryClinicView veterinaryClinicView;
     private SortByPersonDialogBody sortByPersonDialogBody;
@@ -26,12 +29,20 @@ public class SortByPersonDialogView extends JDialog {
     }
 
     public void begin() {
+        loadPeopleData();
         this.setVisible(true);
+    }
+
+    private void loadPeopleData(){
+        ArrayList<Person> persons = veterinaryClinicView.getPresenter().getPersons();
+        for (Person person : persons) {
+            sortByPersonDialogBody.addPerson(person);
+        }
     }
 
     private void initDialog(){
         this.setLayout(new BorderLayout());
-        this.setSize(600,500);
+        this.setSize(800,500);
         this.setTitle("Filtrar por Persona");
         this.setLocationRelativeTo(veterinaryClinicView);
         this.setResizable(false);

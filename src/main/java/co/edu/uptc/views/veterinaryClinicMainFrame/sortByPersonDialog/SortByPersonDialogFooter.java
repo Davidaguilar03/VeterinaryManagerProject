@@ -4,10 +4,15 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import co.edu.uptc.pojos.Appointment;
+import co.edu.uptc.pojos.Person;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import lombok.Getter;
@@ -32,12 +37,12 @@ public class SortByPersonDialogFooter extends JPanel{
 
     private void addSortByPersonBtn(){
         RoundedButton sortByPersonBtn = new RoundedButton("Filtrar", 20);
-        sortByPersonBtn.setBounds(80, 25, 180, 50);
+        sortByPersonBtn.setBounds(180, 25, 180, 50);
         sortByPersonBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         sortByPersonBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortByPersonBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                //to do
+                sortByPerson();
                 Window window = SwingUtilities.getWindowAncestor(SortByPersonDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -50,7 +55,7 @@ public class SortByPersonDialogFooter extends JPanel{
 
     private void addCancelBtn(){
         RoundedButton cancelBtn = new RoundedButton("Cancelar", 20);
-        cancelBtn.setBounds(320, 25, 180, 50);
+        cancelBtn.setBounds(440, 25, 180, 50);
         cancelBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
         cancelBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         cancelBtn.addActionListener(new ActionListener() {
@@ -63,5 +68,14 @@ public class SortByPersonDialogFooter extends JPanel{
             }
         });
         this.add(cancelBtn);
+    }
+
+    private void sortByPerson(){
+        Person auxPerson = sortByPersonDialogView.getSortByPersonDialogBody().createSelectedRowPerson();
+        ArrayList<Appointment>sortAppointments = sortByPersonDialogView.getVeterinaryClinicView().getPresenter().sortByPerson(auxPerson);
+        sortByPersonDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().cleanTable();
+        for (Appointment appointment : sortAppointments) {
+            sortByPersonDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().addAppointment(appointment);
+        }
     }
 }

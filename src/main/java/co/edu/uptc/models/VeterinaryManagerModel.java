@@ -158,7 +158,7 @@ public class VeterinaryManagerModel implements VeterinaryInterface.Model {
     public ArrayList<Appointment> sortByPerson(Person person) {
         ArrayList<Appointment> sortByPersonAppointments = new ArrayList<>();
         for (Appointment appointment : this.appointments) {
-            if (this.searchPersonById(appointment.getKeeper().getPersonId()).equals(person)) {
+            if (appointment.getKeeper().getPersonId()==person.getId()) {
                 sortByPersonAppointments.add(appointment);
             }
         }
