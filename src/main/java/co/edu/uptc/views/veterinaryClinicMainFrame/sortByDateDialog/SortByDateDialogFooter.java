@@ -4,12 +4,15 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import lombok.Getter;
@@ -39,7 +42,7 @@ public class SortByDateDialogFooter extends JPanel{
         sortByDateBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
         sortByDateBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                //to do
+                sortByDate();
                 Window window = SwingUtilities.getWindowAncestor(SortByDateDialogFooter.this);
                 if (window instanceof JDialog) {
                     JDialog dialog = (JDialog) window;
@@ -65,5 +68,14 @@ public class SortByDateDialogFooter extends JPanel{
             }
         });
         this.add(cancelBtn);
+    }
+
+    private void sortByDate(){
+        LocalDate selectedDate =sortByDateDialogView.getSortByDateDialogBody().getSortDate();
+        ArrayList<Appointment> sortedAppointments= sortByDateDialogView.getVeterinaryClinicView().getPresenter().sortByDate(selectedDate);
+        sortByDateDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().cleanTable();
+        for (Appointment appointment : sortedAppointments) {
+            sortByDateDialogView.getVeterinaryClinicView().getVeterinaryClinicBody().addAppointment(appointment);
+        }
     }
 }

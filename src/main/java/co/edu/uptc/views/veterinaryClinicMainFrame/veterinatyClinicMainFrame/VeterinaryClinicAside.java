@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 
 import javax.swing.JPanel;
 
+import co.edu.uptc.pojos.Appointment;
 import co.edu.uptc.utilities.RoundedButton;
 import co.edu.uptc.views.GlobalView;
 import co.edu.uptc.views.veterinaryClinicMainFrame.addAppointmentDialog.AddAppointmentDialogView;
@@ -31,6 +33,7 @@ public class VeterinaryClinicAside extends JPanel{
         this.addSortAppointmentByDateBtn();
         this.addSortAppointmentByPersonBtn();
         this.addSortAppointmentByVaccinesExpireDateBtn();
+        this.addCleanSortBtn();
     }
 
     public void enableAppointmentInformationBtn(Boolean value){
@@ -42,7 +45,7 @@ public class VeterinaryClinicAside extends JPanel{
         this.setForeground(GlobalView.ASIDE_TEXT_BACKGROUND);
         this.setPreferredSize(new Dimension(298,100));
         this.setBorder(BorderFactory.createMatteBorder(0,1,1,1,GlobalView.BORDER_COLOR));
-        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER,30,30);
+        FlowLayout flowLayout = new FlowLayout(FlowLayout.CENTER,25,25);
         this.setLayout(flowLayout);
     }
     private void addCreateAppointmentBtn(){
@@ -107,6 +110,27 @@ public class VeterinaryClinicAside extends JPanel{
             }
         });
         this.add(sortAppointmentByVaccinesBtn);
+    }
+
+    private void addCleanSortBtn(){
+        RoundedButton sortAppointmentByVaccinesBtn = new RoundedButton("Limpiar Consultas", 20);
+        sortAppointmentByVaccinesBtn.setPreferredSize(new Dimension(180, 52));
+        sortAppointmentByVaccinesBtn.setBackground(GlobalView.SECUNDARY_BTN_BACKGROUND);
+        sortAppointmentByVaccinesBtn.setForeground(GlobalView.SECUNDARY_BTN_TEXT_BACKGROUND);
+        sortAppointmentByVaccinesBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+               cleanSort();
+            }
+        });
+        this.add(sortAppointmentByVaccinesBtn);
+    }
+
+    private void cleanSort(){
+        ArrayList<Appointment> allAppointments = veterinaryClinicView.getPresenter().getAppointments();
+        veterinaryClinicView.getVeterinaryClinicBody().cleanTable();
+        for (Appointment appointment : allAppointments) {
+            veterinaryClinicView.getVeterinaryClinicBody().addAppointment(appointment);
+        }
     }
 
     private void createAppointmentDialog(){
