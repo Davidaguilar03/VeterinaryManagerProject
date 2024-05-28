@@ -87,8 +87,11 @@ public class AddAppointmentDialogFooter extends JPanel{
         appointment.setDate(LocalDate.now());
         Keeper keeper = new Keeper();
         keeper.setPersonId(auxPerson.getId());
-        keeper.setRelationship(addApointmentDialogBody.getPetResponsableRelationship(
-            (String) addApointmentDialogBody.getPetDataBaseTableModel().getValueAt(addApointmentDialogBody.getPetDataBaseTable().getSelectedRow(), 5)));
+        if (auxPet.getKeepers().get(0).getPersonId()==auxPerson.getId()) {
+            keeper.setRelationship("(Dueño)");
+        }else{
+            keeper.setRelationship("(Familiar)");
+        }
         appointment.setKeeper(keeper);
         veterinaryClinicView.getPresenter().addAppointment(appointment);
         veterinaryClinicView.loadAppointmentsData();

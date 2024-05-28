@@ -7,3 +7,5 @@
     - Java 21.
 ## Patron de Diseño
     Patron Modelo Vista Presentador
+## Persistencia
+    La Persistencia se encuentra en la carpeta data en formato Json

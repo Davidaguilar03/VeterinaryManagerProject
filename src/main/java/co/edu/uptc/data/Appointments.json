@@ -15,17 +15,17 @@
     "id" : 718579120,
     "name" : "Vacuna Parvovirus",
     "shelfLife" : 10,
-    "expireDate" : [ 2024, 6, 6 ]
+    "expireDate" : [ 2024, 6, 7 ]
   }, {
     "id" : 819267520,
     "name" : "Vacuna Leptospirosis",
     "shelfLife" : 40,
-    "expireDate" : [ 2024, 7, 6 ]
+    "expireDate" : [ 2024, 7, 7 ]
   }, {
     "id" : 1786415686,
     "name" : "Vacuna Calicivitus",
     "shelfLife" : 77,
-    "expireDate" : [ 2024, 8, 12 ]
+    "expireDate" : [ 2024, 8, 13 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -49,12 +49,12 @@
     "id" : 1238065738,
     "name" : "Vacuna Rabia",
     "shelfLife" : 30,
-    "expireDate" : [ 2024, 6, 26 ]
+    "expireDate" : [ 2024, 6, 27 ]
   }, {
     "id" : 1851260149,
     "name" : "Vacuna Panleucopenia ",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 11 ]
+    "expireDate" : [ 2024, 6, 12 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -78,7 +78,7 @@
     "id" : 1238065738,
     "name" : "Vacuna Rabia",
     "shelfLife" : 30,
-    "expireDate" : [ 2024, 6, 26 ]
+    "expireDate" : [ 2024, 6, 27 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -102,12 +102,12 @@
     "id" : 318166419,
     "name" : "Vacuna Hepatitis Infecciosa",
     "shelfLife" : 50,
-    "expireDate" : [ 2024, 7, 16 ]
+    "expireDate" : [ 2024, 7, 17 ]
   }, {
     "id" : 1851260149,
     "name" : "Vacuna Panleucopenia ",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 11 ]
+    "expireDate" : [ 2024, 6, 12 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -131,12 +131,12 @@
     "id" : 318166419,
     "name" : "Vacuna Hepatitis Infecciosa",
     "shelfLife" : 50,
-    "expireDate" : [ 2024, 7, 16 ]
+    "expireDate" : [ 2024, 7, 17 ]
   }, {
     "id" : 1851260149,
     "name" : "Vacuna Panleucopenia ",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 11 ]
+    "expireDate" : [ 2024, 6, 12 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -160,12 +160,12 @@
     "id" : 1851260149,
     "name" : "Vacuna Panleucopenia ",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 11 ]
+    "expireDate" : [ 2024, 6, 12 ]
   }, {
     "id" : 572760491,
     "name" : "Vacuna Rinotraqueitis ",
     "shelfLife" : 45,
-    "expireDate" : [ 2024, 7, 11 ]
+    "expireDate" : [ 2024, 7, 12 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -189,7 +189,7 @@
     "id" : 819267520,
     "name" : "Vacuna Leptospirosis",
     "shelfLife" : 40,
-    "expireDate" : [ 2024, 7, 6 ]
+    "expireDate" : [ 2024, 7, 7 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
@@ -213,11 +213,152 @@
     "id" : 819267520,
     "name" : "Vacuna Leptospirosis",
     "shelfLife" : 40,
-    "expireDate" : [ 2024, 7, 6 ]
+    "expireDate" : [ 2024, 7, 7 ]
   } ],
   "date" : [ 2024, 5, 27 ],
   "keeper" : {
     "personId" : 1118052742,
+    "relationship" : "(Dueño)"
+  }
+}, {
+  "id" : 1852218456,
+  "pet" : {
+    "id" : 919889635,
+    "name" : "Toby",
+    "species" : "Perro",
+    "age" : 5,
+    "breed" : "Beagle",
+    "keepers" : [ {
+      "personId" : 522643151,
+      "relationship" : "(Dueño)"
+    } ]
+  },
+  "vaccines" : [ {
+    "id" : 1238065738,
+    "name" : "Vacuna Rabia",
+    "shelfLife" : 30,
+    "expireDate" : [ 2024, 6, 27 ]
+  }, {
+    "id" : 819267520,
+    "name" : "Vacuna Leptospirosis",
+    "shelfLife" : 40,
+    "expireDate" : [ 2024, 7, 7 ]
+  } ],
+  "date" : [ 2024, 5, 28 ],
+  "keeper" : {
+    "personId" : 563048693,
+    "relationship" : "(Dueño)"
+  }
+}, {
+  "id" : 2060046032,
+  "pet" : {
+    "id" : 1532406403,
+    "name" : "Max",
+    "species" : "Perro",
+    "age" : 3,
+    "breed" : "Labrador Retriever",
+    "keepers" : [ {
+      "personId" : 768842237,
+      "relationship" : "(Dueño)"
+    } ]
+  },
+  "vaccines" : [ {
+    "id" : 718579120,
+    "name" : "Vacuna Parvovirus",
+    "shelfLife" : 10,
+    "expireDate" : [ 2024, 6, 7 ]
+  } ],
+  "date" : [ 2024, 5, 28 ],
+  "keeper" : {
+    "personId" : 1118052742,
+    "relationship" : "Familiar"
+  }
+}, {
+  "id" : 1497225504,
+  "pet" : {
+    "id" : 257009442,
+    "name" : "Rocky",
+    "species" : "Perro",
+    "age" : 4,
+    "breed" : "Pastor Aleman",
+    "keepers" : [ {
+      "personId" : 1890829629,
+      "relationship" : "(Dueño)"
+    } ]
+  },
+  "vaccines" : [ {
+    "id" : 718579120,
+    "name" : "Vacuna Parvovirus",
+    "shelfLife" : 10,
+    "expireDate" : [ 2024, 6, 7 ]
+  }, {
+    "id" : 366853981,
+    "name" : "Vacuna Moquillo",
+    "shelfLife" : 20,
+    "expireDate" : [ 2024, 6, 17 ]
+  }, {
+    "id" : 1238065738,
+    "name" : "Vacuna Rabia",
+    "shelfLife" : 30,
+    "expireDate" : [ 2024, 6, 27 ]
+  }, {
+    "id" : 819267520,
+    "name" : "Vacuna Leptospirosis",
+    "shelfLife" : 40,
+    "expireDate" : [ 2024, 7, 7 ]
+  }, {
+    "id" : 318166419,
+    "name" : "Vacuna Hepatitis Infecciosa",
+    "shelfLife" : 50,
+    "expireDate" : [ 2024, 7, 17 ]
+  }, {
+    "id" : 1851260149,
+    "name" : "Vacuna Panleucopenia ",
+    "shelfLife" : 15,
+    "expireDate" : [ 2024, 6, 12 ]
+  }, {
+    "id" : 572760491,
+    "name" : "Vacuna Rinotraqueitis ",
+    "shelfLife" : 45,
+    "expireDate" : [ 2024, 7, 12 ]
+  }, {
+    "id" : 1262228473,
+    "name" : "Vacuna Leucemia",
+    "shelfLife" : 60,
+    "expireDate" : [ 2024, 7, 27 ]
+  }, {
+    "id" : 1786415686,
+    "name" : "Vacuna Calicivitus",
+    "shelfLife" : 77,
+    "expireDate" : [ 2024, 8, 13 ]
+  } ],
+  "date" : [ 2024, 5, 28 ],
+  "keeper" : {
+    "personId" : 866084558,
+    "relationship" : "(Familiar)"
+  }
+}, {
+  "id" : 672661084,
+  "pet" : {
+    "id" : 1532406403,
+    "name" : "Max",
+    "species" : "Perro",
+    "age" : 3,
+    "breed" : "Labrador Retriever",
+    "keepers" : [ {
+      "personId" : 768842237,
+      "relationship" : "(Dueño)"
+    } ]
+  },
+  "vaccines" : [ {
+    "id" : 318166419,
+    "name" : "Vacuna Hepatitis Infecciosa",
+    "shelfLife" : 50,
+    "expireDate" : [ 2024, 7, 17 ]
+  } ],
+  "date" : [ 2024, 5, 28 ],
+  "keeper" : {
+    "personId" : 768842237,
     "relationship" : "(Dueño)"
   }
 } ]
