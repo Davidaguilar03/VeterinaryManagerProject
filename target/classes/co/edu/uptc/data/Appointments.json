@@ -250,30 +250,6 @@
     "relationship" : "(Dueño)"
   }
 }, {
-  "id" : 2060046032,
-  "pet" : {
-    "id" : 1532406403,
-    "name" : "Max",
-    "species" : "Perro",
-    "age" : 3,
-    "breed" : "Labrador Retriever",
-    "keepers" : [ {
-      "personId" : 768842237,
-      "relationship" : "(Dueño)"
-    } ]
-  },
-  "vaccines" : [ {
-    "id" : 718579120,
-    "name" : "Vacuna Parvovirus",
-    "shelfLife" : 10,
-    "expireDate" : [ 2024, 6, 7 ]
-  } ],
-  "date" : [ 2024, 5, 28 ],
-  "keeper" : {
-    "personId" : 1118052742,
-    "relationship" : "Familiar"
-  }
-}, {
   "id" : 1497225504,
   "pet" : {
     "id" : 257009442,
