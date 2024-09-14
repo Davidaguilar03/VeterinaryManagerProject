@@ -15,17 +15,17 @@
     "id" : 718579120,
     "name" : "Vacuna Parvovirus",
     "shelfLife" : 10,
-    "expireDate" : [ 2024, 6, 7 ]
+    "expireDate" : [ 2024, 9, 24 ]
   }, {
     "id" : 366853981,
     "name" : "Vacuna Moquillo",
     "shelfLife" : 20,
-    "expireDate" : [ 2024, 6, 17 ]
+    "expireDate" : [ 2024, 10, 4 ]
   }, {
     "id" : 1238065738,
     "name" : "Vacuna Rabia",
     "shelfLife" : 30,
-    "expireDate" : [ 2024, 6, 27 ]
+    "expireDate" : [ 2024, 10, 14 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
@@ -49,17 +49,17 @@
     "id" : 366853981,
     "name" : "Vacuna Moquillo",
     "shelfLife" : 20,
-    "expireDate" : [ 2024, 6, 17 ]
+    "expireDate" : [ 2024, 10, 4 ]
   }, {
     "id" : 1238065738,
     "name" : "Vacuna Rabia",
     "shelfLife" : 30,
-    "expireDate" : [ 2024, 6, 27 ]
+    "expireDate" : [ 2024, 10, 14 ]
   }, {
     "id" : 318166419,
     "name" : "Vacuna Hepatitis Infecciosa",
     "shelfLife" : 50,
-    "expireDate" : [ 2024, 7, 17 ]
+    "expireDate" : [ 2024, 11, 3 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
@@ -83,12 +83,12 @@
     "id" : 572760491,
     "name" : "Vacuna Rinotraqueitis ",
     "shelfLife" : 45,
-    "expireDate" : [ 2024, 7, 12 ]
+    "expireDate" : [ 2024, 10, 29 ]
   }, {
     "id" : 1262228473,
     "name" : "Vacuna Leucemia",
     "shelfLife" : 60,
-    "expireDate" : [ 2024, 7, 27 ]
+    "expireDate" : [ 2024, 11, 13 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
@@ -112,12 +112,12 @@
     "id" : 1851260149,
     "name" : "Vacuna Panleucopenia ",
     "shelfLife" : 15,
-    "expireDate" : [ 2024, 6, 12 ]
+    "expireDate" : [ 2024, 9, 29 ]
   }, {
     "id" : 1262228473,
     "name" : "Vacuna Leucemia",
     "shelfLife" : 60,
-    "expireDate" : [ 2024, 7, 27 ]
+    "expireDate" : [ 2024, 11, 13 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
@@ -141,17 +141,17 @@
     "id" : 1238065738,
     "name" : "Vacuna Rabia",
     "shelfLife" : 30,
-    "expireDate" : [ 2024, 6, 27 ]
+    "expireDate" : [ 2024, 10, 14 ]
   }, {
     "id" : 819267520,
     "name" : "Vacuna Leptospirosis",
     "shelfLife" : 40,
-    "expireDate" : [ 2024, 7, 7 ]
+    "expireDate" : [ 2024, 10, 24 ]
   }, {
     "id" : 318166419,
     "name" : "Vacuna Hepatitis Infecciosa",
     "shelfLife" : 50,
-    "expireDate" : [ 2024, 7, 17 ]
+    "expireDate" : [ 2024, 11, 3 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
@@ -175,22 +175,22 @@
     "id" : 366853981,
     "name" : "Vacuna Moquillo",
     "shelfLife" : 20,
-    "expireDate" : [ 2024, 6, 17 ]
+    "expireDate" : [ 2024, 10, 4 ]
   }, {
     "id" : 819267520,
     "name" : "Vacuna Leptospirosis",
     "shelfLife" : 40,
-    "expireDate" : [ 2024, 7, 7 ]
+    "expireDate" : [ 2024, 10, 24 ]
   }, {
     "id" : 572760491,
     "name" : "Vacuna Rinotraqueitis ",
     "shelfLife" : 45,
-    "expireDate" : [ 2024, 7, 12 ]
+    "expireDate" : [ 2024, 10, 29 ]
   }, {
     "id" : 1262228473,
     "name" : "Vacuna Leucemia",
     "shelfLife" : 60,
-    "expireDate" : [ 2024, 7, 27 ]
+    "expireDate" : [ 2024, 11, 13 ]
   } ],
   "date" : [ 2024, 5, 28 ],
   "keeper" : {
